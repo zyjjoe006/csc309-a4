@@ -419,6 +419,7 @@
                 <h2>Sign In</h2>
               </div> -->
               <div class="modal-body">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <div class="sap_tabs">    
          
         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
@@ -435,12 +436,12 @@
                     <!--login1-->
                     <div class="register">
                         <form>  
-                            <input placeholder="Name" type="text" required="">
+                            <input placeholder="Userame" type="text" required="">
                             <input placeholder="Email Address" type="text" required="">                                 
                             <input placeholder="Password" type="password" required="">  
                             <input placeholder="Confirm Password" type="password" required="">
                                 <div class="sign-up">
-                                    <input type="submit" value="Create Account">
+                                    <input type="submit" value="Create Account" id="signup">
                                     <a  class=" btn btn-blockbtn-social btn-facebook">
                                     <span class="fa fa-facebook"></span> Sign Up with facebook
                                   </a>
@@ -457,10 +458,10 @@
                 <div class="facts">
                     <div class="register">
                         <form>                                      
-                            <input placeholder="Email Address" class="mail" type="text" required="">                                    
+                            <input placeholder="Username/Email Address" class="mail" type="text" required="">                                    
                             <input placeholder="Password" class="lock" type="password" required="">                                     
                             <div class="sign-up">
-                                <input type="submit" value="Sign in">
+                                <input type="submit" value="Sign in" id="signin">
                                 <a  class=" btn btn-blockbtn-social btn-facebook">
                                     <span class="fa fa-facebook"></span> Sign In with facebook
                                   </a>
@@ -710,5 +711,25 @@
         });
        </script>
    <!-- //modal js  -->
+   <script type="text/javascript">
+      $(document).ready(function() {
+                $("#signin").click(function(){
+                    window.location.href = "search.html";
+                });
+                $("#signup").click(function(){
+                    window.location.href = "search.html";
+                });
+                if ($(window).width() < 768) {
+                    $(".nav>li").click(function(){
+                        $(".navbar-toggle").click();
+                        
+                    });
+                                        
+                }
+                else{
+                        $(".nav").css('display','block');
+                    }; 
+            });
+   </script>
 </body>
 </html>
