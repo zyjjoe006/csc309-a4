@@ -1,3 +1,22 @@
 body{
     padding-top: 70px;
 }
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 40px;
+    right: 15px;
+    overflow: hidden;
+    width: 40px;
+    height: 21px;
+    border: none;
+    text-indent: 100%;
+    background: url("../images/to-top2.png") no-repeat 0px 0px;
+
+}
+/* navbar start*/
+.navbar-form,.navbar-form .input-group{
+    width: 100%;
+}
+/*navbar end*/
