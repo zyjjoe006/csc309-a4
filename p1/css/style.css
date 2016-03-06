@@ -1,4 +1,4 @@
-/*--
+--
 Author: W3Layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -96,6 +96,10 @@ a:focus, a:hover {
     color: #EEE;
     font-family: 'Montserrat';
 }
+.navbar-nav .signin{
+    width: 20%;
+}
+
 /*-- //Navbar --*/
 /* Effect 7: second border slides up */
 .cl-effect-7 a {
@@ -563,6 +567,14 @@ form.contact_form {
     cursor: pointer;
 }
 /*-- //Contact-Ends-Here --*/
+
+/*-- Modal-Starts-Here --*/
+.modal{
+    top:50px;
+}
+
+/*-- //Modal-Ends-Here --*/
+
 
 /*-- Map-Starts-Here --*/
 .map iframe {
@@ -1504,4 +1516,4 @@ ul.social li a.youtube:hover {
     }
 }
 
-/*--- //Responsive Code ---*/
+/*--- //Responsive Code ---

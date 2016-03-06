@@ -1,9 +1,4 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 
 <!DOCTYPE html>
 <html>
@@ -53,11 +48,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		                <ul class="nav navbar-nav">
 		                    <li class="active cl-effect-7"><a href="#">Home</a></li>
 			                <li class="cl-effect-7 scroll"><a href="#services">Service</a></li>
-			                <li class="cl-effect-7 scroll"><a href="#offer">Offers</a></li>
+			                <!-- <li class="cl-effect-7 scroll"><a href="#offer">Offers</a></li> -->
 			                <li class="cl-effect-7 scroll"><a href="#cover">Coverage</a></li>
 			                <li class="cl-effect-7 scroll"><a href="#about">About</a></li>
-			                <li class="cl-effect-7 scroll"><a href="#gallery">Gallery</a></li>
+			                <!-- <li class="cl-effect-7 scroll"><a href="#gallery">Gallery</a></li> -->
 			                <li class="cl-effect-7 scroll"><a href="#contact">Contact</a></li>
+                             <li class="cl-effect-7 signin"><a href="#SignIn" data-toggle="modal" data-target="#myModal"> Sign In/Sign Up</a></li>
+                             
 		                </ul>
 		            </div>
 		            <!-- //Navbar-collapse -->
@@ -411,13 +408,79 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 	</div>
     	</div>
 		<!-- //Contact-Ends-Here -->
+        <!-- Modal-Starts-Here -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+             <!--  <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                
+                <h2>Sign In</h2>
+              </div> -->
+              <div class="modal-body">
+              <div class="sap_tabs">    
+         
+        <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+         
+              <ul>
+                  <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab"><span>Sign up</span></li>
+                  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Sign in</span></li>
+                  
+              </ul>     
+              <!---->
+
+            <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Sign up</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+                <div class="facts">
+                    <!--login1-->
+                    <div class="register">
+                        <form>  
+                            <input placeholder="Name" type="text" required="">
+                            <input placeholder="Email Address" type="text" required="">                                 
+                            <input placeholder="Password" type="password" required="">  
+                            <input placeholder="Confirm Password" type="password" required="">
+                                <div class="sign-up">
+                                    <input type="submit" value="Create Account">
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+
+            <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>Sign in</h2><div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+                <div class="facts">
+                    <div class="register">
+                        <form>                                      
+                            <input placeholder="Email Address" class="mail" type="text" required="">                                    
+                            <input placeholder="Password" class="lock" type="password" required="">                                     
+                            <div class="sign-up">
+                                <input type="submit" value="Sign in">
+                            </div>
+                        </form>
+                        <h3><a href="#"> Forgot Password</a></h3>
+                    </div>
+                </div> 
+            </div>                                                            
+                
+        </div>  
+        
+    </div>
+                
+              </div>
+             <!--  <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+<!-- //Modal-Ends-Here -->
 
     </div>
 
 	<!-- Map-iFrame -->
-	<div class="map slideanim">
+	<!-- <div class="map slideanim">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22702.22744502486!2d11.113366067229226!3d44.662878362361056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fc3eca9065c15%3A0x12ec8a03aadae866!2s40019+Sant&#39;Agata+Bolognese+BO%2C+Italy!5e0!3m2!1sen!2sin!4v1451281303075" allowfullscreen></iframe>
-	</div>
+	</div> -->
 	<!-- //Map-iFrame -->
 
     <!-- Footer-Starts-Here -->
@@ -483,9 +546,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	            </ul>
             </div>
 
-            <div class="copyright slideanim">
-                <p>&copy; 2016 Tradeaux. All Rights Reserved | Template by <a href="http://w3layouts.com/"> W3layouts </a></p>
-            </div>
+           
 
         </div>
 
@@ -581,14 +642,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
 	<script type="text/javascript">
 		$(document).ready(function() {
-			/*
+			
 			var defaults = {
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
 				easingType: 'linear' 
 			};
-			*/            
+			            
 			$().UItoTop({ easingType: 'easeOutQuart' });            
 		});
 	</script>
