@@ -36,3 +36,21 @@ body{
 }
 }
 /*navbar end*/
+
+/*for profile*/
+*[role="complementary"]{
+    padding-top: 80px;
+}
+.table {
+    width: 80%;
+}
+.table th{
+    width:18%;
+}
+.profile-table ul{
+    padding-left:20px ;
+}
+.table th, .table td { 
+     border-top: none !important; 
+ }
+/*profile*/
