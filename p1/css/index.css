@@ -196,7 +196,8 @@ a:focus, a:hover {
     margin: 100px 0 40px 0px;
 }
 .rslides .caption span {
-    color: #2196F3;
+    // color: #2196F3;
+    color:black;
 }
 .rslides .caption p {
     color: #FFF;
