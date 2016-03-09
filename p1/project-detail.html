@@ -86,13 +86,19 @@
             </table>
 
             <hr>
+            <div class="discussion row col-sm-12">
             <b>Discussion:</b><br>
-            <p>XXX</p>
-            <input type="textarea"><br><br>
-            <b>Rating: ****</b><br>
-            <b>Comment: Good work</b><br>
+            <p>Me: If you pay me $3000 I can finish in three days.<span>03/07/2016 12:35:18</span></p>
+            <p>Joey: No way. <span>03/07/2016 13:12:25</span></p>
+            <p>Alex: I can do it with $1500.<span>03/07/2016 13:15:11</span></p>
+            <p>Me: $1500 also works for me. <span>03/07/2016 18:35:28</span></p>
+            </div>
+            <div class="row col-sm-12">
+                <input placeholder="Enter to send" type="textarea" id="chat"><br><br>
+            </div>
             <br>
-            <a href="find project.html" class="btn btn-default ">Back</a href="find project.html">
+            <a href="find project.html" class="btn btn-default ">Back</a>
+            <a href="find project.html" class="btn btn-primary apply">Apply</a>
         </div>
         </div>
     </div>
@@ -131,6 +137,40 @@
     </script>
     <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     <!-- //Slide-To-Top JavaScript -->
+    <script type="text/javascript">
+        $('#chat').keypress(function(e){
+            if (e.which==13){
+                // var now=$.now();
+                var now=new Date();
+                var min=now.getMinutes();
+                if(min<10){
+                    min="0"+min;
+                }
+                var month=now.getMonth()+1;
+                if(month<10){
+                    month="0"+month;
+                }
+                var date=now.getDate();
+                if(date<10){
+                    date="0"+date;
+                }
+                var hour=now.getHours();
+                if(hour<10){
+                    hour="0"+hour;
+                }
+                var seconds=now.getSeconds();
+                if(seconds<10){
+                    seconds="0"+seconds;
+                }
+                var displaytime=(month+"/"+date+"/"+now.getFullYear()+" "+hour+':'+min+":"+seconds);
+                $(".discussion").append("<p>Me: "+$("#chat").val()+"<span>"+displaytime+"</span></p>");
+                $("#chat").val("");
+            }
+        });
+        $('.apply').click(function(){
+            alert("Apply succeed! Please wait for the contact.");
+        })
+    </script>
 </body>
 
 </html>
