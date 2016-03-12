@@ -124,9 +124,9 @@
                     <p>{{discussion.author}}: {{discussion.body}}<span>{{discussion.createdOn|date:'MM/dd/yyyy @ h:mm:ss a'}}</span></p>
                 </div>
                 <!-- site.projects[0] need to change -->
-                <form class="row col-sm-12" ng-controller="DiscussionController as disscussionCtrl" ng-keypress="$event.which===13 && disscussionCtrl.addDiscussion(site.projects[0])">
+                <form name="disscussionForm"class="row col-sm-12" ng-controller="DiscussionController as disscussionCtrl" ng-keypress="disscussionForm.$valid && $event.which===13 && disscussionCtrl.addDiscussion(site.projects[0])" novalidate>
                     <div class="form-group">
-                        <textarea placeholder="Enter to send message"  ng-model="disscussionCtrl.discussion.body"name="body" class="form-control" rows="3"></textarea>
+                        <textarea placeholder="Enter to send message"  ng-model="disscussionCtrl.discussion.body"name="body" class="form-control" rows="3" required></textarea>
                     </div>
                     
                     <!-- <input placeholder="Enter to send" type="textarea" id="chat"><br><br> -->
