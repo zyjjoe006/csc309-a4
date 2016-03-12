@@ -105,9 +105,11 @@ http.createServer(function(req, resp) {
 }).listen(port);
 
 function getData(req,resp){
-    resp.writeHead(200,{"Content-Type":"application/json"});
+    resp.writeHead(200,{
+        "Content-Type":"application/json"
+    });  
     resp.write(JSON.stringify(obj,null,4));
-    resp.end;
+    resp.end();
 }
 
 

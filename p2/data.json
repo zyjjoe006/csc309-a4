@@ -14,16 +14,11 @@
     "specialRequirement": "Need a team with more than 4 people",
     "tags": ["NodeJS", "JS", "HTML5", "CSS3"],
     "discussions": [{
-        
         "body": "If you pay me $3000 I can finish in three days.",
-        
         "author": "John",
         "createdOn": 1458653959209
-
     }, {
-        
         "body": "No way.",
-        
         "author": "Joey",
         "createdOn": 1458654959209
     }]
