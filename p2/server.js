@@ -131,20 +131,7 @@ http.createServer(function(req, resp) {
             }
             // error
             else {
-                if (fs.statSync(filename).isDirectory()) filename = process.cwd();
-                fs.readFile(filename, "binary", function(err, file) {
-                    if (err) {
-                        resp.writeHead(500, { "Content-Type": "text/plain" });
-                        resp.write(err + "\n");
-                        resp.end();
-                        return;
-                    }
-
-                    resp.writeHead(200);
-                    resp.write(file, "binary");
-                    resp.end();
-                });
-                // get404(req, resp);
+                get404(req, resp);
             }
     }
 
