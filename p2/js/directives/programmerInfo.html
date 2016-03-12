@@ -1,0 +1,47 @@
+<table class="profile-table table">
+                    <tr>
+                        <th>Project Name</th>
+                        <td>{{project.name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{project.description}}</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Publishing</th>
+                        <td>{{project.publishDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>{{project.publisher}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{project.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Payment</th>
+                        <td>{{project.payment}}</td>
+                    </tr>
+                    <tr>
+                        <th>Required Skill</th>
+                        <td><span ng-repeat="skill in project.requiredSkills">{{skill}}{{$last ? '' : ', '}} </span></td>
+                        
+                    </tr>
+                    <tr>
+                        <th>Due Date</th>
+                        <td>{{project.dueDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Special Requirement</th>
+                        <td>{{project.specialRequirement}}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{project.status}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tag</th>
+                        <td><span ng-repeat="tag in project.tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                    </tr>
+                </table>

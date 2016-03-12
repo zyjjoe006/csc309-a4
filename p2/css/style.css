@@ -73,3 +73,15 @@ body{
 .bottom p span {
     color: #f5f5f5;
 }
+/*for form validation*/
+/* when valid, green border */
+.ng-valid.ng-dirty{
+    border-color: #78FA89;
+}
+/* when invalid, red border */
+.ng-invalid.ng-dirty{
+    border-color: #FA787E;
+}
+
+ 
+
