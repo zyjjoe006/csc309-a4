@@ -24,7 +24,7 @@ http.createServer(function(req, resp) {
         case "GET":
             if (req.url == '/') {     
                 // if (fs.statSync(filename).isDirectory()) filename += '/my_project_detail.html';
-                if (fs.statSync(filename).isDirectory()) filename += '/project-detail.html';
+                if (fs.statSync(filename).isDirectory()) filename += '/home.html';
                 fs.readFile(filename, "binary", function(err, file) {
                     if (err) {
                         resp.writeHead(500, { "Content-Type": "text/plain" });
@@ -38,6 +38,21 @@ http.createServer(function(req, resp) {
                     resp.end();
                 });
 
+            }
+            else if (req.url=="/project-detail.html"){
+                if (fs.statSync(filename).isDirectory()) filename += '/project-detail.html';
+                fs.readFile(filename, "binary", function(err, file) {
+                    if (err) {
+                        resp.writeHead(500, { "Content-Type": "text/plain" });
+                        resp.write(err + "\n");
+                        resp.end();
+                        return;
+                    }
+
+                    resp.writeHead(200);
+                    resp.write(file, "binary");
+                    resp.end();
+                });
             }
             else if (req.url=="/data.json"){
                 getData(req,resp);
