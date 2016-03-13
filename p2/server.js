@@ -22,7 +22,8 @@ http.createServer(function(req, resp) {
         filename = path.join(process.cwd(), uri);
     switch (req.method) {
         case "GET":
-            if (req.url == '/') {
+            if (req.url == '/') {     
+                // if (fs.statSync(filename).isDirectory()) filename += '/my_project_detail.html';
                 if (fs.statSync(filename).isDirectory()) filename += '/project-detail.html';
                 fs.readFile(filename, "binary", function(err, file) {
                     if (err) {

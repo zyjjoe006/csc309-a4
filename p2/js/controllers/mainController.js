@@ -13,7 +13,8 @@ app.controller('DiscussionController', function() {
     this.addDiscussion = function(project) {
         // need to change
         this.discussion.author = "Me";
-        this.discussion.createdOn = Date.now();
+        // this.discussion.createdOn = Date.now();
+        this.discussion.createdOn = new Date();
         project.discussions.push(this.discussion);
         this.discussion = {};
     }

@@ -44,8 +44,17 @@ body{
 .table {
     width: 80%;
 }
+
 .table th{
     width:18%;
+    height:42px;
+}
+.table td{
+    width:50%;
+    height:42px;
+}
+.table input{
+    width:100%;
 }
 .profile-table ul{
     padding-left:20px ;
@@ -54,6 +63,8 @@ body{
      border-top: none !important; 
  }
 /*profile*/
+
+
 .discussion span{
     float:right;
 }
@@ -75,13 +86,16 @@ body{
 }
 /*for form validation*/
 /* when valid, green border */
-.ng-valid.ng-dirty{
+form .ng-valid.ng-dirty{
     border-color: #78FA89;
 }
 /* when invalid, red border */
-.ng-invalid.ng-dirty{
+form .ng-invalid.ng-dirty{
     border-color: #FA787E;
 }
 
  
-
+/* solve template appears problem */
+[ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}

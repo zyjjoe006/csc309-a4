@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Project Detail</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body  >
@@ -31,7 +32,9 @@
                         <div class="input-group dropdown">
                             <input type="text" class="form-control dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="Search User or Project with ID" name="srch-term" id="srch-term">
                             <ul class="search-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="profile_programmer.html"><span class="fa fa-twitter"></span> Steve Woz  <small>ios developer</small></a></li>
+                                <li><a href="profile_programmer.html">
+                                <!-- <span class="fa fa-twitter"></span>  -->
+                                Steve Woz  <small>ios developer</small></a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="profile_business.html"><span class="fa fa-bitbucket"></span> IBM  <small>Blue Giant</small></a></li>
                                 <li role="separator" class="divider"></li>
@@ -40,7 +43,9 @@
                                 <li><a href="profile_programmer.html"><span class="fa fa-twitter"></span> John Simth <small>JQuery, Underscore, node.js</small></a></li>
                             </ul>
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                <button class="btn btn-default" type="submit">
+                              <!--   <i class="glyphicon glyphicon-search"></i> -->
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -63,66 +68,88 @@
         </div>
         <!-- /.container-fluid -->
     </header>
+    <!-- <nav-header></nav-header>  -->
     <!-- /header -->
     <!-- body -->
     <div class="container" ng-controller="MainController">
-        <div class="row">
+        <div class="row" ng-init="tab=0">
         <!-- all {{projects[0].xxx}} need to change -->
             <div class="col-md-9 profile-info">
+
                 <h1 class="page-header">Project Detail</h1>
-               <!--  <table class="profile-table table">
+                
+                <table  class="profile-table table">
                     <tr>
                         <th>Project Name</th>
-                        <td>{{projects[0].name}}</td>
+                        <td ng-show="tab==0">{{projects[0].name}}</td>
+
+                        <td  ng-show="tab==1"><input ng-model="projects[0].name"></input></td>
+
                     </tr>
                     <tr>
                         <th>Description</th>
-                        <td>{{projects[0].description}}</td>
+                        <td ng-show="tab==0">{{projects[0].description}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].description"></input></td>
                     </tr>
                     <tr>
                         <th>Date of Publishing</th>
-                        <td>{{projects[0].publishDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                        <td ng-show="tab==0">{{projects[0].publishDate|date:'MM/dd/yyyy'}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].publishDate|date:'MM/dd/yyyy @ h:mm a'"></input></td>
                     </tr>
                     <tr>
                         <th>Publisher</th>
-                        <td>{{projects[0].publisher}}</td>
+                        <td ng-show="tab==0">{{projects[0].publisher}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].publisher"></input></td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td>{{projects[0].email}}</td>
+                        <td ng-show="tab==0">{{projects[0].email}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].email"></input></td>
                     </tr>
                     <tr>
                         <th>Payment</th>
-                        <td>{{projects[0].payment}}</td>
+                        <td ng-show="tab==0">{{projects[0].payment}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].payment"></input></td>
                     </tr>
                     <tr>
                         <th>Required Skill</th>
-                        <td><span ng-repeat="skill in projects[0].requiredSkills">{{skill}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==0" ><span ng-show="tab==0" ng-repeat="skill in projects[0].requiredSkills">{{skill}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].name"></input></td>
                         
                     </tr>
                     <tr>
                         <th>Due Date</th>
-                        <td>{{projects[0].dueDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                        <td ng-show="tab==0">{{projects[0].dueDate|date:'MM/dd/yyyy'}}</td>
+                        <td ng-show="tab==1"><!-- <input ng-model="projects[0].dueDate|date:'short'"></input> -->
+                          <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="projects[0].dueDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p></td>
                     </tr>
                     <tr>
                         <th>Special Requirement</th>
-                        <td>{{projects[0].specialRequirement}}</td>
+                        <td ng-show="tab==0">{{projects[0].specialRequirement}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].specialRequirement"></input></td>
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <td>{{projects[0].status}}</td>
+                        <td ng-show="tab==0">{{projects[0].status}}</td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].status"></input></td>
                     </tr>
                     <tr>
                         <th>Tag</th>
-                        <td><span ng-repeat="tag in projects[0].tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==0"><span ng-repeat="tag in projects[0].tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==1"><input ng-model="projects[0].name"></input></td>
                     </tr>
-                </table> -->
-                <programmer-info project="projects[0]"></programmer-info>
+                </table>
+                <!-- <programmer-info project="projects[0]"></programmer-info> -->
                 <hr>
                 <h3>Discussion Board</h3>
                 <!-- projects[0] need to change -->
                 <div class="discussion row col-sm-12" ng-repeat="discussion in projects[0].discussions">
-                    <p>{{discussion.author}}: {{discussion.body}}<span>{{discussion.createdOn|date:'MM/dd/yyyy @ h:mm:ss a'}}</span></p>
+                    <p ng-cloak>{{discussion.author}}: {{discussion.body}}<span>{{discussion.createdOn|date:'MM/dd/yyyy @ h:mm:ss a'}}</span></p>
                 </div>
                 <!-- projects[0] need to change -->
                 <form name="disscussionForm"class="row col-sm-12" ng-controller="DiscussionController as disscussionCtrl" ng-keypress="disscussionForm.$valid && $event.which===13 && disscussionCtrl.addDiscussion(projects[0])" novalidate>
@@ -136,24 +163,41 @@
                 <a href="find project.html" class="btn btn-default ">Back</a>
                 <a href="find project.html" class="btn btn-primary apply">Apply</a>
             </div>
+
+            <div class="col-md-3" role="complementary">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+                    <ul class="nav ">
+                        <ul class="nav">
+                            <li class=""><a ng-show="tab==0" ng-click="tab=1" href="#edit-project">edit project</a></li>
+                            <li class=""><a ng-show="tab==0"  href="#cancel-project">cancel project</a></li>
+                            <li class=""><a ng-show="tab==1"ng-click="tab=0" href="#">confirm</a></li>
+                            <li class=""><a ng-show="tab==1"ng-click="tab=0" href="#">cancel</a></li>
+                            
+                        </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
     <!-- /body -->
-    <footer id="footer">
+  <!--   <footer id="footer">
         <div class="bottom clearfix">
-           
+           coding.Inc 2016
         </div>
-    </footer>
+    </footer> -->
     <!-- Supportive-JavaScript -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <!-- Necessary-JS-File-For-Bootstrap -->
-   
-    <script src="js/angular.min.js" type="text/javascript"></script>
+   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/angular.js" type="text/javascript"></script>
     <script src="js/app.js" ></script>
+    <script type="text/javascript" src="js/ui-bootstrap-1.2.4.min.js"></script>
   <script src="js/controllers/mainController.js" type="text/javascript" ></script>
   <script src="js/directives/programmerInfo.js"></script>
-   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <script src="js/directives/nav.js"></script>
    <script src="js/service/projectList.js" type="text/javascript"></script>
+
 </body>
 
 </html>
