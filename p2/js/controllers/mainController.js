@@ -1,17 +1,23 @@
 // controllers
-app.controller('MainController', ['projectList', '$scope', function(projectList,$scope) {
+app.controller('ProjectController', ['projectList', '$scope', function(projectList, $scope) {
     // fake data
     // $scope.projects = projects;
-    projectList.success(function(data) { 
-    $scope.projects = angular.fromJson(data);
-    angular.forEach($scope.projects, function(value){
-        value.publishDate=new Date(value.publishDate);
-        value.dueDate=new Date(value.dueDate);
-         
-     }); 
-  });
+    projectList.success(function(data) {
+        $scope.projects = angular.fromJson(data);
+        angular.forEach($scope.projects, function(value) {
+            value.publishDate = new Date(value.publishDate);
+            value.dueDate = new Date(value.dueDate);
 
-    
+        });
+    });
+    this.state=0;
+    this.setState=function(setState){
+        this.state=setState;
+    }
+    this.isSelected=function(checkState){
+        return this.state==checkState;
+    }
+
 }]);
 
 app.controller('DiscussionController', function() {
@@ -67,8 +73,8 @@ var users = [{
 }];
 
 
-var projects=[{
-    "id":1,
+var projects = [{
+    "id": 1,
     "name": "Build responsive website",
     "description": "build without bootstrap",
     "publishDate": 1457652959209,
