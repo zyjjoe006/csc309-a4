@@ -24,7 +24,7 @@ http.createServer(function(req, resp) {
         case "GET":
             if (req.url == '/') {     
                 // if (fs.statSync(filename).isDirectory()) filename += '/my_project_detail.html';
-                if (fs.statSync(filename).isDirectory()) filename += '/home.html';
+                if (fs.statSync(filename).isDirectory()) filename += '/project-detail.html';
                 fs.readFile(filename, "binary", function(err, file) {
                     if (err) {
                         resp.writeHead(500, { "Content-Type": "text/plain" });
