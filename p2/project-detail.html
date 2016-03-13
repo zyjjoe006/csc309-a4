@@ -93,8 +93,8 @@
                     </tr>
                     <tr>
                         <th>Date of Publishing</th>
-                        <td ng-show="tab==0">{{projects[0].publishDate|date:'MM/dd/yyyy'}}</td>
-                        <td ng-show="tab==1"><input ng-model="projects[0].publishDate|date:'MM/dd/yyyy @ h:mm a'"></input></td>
+                        <td ng-show="tab==0">{{projects[0].publishDate|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="tab==1"><input  type="date"ng-model="projects[0].publishDate"></input></td>
                     </tr>
                     <tr>
                         <th>Publisher</th>
@@ -119,14 +119,15 @@
                     </tr>
                     <tr>
                         <th>Due Date</th>
-                        <td ng-show="tab==0">{{projects[0].dueDate|date:'MM/dd/yyyy'}}</td>
-                        <td ng-show="tab==1"><!-- <input ng-model="projects[0].dueDate|date:'short'"></input> -->
-                          <p class="input-group">
+                        <td ng-show="tab==0">{{projects[0].dueDate|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="tab==1"><input type="date" ng-model="projects[0].dueDate" placeholder="yyyy-MM-dd" min="new Date()" ></input>
+                        <!--   <p class="input-group">
           <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="projects[0].dueDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
-        </p></td>
+        </p> -->
+        </td>
                     </tr>
                     <tr>
                         <th>Special Requirement</th>

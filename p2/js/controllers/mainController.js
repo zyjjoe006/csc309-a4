@@ -3,8 +3,14 @@ app.controller('MainController', ['projectList', '$scope', function(projectList,
     // fake data
     // $scope.projects = projects;
     projectList.success(function(data) { 
-    $scope.projects = data; 
+    $scope.projects = angular.fromJson(data);
+    angular.forEach($scope.projects, function(value){
+        value.publishDate=new Date(value.publishDate);
+        value.dueDate=new Date(value.dueDate);
+         
+     }); 
   });
+
     
 }]);
 
