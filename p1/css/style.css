@@ -38,8 +38,10 @@ body{
 /*navbar end*/
 
 /*for profile*/
+@media screen and (min-width:768px) {
 *[role="complementary"]{
     padding-top: 80px;
+}
 }
 .table {
     width: 80%;
