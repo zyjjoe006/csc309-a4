@@ -1,47 +1,80 @@
-<table class="profile-table table">
+ <table class="profile-table table">
                     <tr>
                         <th>Project Name</th>
-                        <td ng-cloak>{{project.name}}</td>
+                        <td ng-show="tab==0">{{projects[0].name}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].name"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Description</th>
-                        <td ng-cloak>{{project.description}}</td>
+                        <td ng-show="tab==0">{{projects[0].description}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].description"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Date of Publishing</th>
-                        <td ng-cloak>{{project.publishDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                        <td ng-show="tab==0">{{projects[0].publishDate|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="tab==1">
+                            <input type="date" ng-model="projects[0].publishDate"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Publisher</th>
-                        <td ng-cloak>{{project.publisher}}</td>
+                        <td ng-show="tab==0">{{projects[0].publisher}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].publisher"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td ng-cloak>{{project.email}}</td>
+                        <td ng-show="tab==0">{{projects[0].email}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].email"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Payment</th>
-                        <td ng-cloak>{{project.payment}}</td>
+                        <td ng-show="tab==0">{{projects[0].payment}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].payment"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Required Skill</th>
-                        <td><span ng-repeat="skill in project.requiredSkills" ng-cloak>{{skill}}{{$last ? '' : ', '}} </span></td>
-                        
+                        <td ng-show="tab==0"><span ng-show="tab==0" ng-repeat="skill in projects[0].requiredSkills">{{skill}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].name"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Due Date</th>
-                        <td ng-cloak>{{project.dueDate|date:'MM/dd/yyyy @ h:mm a'}}</td>
+                        <td ng-show="tab==0">{{projects[0].dueDate|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="tab==1">
+                            <input type="date" ng-model="projects[0].dueDate" placeholder="yyyy-MM-dd" min="new Date()"></input>
+                            
+                        </td>
                     </tr>
                     <tr>
                         <th>Special Requirement</th>
-                        <td ng-cloak>{{project.specialRequirement}}</td>
+                        <td ng-show="tab==0">{{projects[0].specialRequirement}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].specialRequirement"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Status</th>
-                        <td ng-cloak>{{project.status}}</td>
+                        <td ng-show="tab==0">{{projects[0].status}}</td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].status"></input>
+                        </td>
                     </tr>
                     <tr>
                         <th>Tag</th>
-                        <td><span ng-repeat="tag in project.tags" ng-cloak>{{tag}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==0"><span ng-repeat="tag in projects[0].tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="tab==1">
+                            <input ng-model="projects[0].name"></input>
+                        </td>
                     </tr>
                 </table>
