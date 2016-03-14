@@ -72,12 +72,12 @@
     <!-- <nav-header></nav-header>  -->
     <!-- /header -->
     <!-- body -->
-    <div class="container" ng-controller="ProjectController as projectCtrl">
-        <div class="row" >
+    <div class="container" ng-controller="MainController">
+        <div class="row" ng-controller="ProjectController as projectCtrl">
             <!-- all {{projects[0].xxx}} need to change -->
             <div class="col-md-9 profile-info">
                 <h1 class="page-header">Project Detail</h1>
-                <table class="profile-table table">
+               <!--  <table class="profile-table table">
                     <tr>
                         <th>Project Name</th>
                         <td ng-show="projectCtrl.isSelected(0)">{{projects[0].name}}</td>
@@ -156,8 +156,8 @@
                             <input ng-model="projects[0].name"></input>
                         </td>
                     </tr>
-                </table>
-                <!-- <programmer-info project="projects[0]" ></programmer-info> -->
+                </table> -->
+                <programmer-info project="projectCtrl.project" state="projectCtrl.state"></programmer-info>
                 <hr>
                 <h3>Discussion Board</h3>
                 <!-- projects[0] need to change -->

@@ -1,5 +1,5 @@
 // controllers
-app.controller('ProjectController', ['projectList', '$scope', function(projectList, $scope) {
+app.controller('MainController', ['projectList', '$scope', function(projectList, $scope) {
     // fake data
     // $scope.projects = projects;
     projectList.success(function(data) {
@@ -10,6 +10,13 @@ app.controller('ProjectController', ['projectList', '$scope', function(projectLi
 
         });
     });
+   
+
+}]);
+app.controller('ProjectController', ['$scope', function($scope){
+    $scope.project=projects[0];
+     $scope.project.publishDate = new Date($scope.project.publishDate);
+            $scope.project.dueDate = new Date($scope.project.dueDate);
     this.state=0;
     this.setState=function(setState){
         this.state=setState;
@@ -17,9 +24,7 @@ app.controller('ProjectController', ['projectList', '$scope', function(projectLi
     this.isSelected=function(checkState){
         return this.state==checkState;
     }
-
 }]);
-
 app.controller('DiscussionController', function() {
     this.discussion = {};
     this.addDiscussion = function(project) {
