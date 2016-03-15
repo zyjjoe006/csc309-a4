@@ -72,8 +72,8 @@
     <!-- <nav-header></nav-header>  -->
     <!-- /header -->
     <!-- body -->
-    <div class="container" ng-controller="MainController">
-        <div class="row" ng-controller="ProjectController as projectCtrl">
+    <div class="container" ng-controller="ProjectController as projectCtrl">
+        <div class="row" >
             <!-- all {{projects[0].xxx}} need to change -->
             <div class="col-md-9 profile-info">
                 <h1 class="page-header">Project Detail</h1>
@@ -157,7 +157,7 @@
                         </td>
                     </tr>
                 </table> -->
-                <programmer-info project="projectCtrl.project" state="projectCtrl.state"></programmer-info>
+                <programmer-info  state="projectCtrl.state" project="project"></programmer-info>
                 <hr>
                 <h3>Discussion Board</h3>
                 <!-- projects[0] need to change -->
