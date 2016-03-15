@@ -64,13 +64,13 @@
                             <input ng-model="projects[0].payment"></input>
                         </td>
                     </tr>
-                   <!--  <tr>
+                    <tr>
                         <th>Required Skill</th>
                         <td ng-show="projectCtrl.isSelected(0)"><span ng-show="projectCtrl.isSelected(0)" ng-repeat="skill in projects[0].requiredSkills">{{skill}}{{$last ? '' : ', '}} </span></td>
                         <td ng-show="projectCtrl.isSelected(1)">
                             <input ng-model="projects[0].name"></input>
                         </td>
-                    </tr> -->
+                    </tr> 
                     <tr>
                         <th>Due Date</th>
                         <td ng-show="projectCtrl.isSelected(0)">{{projects[0].dueDate|date:'yyyy-MM-dd'}}</td>
@@ -93,21 +93,15 @@
                             <input ng-model="projects[0].status"></input>
                         </td>
                     </tr>
-                   <!--  <tr>
+                    <tr>
                         <th>Tag</th>
                         <td ng-show="projectCtrl.isSelected(0)"><span ng-repeat="tag in projects[0].tags">{{tag}}{{$last ? '' : ', '}} </span></td>
                         <td ng-show="projectCtrl.isSelected(1)">
                             <input ng-model="projects[0].name"></input>
                         </td>
-<<<<<<< HEAD:p2/project_detail.html
                     </tr>
                 </table> -->
                 <programmer-info  state="projectCtrl.state" project="project"></programmer-info>
-=======
-                    </tr> -->
-                </table>
-                <!-- <programmer-info project="projects[0]" ></programmer-info> -->
->>>>>>> master:p2/project-detail.html
                 <hr>
                 <h3>Discussion Board</h3>
                 <!-- projects[0] need to change -->
