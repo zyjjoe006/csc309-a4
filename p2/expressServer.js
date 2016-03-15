@@ -1,10 +1,17 @@
 var express = require('express');
 var app = express();
-app.use('/static', express.static('public'));
+// app.use(express.static('fonts'));
+// app.use(express.static('js'));
+// app.use(express.static('css'));
+// app.use(express.static('img'));
+app.use(express.static('public'));
+
+// app.use('/static', express.static('public'));
 // This responds with "Hello World" on the homepage
 app.get('/', function (req, res) {
    console.log("Got a GET request for the homepage");
-   res.send('Hello GET');
+   res.sendFile(__dirname+"/project-detail.html");
+
 })
 
 
@@ -26,14 +33,14 @@ app.get('/list_user', function (req, res) {
    res.send('Page Listing');
 })
 
-// This responds a GET request for abcd, abxcd, ab123cd, and so on
+// This responds a GET request for data.json
 app.get('/data.json', function(req, res) {   
    console.log("Got a GET request for /data.json");
-   res.send('public/data.json');
+   res.sendFile(__dirname+"/data.json");
 })
 
 
-var server = app.listen(8081, function () {
+var server = app.listen(3000, function () {
 
   var host = server.address().address
   var port = server.address().port
