@@ -1,19 +1,28 @@
 var express = require('express');
 var app = express();
-// app.use(express.static('fonts'));
-// app.use(express.static('js'));
-// app.use(express.static('css'));
-// app.use(express.static('img'));
-app.use(express.static('public'));
+app.use('/fonts',express.static('fonts'));
+app.use('/js',express.static('js'));
+app.use('/css',express.static('css'));
+app.use('/img',express.static('img'));
+// app.use(express.static('public'));
 
 // app.use('/static', express.static('public'));
 // This responds with "Hello World" on the homepage
 app.get('/', function (req, res) {
    console.log("Got a GET request for the homepage");
-   res.sendFile(__dirname+"/project-detail.html");
+   res.sendFile(__dirname+"/index.html");
 
 })
+app.get('/project_detail.html', function (req, res) {
+   console.log("Got a GET request for the project_detail.html");
+   res.sendFile(__dirname+"/"+req.url);
 
+})
+app.get('/*.html', function (req, res) {
+   console.log("Got a GET request for the other html");
+   res.sendFile(__dirname+"/"+req.url);
+
+})
 
 // This responds a POST request for the homepage
 app.post('/', function (req, res) {
