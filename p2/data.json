@@ -23,4 +23,54 @@
         "createdOn": 1458654959209
     }],
     "rating":null
+}, {
+    "id":2,
+    "name": "Whatup",
+    "description": "Good Stuff",
+    "publishDate": 1457652959209,
+    "publishDateStr": "1457652959209",
+    "publisher": "UT",
+    "status": "recruting",
+    "email": "kotes.wa@ut.com",
+    "payment": "2200",
+    "requiredSkills": ["ExpressJS", "JS", "HTML5", "CSS3"],
+    "dueDate": 1458652959209,
+    "dueDateStr": "1458652959209",
+    "specialRequirement": "Time limit: 2 weeks",
+    "tags": ["NodeJS", "JS", "HTML5", "CSS3"],
+    "discussions": [{
+        "body": "If you pay me $3000 I can finish in three days.",
+        "author": "John",
+        "createdOn": 1458653959209
+    }, {
+        "body": "No way.",
+        "author": "Joey",
+        "createdOn": 1458654959209
+    }],
+    "rating":null
+}, {
+    "id":3,
+    "name": "YOYOYO",
+    "description": "Good Stuff",
+    "publishDate": 1457652959209,
+    "publishDateStr": "1457652959209",
+    "publisher": "GITHUB",
+    "status": "DONE",
+    "email": "kotes.wa@ut.com",
+    "payment": "9000",
+    "requiredSkills": ["ExpressJS", "JS", "HTML5", "CSS3"],
+    "dueDate": 1458652959209,
+    "dueDateStr": "1458652959209",
+    "specialRequirement": "Time limit: 2 weeks",
+    "tags": ["NodeJS", "JS", "HTML5", "CSS3"],
+    "discussions": [{
+        "body": "If you pay me $3000 I can finish in three days.",
+        "author": "John",
+        "createdOn": 1458653959209
+    }, {
+        "body": "No way.",
+        "author": "Joey",
+        "createdOn": 1458654959209
+    }],
+    "rating":null
 }]
