@@ -38,16 +38,16 @@
                     <div class="row" ng-repeat="project in projects">
                         
                         <div class="cell">
-                            <p ng-bind="project.name"></p>
+                            <a href="project_detail.html" ng-bind="project.name"></a>
                         </div>
                         <div class="cell">
                             <p ng-bind="project.status"></p>
                         </div>
                         <div class="cell">
-                            <p ng-bind="project.publisher"></p>
+                            <a href="profile_business.html" ng-bind="project.publisher"></a>
                         </div>
                         <div class="cell">
-                            <p ng-bind="project.publishDate"></p>
+                            <p ng-bind="project.publishDate|date:'short'"></p>
                         </div>
                     </div>
 
