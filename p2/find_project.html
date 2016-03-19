@@ -15,7 +15,7 @@
     <nav-header></nav-header>
     <!-- /header -->
     <!-- body -->
-    <div class="InnerSection" ng-controller="ProjectController as projectCtrl">
+    <div class="InnerSection" ng-controller="ProjectListController as projLstCtrl">
         <h2>Project Postings</h2>
         <div class="table project-list">
             <div class="row" style="background-color:lightblue">
@@ -83,10 +83,9 @@
     <!-- controllers -->
     <script src="js/controllers/mainController.js" type="text/javascript"></script>
     <!-- directives -->
-    <script src="js/directives/programmerInfo.js"></script>
     <script src="js/directives/nav.js"></script>
     <!-- services -->
-    <script src="js/service/projectList.js" type="text/javascript"></script>
+    <script src="js/service/ajax.js" type="text/javascript"></script>
 </body>
 
 </html>

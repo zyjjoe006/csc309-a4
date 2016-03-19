@@ -34,9 +34,11 @@ app.controller('DiscussionController', function() {
     }
 });
 
-app.controller('ProjectListController',function(){
-
-})
+app.controller('ProjectListController',['projectList','$scope',function(projectList,$scope){
+    projectList.success(function(data){
+        $scope.projects=data;
+    });
+}]);
 
 
 

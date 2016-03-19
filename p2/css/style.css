@@ -274,7 +274,7 @@ body{
 .table .row:nth-child(2n) {
     background: #eff0f1;
 }
-.table .row:hover, .row:nth-child(2n):hover {
+.table .row:hover,.table .row:nth-child(2n):hover {
     background-color: rgba(112, 186, 230, 0.4);
 }
 
