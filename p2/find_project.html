@@ -34,13 +34,13 @@
             </div>
             <div class="row" ng-repeat="project in projects">
                 <div class="cell">
-                    <a href="project_detail.html" ng-bind="project.name"></a>
+                    <a ng-href="/project/id={{project.id}}" ng-bind="project.name"></a>
                 </div>
                 <div class="cell">
                     <p ng-bind="project.status"></p>
                 </div>
                 <div class="cell">
-                    <a href="profile_business.html" ng-bind="project.publisher"></a>
+                    <a ng-href="profile_business.html" ng-bind="project.publisher"></a>
                 </div>
                 <div class="cell">
                     <p ng-bind="project.publishDate|date:'short'"></p>

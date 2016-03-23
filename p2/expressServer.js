@@ -44,7 +44,9 @@ app.get('/project_list', function(req, res) {
         element["status"]=project.status;
         element["publisher"]=project.publisher;
         element["publishDate"]=project.publishDate;
+        element["id"]=project.id;
         element["id_str"]=project.id_str;
+        element["publisherId"]=project.publisherId;
         element["publisherId_str"]=project.publisherId_str;
         data.push(element);
     });
