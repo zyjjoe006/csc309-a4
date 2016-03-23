@@ -18,7 +18,7 @@ app.factory('projectDetail', ['$http', function($http) {
                 .error(function(err) {
                     return err;
                 });
-        };
+        }
     };
 }]);
 app.factory('projectList', ['$http', function($http) {

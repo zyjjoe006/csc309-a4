@@ -2,7 +2,8 @@
 app.controller('ProjectController', ['projectDetail', '$scope', function(projectDetail, $scope) {
     // fake data
     // $scope.projects = projects;
-    projectDetail.getProject("1").success(function(data) {
+    id=String(1);
+    projectDetail.getProject(id).success(function(data) {
         $scope.project = data;
         // $scope.project = $scope.projects[0];
 
