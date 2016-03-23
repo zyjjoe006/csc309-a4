@@ -1,17 +1,12 @@
 // controllers
 app.controller('ProjectController', ['projectDetail', '$scope', function(projectDetail, $scope) {
-    // fake data
-    // $scope.projects = projects;
-    id=String(1);
+    // id needs to be passed by routeparam 
+    id=String(2);
     projectDetail.getProject(id).success(function(data) {
         $scope.project = data;
-        // $scope.project = $scope.projects[0];
-
         $scope.project.publishDate = new Date($scope.project.publishDate);
         $scope.project.dueDate = new Date($scope.project.dueDate);
-
     });
-
     this.state = 0;
     this.setState = function(setState) {
         this.state = setState;
