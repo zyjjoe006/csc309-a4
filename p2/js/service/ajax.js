@@ -31,3 +31,35 @@ app.factory('projectList', ['$http', function($http) {
         });
 }]);
 
+// check if logged in
+app.factory('UserService', [function() {
+    var sdo = {
+        isLogged: false,
+        username: '',
+    };
+    return sdo
+}]);
+
+app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http,User{
+    $scope.login=function(){
+      var config(['',function() {
+        
+      }]);
+      $http(config)
+      .success(function(data,status,headers,config){
+        if(data.status){
+          // successful login
+          User.isLogged= true;
+          User.username=data.username;
+        }
+        else{
+          User.isLogged= false;
+          User.username="";
+        }
+      })
+      .error(function(data,status,headers,congig){
+         User.isLogged= false;
+          User.username="";
+      })
+    }
+})]);
