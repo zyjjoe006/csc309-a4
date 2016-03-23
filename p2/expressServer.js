@@ -44,8 +44,28 @@ app.get('/project_list', function(req, res) {
         element["status"]=project.status;
         element["publisher"]=project.publisher;
         element["publishDate"]=project.publishDate;
+        element["id_str"]=project.id_str;
+        element["publisherId_str"]=project.publisherId_str;
         data.push(element);
     });
     res.json(data);
+    
+})
+
+// get project detail
+app.get('/project/id=*', function(req, res) {
+    id=req.url.substring(12);
+    console.log("Got a GET request for the project with id:"+id);
+    var aimid = data_json.filter(function(project) {
+        return project.id == id;
+    });
+    var data = [];
+    if (typeof aimid[0] !== 'undefined') {
+        data = aimid[0];
+        res.json(data);
+    } else {
+       res.status(500).json({ error: 'id not found' })
+    }
+    
     
 })
