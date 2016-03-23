@@ -17,7 +17,7 @@ var server = app.listen(3000, function() {
 // This responds with "Hello World" on the homepage
 app.get('/', function(req, res) {
     console.log("Got a GET request for the homepage");
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/home.html");
 })
 
 app.get('/*.html', function(req, res) {
