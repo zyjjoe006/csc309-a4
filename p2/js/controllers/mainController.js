@@ -2,16 +2,15 @@
 app.controller('ProjectController', ['projectDetail', '$scope', function(projectDetail, $scope) {
     // fake data
     // $scope.projects = projects;
-    projectDetail.success(function(data) {
-        $scope.projects = data;
-        $scope.project = $scope.projects[0];
-        angular.forEach($scope.projects, function(value) {
-            value.publishDate = new Date(value.publishDate);
-            value.dueDate = new Date(value.dueDate);
+    projectDetail.getProject("1").success(function(data) {
+        $scope.project = data;
+        // $scope.project = $scope.projects[0];
 
-        });
+        $scope.project.publishDate = new Date($scope.project.publishDate);
+        $scope.project.dueDate = new Date($scope.project.dueDate);
+
     });
-    
+
     this.state = 0;
     this.setState = function(setState) {
         this.state = setState;
@@ -34,9 +33,9 @@ app.controller('DiscussionController', function() {
     }
 });
 
-app.controller('ProjectListController',['projectList','$scope',function(projectList,$scope){
-    projectList.success(function(data){
-        $scope.projects=data;
+app.controller('ProjectListController', ['projectList', '$scope', function(projectList, $scope) {
+    projectList.success(function(data) {
+        $scope.projects = data;
     });
 }]);
 
@@ -45,6 +44,3 @@ app.controller('ProjectListController',['projectList','$scope',function(projectL
 var users = [{
 
 }];
-
-
-
