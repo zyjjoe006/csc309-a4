@@ -7,7 +7,7 @@ app.config(['$routeProvider',
         	when('/',{
         		templateUrl:'find_project.html',
         	}).
-            when('/project/:id', {
+            when('/project_detail/:projectId', {
                 templateUrl: 'project_detail.html',
             }).
             // when('/products/:productId', {

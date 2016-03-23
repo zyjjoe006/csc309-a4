@@ -1,7 +1,7 @@
 // controllers
-app.controller('ProjectController', ['projectDetail', '$scope', function(projectDetail, $scope) {
+app.controller('ProjectController', ['projectDetail', '$scope', '$routeParams', function(projectDetail, $scope,$routeParams) {
     // id needs to be passed by routeparam 
-    id=String(2);
+    id=String($routeParams.projectId);
     projectDetail.getProject(id).success(function(data) {
         $scope.project = data;
         $scope.project.publishDate = new Date($scope.project.publishDate);
