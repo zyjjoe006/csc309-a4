@@ -34,7 +34,7 @@
             </div>
             <div class="row" ng-repeat="project in projects">
                 <div class="cell">
-                    <a ng-href="#/project_detail/{{project.id}}" ng-bind="project.name"></a>
+                    <a ng-href="/project/{{project.id}}" ng-bind="project.name"></a>
                 </div>
                 <div class="cell">
                     <p ng-bind="project.status"></p>

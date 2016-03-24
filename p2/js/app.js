@@ -19,7 +19,9 @@
 //             });
 //     }]);
 var app = angular.module('coding', ['ui.router']);
-
+app.config(["$locationProvider", function($locationProvider) {
+  $locationProvider.html5Mode(true);
+}]);
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
@@ -27,9 +29,10 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
     	url:'/',
         templateUrl: 'find_project.html'
     })
-    .state('projec_detail',{
-    	url:'/project_detail/:projectId',
-    	templateUrl:'project_detail.html'
+    .state('project_detail',{
+    	url:'/project/:projectId',
+    	templateUrl:'project_detail.html',
+    	
     });
     
 }]);
