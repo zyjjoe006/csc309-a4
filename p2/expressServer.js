@@ -55,8 +55,8 @@ app.get('/api/project_list', function(req, res) {
 })
 
 // get project detail
-app.get('/api/project/id=*', function(req, res) {
-    id=req.url.substring(16);
+app.get('/api/project_detail/id=*', function(req, res) {
+    id=req.url.substring(23);
     console.log("Got a GET request for the project with id:"+id);
     var aimid = data_json.filter(function(project) {
         return project.id == id;

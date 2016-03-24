@@ -19,11 +19,13 @@
 //             });
 //     }]);
 var app = angular.module('coding', ['ui.router']);
+// to remove #
 app.config(["$locationProvider", function($locationProvider) {
   $locationProvider.html5Mode(true);
 }]);
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+    
+
     $stateProvider
     .state('find_project', {
     	url:'/',
@@ -32,7 +34,10 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
     .state('project_detail',{
     	url:'/project/:projectId',
     	templateUrl:'project_detail.html',
-    	
+    	controller:'ProjectController',
+    	controllerAs:"projectCtrl"
+
     });
+    $urlRouterProvider.otherwise('/404.html');
     
 }]);

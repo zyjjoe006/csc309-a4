@@ -11,7 +11,7 @@
 app.factory('projectDetail', ['$http', function($http) {
     return {
         getProject: function(id) {
-            return $http.get('/api/project/id=' + id)
+            return $http.get('/api/project_detail/id=' + id)
                 .success(function(data) {
                     return data;
                 })
