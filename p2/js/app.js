@@ -37,7 +37,16 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
     	controller:'ProjectController',
     	controllerAs:"projectCtrl"
 
+    })
+    .state('/error',{
+        url:'/error',
+        templateUrl:'404.html'
     });
-    $urlRouterProvider.otherwise('/404.html');
+    $urlRouterProvider.otherwise(function($injector,$location){
+        return $location.search().url || '/';
+    });
     
 }]);
+// .run(function($state){
+//     $state.go('find_project');
+// });

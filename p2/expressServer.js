@@ -66,8 +66,12 @@ app.get('/api/project_detail/id=*', function(req, res) {
         data = aimid[0];
         res.json(data);
     } else {
-       res.status(500).json({ error: 'id not found' })
+       res.status(500).json({ error: 'id not found' });
     }
     
     
-})
+});
+
+app.all('/*',function(req,res){
+       res.sendFile(__dirname + "/home.html");
+});
