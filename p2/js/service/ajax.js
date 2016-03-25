@@ -11,7 +11,7 @@
 app.factory('projectDetail', ['$http', function($http) {
     return {
         getProject: function(id) {
-            return $http.get('/project/id=' + id)
+            return $http.get('/api/project_detail/id=' + id)
                 .success(function(data) {
                     return data;
                 })
@@ -22,7 +22,7 @@ app.factory('projectDetail', ['$http', function($http) {
     };
 }]);
 app.factory('projectList', ['$http', function($http) {
-    return $http.get('/project_list')
+    return $http.get('/api/project_list')
         .success(function(data) {
             return data;
         })

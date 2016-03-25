@@ -17,7 +17,7 @@ var server = app.listen(3000, function() {
 // This responds with "Hello World" on the homepage
 app.get('/', function(req, res) {
     console.log("Got a GET request for the homepage");
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/home.html");
 })
 
 app.get('/*.html', function(req, res) {
@@ -28,14 +28,14 @@ app.get('/*.html', function(req, res) {
 
 
 // This responds a GET request for data.json
-app.get('/data.json', function(req, res) {
-    console.log("Got a GET request for /data.json");
-    console.log(__dirname);
-    res.json(data_json);
-})
+// app.get('/data.json', function(req, res) {
+//     console.log("Got a GET request for /data.json");
+//     console.log(__dirname);
+//     res.json(data_json);
+// })
 
 // get project list
-app.get('/project_list', function(req, res) {
+app.get('/api/project_list', function(req, res) {
     console.log("Got a GET request for project list");
     data=[];
     data_json.forEach(function(project){
@@ -55,8 +55,8 @@ app.get('/project_list', function(req, res) {
 })
 
 // get project detail
-app.get('/project/id=*', function(req, res) {
-    id=req.url.substring(12);
+app.get('/api/project_detail/id=*', function(req, res) {
+    id=req.url.substring(23);
     console.log("Got a GET request for the project with id:"+id);
     var aimid = data_json.filter(function(project) {
         return project.id == id;
@@ -66,8 +66,12 @@ app.get('/project/id=*', function(req, res) {
         data = aimid[0];
         res.json(data);
     } else {
-       res.status(500).json({ error: 'id not found' })
+       res.status(500).json({ error: 'id not found' });
     }
     
     
-})
+});
+
+app.all('/*',function(req,res){
+       res.sendFile(__dirname + "/home.html");
+});
