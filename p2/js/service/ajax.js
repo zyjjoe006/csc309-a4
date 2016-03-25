@@ -40,11 +40,9 @@ app.factory('UserService', [function() {
     return sdo
 }]);
 
-app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http,User{
+app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http,User){
     $scope.login=function(){
-      var config(['',function() {
-        
-      }]);
+      // var config();
       $http(config)
       .success(function(data,status,headers,config){
         if(data.status){
@@ -62,4 +60,4 @@ app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http
           User.username="";
       })
     }
-})]);
+}]);
