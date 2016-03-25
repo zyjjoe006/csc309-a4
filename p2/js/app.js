@@ -38,6 +38,11 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
     	controllerAs:"projectCtrl"
 
     })
+    .state('create_project',{
+        url:'/create_project',
+        templateUrl:'create_project.html',
+        
+    })
     .state('/error',{
         url:'/error',
         templateUrl:'404.html'
