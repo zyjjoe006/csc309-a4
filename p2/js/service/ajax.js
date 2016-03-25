@@ -39,7 +39,8 @@ app.factory('UserService', [function() {
     };
     return sdo
 }]);
-
+ 
+ 
 app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http,User){
     $scope.login=function(){
       // var config();
