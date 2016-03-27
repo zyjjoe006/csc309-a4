@@ -72,6 +72,6 @@ app.get('/api/project_detail/id=*', function(req, res) {
     
 });
 
-app.all('/*',function(req,res){
-       res.sendFile(__dirname + "/home.html");
-});
+// app.all('/*',function(req,res){
+//        res.sendFile(__dirname + "/home.html");
+// });
