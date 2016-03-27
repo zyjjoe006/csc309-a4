@@ -5,11 +5,64 @@ app.use('/js', express.static('js'));
 app.use('/css', express.static('css'));
 app.use('/img', express.static('img'));
 
+models = require('./models'),
+    db,
+    Posting,
+    User,
+    LoginToken,
+
+models.defineModels(mongoose, function() {
+  app.Posting = Posting = mongoose.model('Posting');
+  app.User = User = mongoose.model('User');
+  app.LoginToken = LoginToken = mongoose.model('LoginToken');
+  db = mongoose.connect(app.set('mongodb://localhost:3000'));
+})
+
+var User = mongoose.model('Developers', DeveloperSchema);
+app.get('/newDev', function(req, res) {
+  var User = new User({ 
+  userName: req.query.userName,
+  password: req.query.password,
+  email: req.query.email,
+  salt:req.query.salt
+  education: [
+    {
+    school: req.query.school,
+    program: req.query.program,
+    degree: req.query.degree,
+    year: req.query.year
+  }
+  ],
+  experience: [
+    {
+    job_title: req.query.userName,
+    description: req.query.description,
+    rating: req.query.rating,
+    comment: req.query.comment
+  }
+  ],
+  type: Boolean
+  });
+  // Save it to the DB.
+  developer.save(function(err) {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+      return;
+    }
+    // If everything is OK, then we return the information in the response.
+    res.send(developer);
+  });
+});
+
+
 // load data, dirctly use json for now
 var data_json=require('./data.json');
 
-var server = app.listen(process.env.PORT ||3000, function() {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+var server = app.listen(3000, function() {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("Server running at at http://%s:%s", host, port)
 })
 
 // This responds with "Hello World" on the homepage
@@ -73,3 +126,4 @@ app.get('/api/project_detail/id=*', function(req, res) {
 app.all('/*',function(req,res){
        res.sendFile(__dirname + "/home.html");
 });
+
