@@ -1,0 +1,27 @@
+{
+  "name": "csc309-a4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "expressServer.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+
+    },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node expressServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://zyjjoe006@github.com/zyjjoe006/csc309-a4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zyjjoe006/csc309-a4/issues"
+  },
+  "homepage": "https://github.com/zyjjoe006/csc309-a4#readme"
+}
