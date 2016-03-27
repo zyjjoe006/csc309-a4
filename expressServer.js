@@ -8,10 +8,8 @@ app.use('/img', express.static('img'));
 // load data, dirctly use json for now
 var data_json=require('./data.json');
 
-var server = app.listen(3000, function() {
-    var host = server.address().address
-    var port = server.address().port
-    console.log("Server running at at http://%s:%s", host, port)
+var server = app.listen(process.env.PORT ||3000, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 })
 
 // This responds with "Hello World" on the homepage
