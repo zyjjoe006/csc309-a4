@@ -50,23 +50,23 @@ function defineModels(mongoose, fn) {
     'salt': String,
     'UserName': String,
      education: [
-    {
-    school: String,
-    program: String,
-    degree: String,
-    year: Number
-  }
-  ],
-  experience: [
-    {
-    job_title: String,
-    description: String,
-    rating: Number,
-    comment: String
-  }
-  ],
-  type: Boolean
-  });
+        {
+        school: String,
+        program: String,
+        degree: String,
+        year: Number
+      }
+      ],
+      experience: [
+        {
+        job_title: String,
+        description: String,
+        rating: Number,
+        comment: String
+      }
+      ],
+      type: Boolean
+      });   
 
   User.virtual('id')
     .get(function() {
@@ -145,4 +145,3 @@ function defineModels(mongoose, fn) {
 }
 
 exports.defineModels = defineModels; 
-

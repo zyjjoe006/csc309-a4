@@ -4,27 +4,27 @@ app.use('/fonts', express.static('fonts'));
 app.use('/js', express.static('js'));
 app.use('/css', express.static('css'));
 app.use('/img', express.static('img'));
+ var mongoose = require('mongoose'),
 
 models = require('./models'),
-    db,
     Posting,
     User,
-    LoginToken,
+    LoginToken;
 
 models.defineModels(mongoose, function() {
   app.Posting = Posting = mongoose.model('Posting');
   app.User = User = mongoose.model('User');
   app.LoginToken = LoginToken = mongoose.model('LoginToken');
-  db = mongoose.connect(app.set('mongodb://localhost:3000'));
+  mongoose.connect('mongodb://localhost:3000');
 })
 
-var User = mongoose.model('Developers', DeveloperSchema);
-app.get('/newDev', function(req, res) {
-  var User = new User({ 
+var User = mongoose.model('User', User);
+app.get('/newUser', function(req, res) {
+  var user = new User({ 
   userName: req.query.userName,
   password: req.query.password,
   email: req.query.email,
-  salt:req.query.salt
+  salt:req.query.salt,
   education: [
     {
     school: req.query.school,
@@ -44,14 +44,14 @@ app.get('/newDev', function(req, res) {
   type: Boolean
   });
   // Save it to the DB.
-  developer.save(function(err) {
+  user.save(function(err) {
     if (err) {
       res.status(500).send(err);
       console.log(err);
       return;
     }
     // If everything is OK, then we return the information in the response.
-    res.send(developer);
+    res.send(user);
   });
 });
 
