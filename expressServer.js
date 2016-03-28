@@ -6,53 +6,106 @@ app.use('/css', express.static('css'));
 app.use('/img', express.static('img'));
  var mongoose = require('mongoose'),
 
+
+// API Version 1.0
+// 1. CreateUser[PUT]
+// 2. Login[GET]
+// 3. CreatePosting[PUT]
+// 4. FindProjectWithID[GET]
+// 5. FindUserWithID[GET]
+// 6. AddDisscussion[POST]
+// 7. EditProfile[POST]
+// 8. EditProject[POST]
+
+
 models = require('./models'),
     Posting,
     User,
     LoginToken;
 
 models.defineModels(mongoose, function() {
-  app.Posting = Posting = mongoose.model('Posting');
-  app.User = User = mongoose.model('User');
-  app.LoginToken = LoginToken = mongoose.model('LoginToken');
-  mongoose.connect('mongodb://localhost:3000');
+    app.Posting = Posting = mongoose.model('Posting');
+    app.User = User = mongoose.model('User');
+    app.LoginToken = LoginToken = mongoose.model('LoginToken');
+    mongoose.connect('mongodb://localhost:3000');
 })
 
+// FindProjectWithID[GET]
+// Read document
+// app.get('/api/project_detail/id=*', function(req, res, next) {
+//     Posting.findOne({ _id: req.url.substring(23) }, function(err, d) {
+//     if (!d) return next(new NotFound('Posting not found'));
+
+//     switch (req.params.format) {
+//       case 'json':
+//         res.send(d.toObject());
+//       break;
+
+//       case 'html':
+//         res.send(markdown.toHTML(d.data));
+//       break;
+
+//       default:
+//         res.render('documents/show.jade', {
+//           locals: { d: d, currentUser: req.currentUser }
+//         });
+//     }
+//   });
+// });
+
+// CreatePosting[PUT]
+var Posting = mongoose.model('User', Posting);
+app.put('/createPosting', function(req, res) {
+    var posting = new Posting({ 
+        title: req.query.title,
+        description: req.query.description,
+        tags: req.query.tags,
+        keywords: req.query.keywords
+    });
+    // Save it to the DB.
+    posting.save(function(err) {
+        if (err) {
+            res.status(500).send(err);
+            console.log(err);
+            return;
+        }
+        // If everything is OK, then we return the information in the response.
+        res.send(posting);
+    });
+});
+
+// CreateUser[PUT]
 var User = mongoose.model('User', User);
-app.get('/newUser', function(req, res) {
-  var user = new User({ 
-  userName: req.query.userName,
-  password: req.query.password,
-  email: req.query.email,
-  salt:req.query.salt,
-  education: [
-    {
-    school: req.query.school,
-    program: req.query.program,
-    degree: req.query.degree,
-    year: req.query.year
-  }
-  ],
-  experience: [
-    {
-    job_title: req.query.userName,
-    description: req.query.description,
-    rating: req.query.rating,
-    comment: req.query.comment
-  }
-  ],
-  type: Boolean
-  });
-  // Save it to the DB.
-  user.save(function(err) {
-    if (err) {
-      res.status(500).send(err);
-      console.log(err);
-      return;
-    }
-    // If everything is OK, then we return the information in the response.
-    res.send(user);
-  });
+app.put('/createUser', function(req, res) {
+    var user = new User({ 
+        userName: req.query.userName,
+        password: req.query.password,
+        email: req.query.email,
+        salt:req.query.salt,
+        education: [{
+            school: req.query.school,
+            program: req.query.program,
+            degree: req.query.degree,
+            year: req.query.year
+        }],
+        experience: [{
+            job_title: req.query.userName,
+            description: req.query.description,
+            rating: req.query.rating,
+            comment: req.query.comment
+        }],
+        type: Boolean
+    });
+    // Save it to the DB.
+    user.save(function(err) {
+        if (err) {
+            res.status(500).send(err);
+            console.log(err);
+            return;
+        }
+        // If everything is OK, then we return the information in the response.
+        res.send(user);
+    });
 });
 
 
