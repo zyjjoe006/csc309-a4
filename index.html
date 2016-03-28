@@ -30,11 +30,13 @@
    
     <!-- //Header-Ends-Here -->
     <div class="content">
-        
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
         <!-- Offer-Starts-Here -->
         <!-- //Offer-Ends-Here -->
         <!-- Modal-Starts-Here -->
-        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <!--  <div class="modal-header">
@@ -111,7 +113,69 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/angular.js"></script>
     <!-- //modal js  -->
+       <script type="text/javascript">
+    $(document).ready(function() {
+        $("#signin").click(function() {
+            window.location.href = "find_project.html";
+        });
+        $("#signup").click(function() {
+            window.location.href = "find_project.html";
+        });
+        if ($(window).width() < 768) {
+            $(".nav>li").click(function() {
+                $(".navbar-toggle").click();
+
+            });
+
+        } else {
+            $(".nav").css('display', 'block');
+        };
+    });
+    </script>
+        <!-- SmoothScroll-JavaScript -->
    
+    <!-- //SmoothScroll-JavaScript -->
+    <!-- Slideanim-JavaScript -->
+   
+    <!-- //Slideanim-JavaScript -->
+    <!-- Owl-Carousel-JavaScript -->
+   
+    <!-- //Owl-Carousel-JavaScript -->
+    <!-- Banner-Slider-JavaScript -->
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+    $(function() {
+        $("#slider").responsiveSlides({
+            auto: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            pager: true,
+        });
+    });
+    </script>
+    <!-- //Banner-Slider-JavaScript -->
+    <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
+   
+    <!-- //Slide-To-Top JavaScript -->
+    <!-- Smooth-Scrolling-JavaScript -->
+   
+    <!-- //Smooth-Scrolling-JavaScript -->
+    <!-- FlexSlider-JavaScript -->
+   
+    <!-- //FlexSlider-JavaScript -->
+    <!-- modal js -->
+    <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true // 100% fit in a container
+        });
+    });
+    </script>
+
    
 </body>
 

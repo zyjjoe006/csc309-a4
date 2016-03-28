@@ -45,6 +45,27 @@ app.controller('ProjectListController', ['projectList', '$scope', function(proje
     });
 }]);
 
+app.controller('UserController',function(){
+    this.state=0;
+    this.setState = function(setState) {
+        this.state = setState;
+    };
+    this.isSelected = function(checkState) {
+        return this.state == checkState;
+    };
+    
+});
+
+app.controller('LogInController',function(){
+    this.state=0;
+    this.setState = function(setState) {
+        this.state = setState;
+    };
+    this.isSelected = function(checkState) {
+        return this.state == checkState;
+    };
+    
+});
 
 
 var users = [{
