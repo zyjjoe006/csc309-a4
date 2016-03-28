@@ -7,17 +7,6 @@ app.use('/img', express.static('img'));
  var mongoose = require('mongoose'),
 
 
-// API Version 1.0
-// 1. CreateUser[PUT]
-// 2. Login[GET]
-// 3. CreatePosting[PUT]
-// 4. FindProjectWithID[GET]
-// 5. FindUserWithID[GET]
-// 6. AddDisscussion[POST]
-// 7. EditProfile[POST]
-// 8. EditProject[POST]
-
-
 models = require('./models'),
     Posting,
     User,
