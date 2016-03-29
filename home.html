@@ -37,12 +37,12 @@
                                 <div class="facts">
                                     <!--login1-->
                                     <div class="register">
-                                        <form>
-                                            <input placeholder="Userame" type="text" required="">
-                                            <input placeholder="Email Address" type="text" required="">
-                                            <input placeholder="Password" type="password" required="">
+                                        <form name="signUp-form" ng-submit="submitSignUpForm()">
+                                            <input placeholder="Userame" type="text" required="" ng-model="query.userName">
+                                            <input placeholder="Email Address" type="text" required="" ng-model="query.email">
+                                            <input placeholder="Password" type="password" required="" ng-model="query.password">
                                             <input placeholder="Confirm Password" type="password" required="">
-                                            <div class="sign-up">
+                                            <div class="sign-up" ng-model="query.confirmPassword">
                                                 <input type="submit" value="Create Account" id="signup" ng-click="signup">
                                                 <a href="find_project.html" class=" btn btn-blockbtn-social btn-facebook">
                                                     <span class="fa fa-facebook"></span> Sign Up with facebook

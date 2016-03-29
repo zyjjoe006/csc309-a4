@@ -16,7 +16,7 @@ models.defineModels(mongoose, function() {
     app.Posting = Posting = mongoose.model('Posting');
     app.User = User = mongoose.model('User');
     app.LoginToken = LoginToken = mongoose.model('LoginToken');
-    mongoose.connect('mongodb://localhost:3000');
+    mongoose.connect('mongodb://localhost:27017');
 })
 
 // FindProjectWithID[GET]
@@ -65,7 +65,8 @@ app.put('/createPosting', function(req, res) {
 
 // CreateUser[PUT]
 var User = mongoose.model('User', User);
-app.put('/createUser', function(req, res) {
+app.put('/api/createUser', function(req, res) {
+    console.log("get a new user");
     var user = new User({ 
         userName: req.query.userName,
         password: req.query.password,
@@ -94,6 +95,7 @@ app.put('/createUser', function(req, res) {
         }
         // If everything is OK, then we return the information in the response.
         res.send(user);
+        console.log("sign up succeed");
     });
 });
 

@@ -56,7 +56,7 @@ app.controller('UserController',function(){
     
 });
 
-app.controller('LogInController',function(){
+app.controller('LogInController',['$scope',function($scope){
     this.state=0;
     this.setState = function(setState) {
         this.state = setState;
@@ -64,8 +64,11 @@ app.controller('LogInController',function(){
     this.isSelected = function(checkState) {
         return this.state == checkState;
     };
-    
-});
+    $scope.submitSignUpForm=function(){
+        var data=$scope.query;
+        $http.put('/createUser',data);
+    }
+}]);
 
 
 var users = [{
