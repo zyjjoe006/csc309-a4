@@ -24,26 +24,26 @@
                 
                 <h2>Sign In</h2>
               </div> -->
-                <div class="modal-body" ng-controller="LogInController as loginCtrl">
+                <div class="modal-body" >
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="sap_tabs">
                         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                             <ul>
-                                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab" ng-click="loginCtrl.setState(0)"><span>Sign up</span></li>
-                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab" ng-click="loginCtrl.setState(1)"><span>Sign in</span></li>
+                                <li class="resp-tab-item" aria-controls="tab_item-0" role="tab" ng-click="userCtrl.setFormState(0)"><span>Sign up</span></li>
+                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab" ng-click="userCtrl.setFormState(1)"><span>Sign in</span></li>
                             </ul>
                             <h2 class="resp-accordion " role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Sign up</h2>
-                            <div class="tab-1 " aria-labelledby="tab_item-0" ng-show="loginCtrl.isSelected(0)" style="display:block">
+                            <div class="tab-1 " aria-labelledby="tab_item-0" ng-show="userCtrl.isFormSelected(0)" style="display:block">
                                 <div class="facts">
                                     <!--login1-->
                                     <div class="register">
-                                        <form name="signUp-form" ng-submit="submitSignUpForm()">
-                                            <input placeholder="Userame" type="text" required="" ng-model="query.userName">
-                                            <input placeholder="Email Address" type="text" required="" ng-model="query.email">
-                                            <input placeholder="Password" type="password" required="" ng-model="query.password">
-                                            <input placeholder="Confirm Password" type="password" required="">
-                                            <div class="sign-up" ng-model="query.confirmPassword">
-                                                <input type="submit" value="Create Account" id="signup" ng-click="signup">
+                                        <form name="signUp-form" ng-submit="userCtrl.submitSignUpForm()" novalidate>
+                                            <input placeholder="Userame" type="text"  ng-model="userCtrl.query.userName" required>
+                                            <input placeholder="Email Address" type="text"  ng-model="userCtrl.query.email" required>
+                                            <input placeholder="Password" type="password"  ng-model="userCtrl.query.password" required>
+                                            <input placeholder="Confirm Password" type="password" ng-model="userCtrl.query.confirmPassword" required>
+                                            <div class="sign-up" >
+                                                <input type="submit" value="Create Account" id="signup"   ng-click="userCtrl.setState(1)">
                                                 <a href="find_project.html" class=" btn btn-blockbtn-social btn-facebook">
                                                     <span class="fa fa-facebook"></span> Sign Up with facebook
                                                 </a>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><span class="resp-arrow"></span>Sign in</h2>
-                            <div class="tab-2 " aria-labelledby="tab_item-1" ng-show="loginCtrl.isSelected(1)">
+                            <div class="tab-2 " aria-labelledby="tab_item-1" ng-show="userCtrl.isFormSelected(1)">
                                 <div class="facts">
                                     <div class="register">
                                         <form>

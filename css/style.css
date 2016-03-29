@@ -344,6 +344,7 @@ form .ng-invalid.ng-dirty{
     border-color: #FA787E;
 }
 
+
  
 /* solve template appears problem */
 [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

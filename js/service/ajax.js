@@ -1,13 +1,3 @@
-// now it returns the whole list, need to return only one project
-// app.factory('projectDetail', ['$http', function($http) { 
-//   return $http.get('/data.json') 
-//             .success(function(data) { 
-//               return data; 
-//             }) 
-//             .error(function(err) { 
-//               return err; 
-//             }); 
-// }]);
 app.factory('projectDetail', ['$http', function($http) {
     return {
         getProject: function(id) {
@@ -31,6 +21,20 @@ app.factory('projectList', ['$http', function($http) {
         });
 }]);
 
+app.factory('createNewUser', ['$http', function($http) {
+    return {
+        newUser: function(data) {
+            $http.put('/api/createUser',data)
+                .success(function(data) {
+                    return data;
+                })
+                .error(function(err) {
+                    return err;
+                });
+        }
+    };
+}]);
+
 // check if logged in
 app.factory('UserService', [function() {
     var sdo = {
@@ -39,26 +43,25 @@ app.factory('UserService', [function() {
     };
     return sdo
 }]);
- 
 
-app.controller('loginCtrl',['$scope','$http','UserService',function($scope,$http,User){
-    $scope.login=function(){
-      // var config();
-      $http(config)
-      .success(function(data,status,headers,config){
-        if(data.status){
-          // successful login
-          User.isLogged= true;
-          User.username=data.username;
-        }
-        else{
-          User.isLogged= false;
-          User.username="";
-        }
-      })
-      .error(function(data,status,headers,congig){
-         User.isLogged= false;
-          User.username="";
-      })
+
+app.controller('loginCtrl', ['$scope', '$http', 'UserService', function($scope, $http, User) {
+    $scope.login = function() {
+        // var config();
+        $http(config)
+            .success(function(data, status, headers, config) {
+                if (data.status) {
+                    // successful login
+                    User.isLogged = true;
+                    User.username = data.username;
+                } else {
+                    User.isLogged = false;
+                    User.username = "";
+                }
+            })
+            .error(function(data, status, headers, congig) {
+                User.isLogged = false;
+                User.username = "";
+            })
     }
 }]);

@@ -45,7 +45,8 @@ app.controller('ProjectListController', ['projectList', '$scope', function(proje
     });
 }]);
 
-app.controller('UserController',function(){
+app.controller('UserController',['createNewUser',function(createNewUser){
+    // state = 1 when logged in
     this.state=0;
     this.setState = function(setState) {
         this.state = setState;
@@ -53,24 +54,24 @@ app.controller('UserController',function(){
     this.isSelected = function(checkState) {
         return this.state == checkState;
     };
-    
-});
-
-app.controller('LogInController',['$scope',function($scope){
-    this.state=0;
-    this.setState = function(setState) {
-        this.state = setState;
+    this.query={};
+    // formState = 1 in the login form
+    this.formState=0;
+    this.setFormState = function(setState) {
+        this.formState = setState;
     };
-    this.isSelected = function(checkState) {
-        return this.state == checkState;
+    this.isFormSelected = function(checkState) {
+        return this.formState == checkState;
     };
-    $scope.submitSignUpForm=function(){
-        var data=$scope.query;
-        $http.put('/createUser',data);
+    this.submitSignUpForm=function(){
+        var data=[];
+        data.query=this.query;
+        createNewUser.newUser(data).success(function(){
+            this.state=1;
+        });
     }
 }]);
 
 
-var users = [{
 
-}];
+
