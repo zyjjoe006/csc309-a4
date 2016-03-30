@@ -20,11 +20,22 @@ function defineModels(mongoose, fn) {
     * Model: Posting
     */
   Posting = new Schema({
-    'title': { type: String, index: true },
+    // 'id':Number?,
+    'title': { type: String, index: true }, //type?
     'description': String,
     'tags': [String],
     'keywords': [String],
-    'user_id': ObjectId
+    'user_id': ObjectId,
+    // 'discussions':{"body":String, "author":String, "createdOn":Date?},
+    // "rating":Number,
+    // "status":?,
+    // "publishDate":Date?,
+    // "dueDate":Date?,
+    // "payment":Number,
+    // "specialRequirement":String,
+    
+
+
   });
 
   Posting.virtual('id')
@@ -45,10 +56,13 @@ function defineModels(mongoose, fn) {
   }
 
   User = new Schema({
+    // 'id':Number?,
     'email': { type: String, validate: [validatePresenceOf, 'an email is required'], index: { unique: true } },
     'hashed_password': String,
     'salt': String,
     'UserName': String,
+    // 'name': String,
+    // 'bio': String,
      education: [
         {
         school: String,
@@ -65,7 +79,7 @@ function defineModels(mongoose, fn) {
         comment: String
       }
       ],
-      type: Boolean
+      userType: Boolean // 0 if programmer
       });   
 
   User.virtual('id')
