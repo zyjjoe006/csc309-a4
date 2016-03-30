@@ -102,6 +102,7 @@ app.put('/api/createUser', function(req, res) {
 
 // load data, dirctly use json for now
 var data_json=require('./data.json');
+var user_json=require('./user.json');
 
 var server = app.listen(3000, function() {
     var host = server.address().address
@@ -155,6 +156,23 @@ app.get('/api/project_detail/id=*', function(req, res) {
     console.log("Got a GET request for the project with id:"+id);
     var aimid = data_json.filter(function(project) {
         return project.id == id;
+    });
+    var data = [];
+    if (typeof aimid[0] !== 'undefined') {
+        data = aimid[0];
+        res.json(data);
+    } else {
+       res.status(500).json({ error: 'id not found' });
+    }
+    
+    
+});
+
+app.get('/api/profile_detail/id=*', function(req, res) {
+    id=req.url.substring(23);
+    console.log("Got a GET request for the profile with id:"+id);
+    var aimid = user_json.filter(function(profile) {
+        return profile.id == id;
     });
     var data = [];
     if (typeof aimid[0] !== 'undefined') {

@@ -73,5 +73,29 @@ app.controller('UserController',['createNewUser',function(createNewUser){
 }]);
 
 
+app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', function(profileDetail, $scope, $stateParams) {
+    // id needs to be passed by routeparam 
+    id = String($stateParams.profileId);
+    this.state = 0;
+    this.setState = function(setState) {
+        this.state = setState;
+    };
+    this.isSelected = function(checkState) {
+        return this.state == checkState;
+    };
+    profileDetail.getProject(id).success(function(data) {
+        $scope.initial = data;       
+        $scope.profile = angular.copy($scope.initial);
+        $scope.reset = function() {
+            angular.copy($scope.initial, $scope.profile);
 
+        };
+        $scope.change = function() {
+            angular.copy($scope.profile, $scope.initial)
+        }
+    });
+
+
+
+}]);
 

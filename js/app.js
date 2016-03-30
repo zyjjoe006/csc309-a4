@@ -43,6 +43,12 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         templateUrl:'create_project.html',
         
     })
+    .state('profile_detail',{
+        url:'/profile/:profileId',
+        templateUrl:'profile_business.html',
+        controller:'ProfileController',
+        controllerAs:"profileCtrl"
+    })
     .state('/error',{
         url:'/error',
         templateUrl:'404.html'

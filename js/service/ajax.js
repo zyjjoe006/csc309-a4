@@ -21,6 +21,20 @@ app.factory('projectList', ['$http', function($http) {
         });
 }]);
 
+app.factory('profileDetail', ['$http', function($http) {
+    return {
+        getProject: function(id) {
+            return $http.get('/api/profile_detail/id=' + id)
+                .success(function(data) {
+                    return data;
+                })
+                .error(function(err) {
+                    return err;
+                });
+        }
+    };
+}]);
+
 app.factory('createNewUser', ['$http', function($http) {
     return {
         newUser: function(data) {
