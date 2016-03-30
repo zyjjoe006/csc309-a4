@@ -15,22 +15,62 @@
     <nav-header></nav-header> 
     <!-- /header -->
     <!-- body -->
-    <div class="container">
+    <div class="container" ng-controller="UserController as userCtrl">
         <div class="row">
         <div class="col-md-9 profile-info">
             <h1 class="page-header">Profile</h1>
             <table class="profile-table table">
-                <tr><th>username</th><td>stevewoz1</td></tr>
-                 <tr><th>name</th><td>steve woz</td></tr>
-                  <tr><th>bio</th><td>ios developer</td></tr>
-                <tr><th>email</th><td>wozsteve@gmail.com</td></tr>
-                <tr><th>usertype</th><td>programmer</td></tr>
-                <tr><th>skills</th><td>objective-C, swift, 
-                C, C++, Java</td></tr>
-                <tr><th>experience</th><td><ul>
-                 <li>12 years experience in Java</li>
-                 <li>23 Android Apps</li>
-             </ul> </td></tr>
+                <tr>
+                    <th>Username</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.username }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.username"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.name }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.name"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.email }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.email"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Education</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.education }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.education"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Experience</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.experience }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.experience"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Skills</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.skill }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.skill"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Usertype</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.type }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.type"></input>
+                    </td>
+                </tr>
+                
+               
             </table>
             <!-- <p><strong>username</strong>: stevewoz1</p>
             <p><strong>usertype</strong>: programmer</p>
@@ -49,10 +89,8 @@
                     <ul class="nav bs-docs-sidenav">
                         
                             <ul class="nav">
-                                <li class=""><a href="#edit-profile">edit profile</a></li>
-                                <li class=""><a href="#edit-email">change email address</a></li>
-                                <li class=""><a href="#edit-password">change password</a></li>
-                               
+                                <li class=""><a ng-show="userCtrl.isSelected(0)" ng-click="userCtrl.setState(1)">edit profile</a></li>
+                                <li class=""><a ng-show="userCtrl.isSelected(0)" ng-click="userCtrl.setState(1)">change password</a></li>
                             </ul>
                         </li>
                        
