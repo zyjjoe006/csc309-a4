@@ -22,7 +22,7 @@
             <table class="profile-table table">
                 <tr>
                     <th>Username</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.username }}</td>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.UserName }}</td>
                     <td ng-show="userCtrl.isSelected(1)">
                         <input ng-model="profile.username"></input>
                     </td>
@@ -64,7 +64,7 @@
                 </tr>
                 <tr>
                     <th>Usertype</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.type }}</td>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.userType }}</td>
                     <td ng-show="userCtrl.isSelected(1)">
                         <input ng-model="profile.type"></input>
                     </td>

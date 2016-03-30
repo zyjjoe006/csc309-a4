@@ -2,27 +2,58 @@
     <div class="row">
         <div class="col-md-9 profile-info">
             <h1 class="page-header">Profile</h1>
-            <table class="profile-table table">
+           <table class="profile-table table">
                 <tr>
-                    <th>username</th>
-                    <td>{{profile.UserName}}</td>
+                    <th>Username</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.UserName }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.username"></input>
+                    </td>
                 </tr>
                 <tr>
-                    <th>name</th>
-                    <td>{{profile.name}}</td>
+                    <th>Name</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.name }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.name"></input>
+                    </td>
                 </tr>
                 <tr>
-                    <th>bio</th>
-                    <td>{{profile.bio}}</td>
+                    <th>Email</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.email }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.email"></input>
+                    </td>
+                </tr>
+                <tr ng-show="isProgrammer()">
+                    <th>Education</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.education }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.education"></input>
+                    </td>
+                </tr>
+                <tr ng-show="isProgrammer()">
+                    <th>Experience</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.experience }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.experience"></input>
+                    </td>
+                </tr>
+                <tr ng-show="isProgrammer()">
+                    <th>Skills</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.skills }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.skills"></input>
+                    </td>
                 </tr>
                 <tr>
-                    <th>email</th>
-                    <td>{{profile.email}}</td>
+                    <th>Usertype</th>
+                    <td ng-show="userCtrl.isSelected(0)">{{ profile.userType }}</td>
+                    <td ng-show="userCtrl.isSelected(1)">
+                        <input ng-model="profile.type"></input>
+                    </td>
                 </tr>
-                <tr>
-                    <th>usertype</th>
-                    <td>{{profile.userType}}</td>
-                </tr>
+                
+               
             </table>
         </div>
         <div class="col-md-3" role="complementary">

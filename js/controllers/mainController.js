@@ -82,6 +82,7 @@ app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', 
     this.isSelected = function(checkState) {
         return this.state == checkState;
     };
+
     profileDetail.getProject(id).success(function(data) {
         $scope.initial = data;       
         $scope.profile = angular.copy($scope.initial);
@@ -91,6 +92,9 @@ app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', 
         else{
             $scope.profile.userType = "programmer";            
         }
+        $scope.isProgrammer=function(){
+            return $scope.profile.userType=="programmer";
+        };
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.profile);
 
@@ -99,7 +103,7 @@ app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', 
             angular.copy($scope.profile, $scope.initial)
         }
     });
-
+    
 
 
 }]);

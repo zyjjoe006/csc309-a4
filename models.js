@@ -63,6 +63,7 @@ function defineModels(mongoose, fn) {
     'hashed_password': String,
     'salt': String,
     'UserName': String,
+    // 'skills':[String],
     // 'name': String,
     // 'bio': String,
      education: [
