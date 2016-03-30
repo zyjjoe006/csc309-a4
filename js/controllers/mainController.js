@@ -74,7 +74,6 @@ app.controller('UserController',['createNewUser',function(createNewUser){
 
 
 app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', function(profileDetail, $scope, $stateParams) {
-    // id needs to be passed by routeparam 
     id = String($stateParams.profileId);
     this.state = 0;
     this.setState = function(setState) {
@@ -86,6 +85,12 @@ app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', 
     profileDetail.getProject(id).success(function(data) {
         $scope.initial = data;       
         $scope.profile = angular.copy($scope.initial);
+        if ($scope.profile.userType ==false){
+            $scope.profile.userType = "business";
+        }
+        else{
+            $scope.profile.userType = "programmer";            
+        }
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.profile);
 

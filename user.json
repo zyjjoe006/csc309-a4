@@ -1,9 +1,40 @@
 [{
-	"id":1,
-	"userName":"ibm001",
-	"name":"ibm",
-	"bio":"blue giant",
-	"email":"needhelp@ibm.com",
-	"userType":"business"
+    "id": 1,
+    "UserName": "ibm001",
+    "name": "ibm",
+    "bio": "blue giant",
+    "email": "needhelp@ibm.com",
+    "userType": false,
+    "password":123456
+
+}, {
+    "id": 2,
+    "UserName": "ibm002",
+    "name": "ibm",
+    "bio": "blue giant2",
+    "email": "needhelp2@ibm.com",
+    "userType": false,
+    "password":123456
+
+},{
+	"id": 3,
+    "UserName": "stevelalala",
+    "name": "Woz",
+    "bio": "Apple II is the best.",
+    "email": "needhelp2@ibm.com",
+    "userType": true,
+    "password":123456,
+    "education":[{
+    	"school":"UofT",
+    	"program":"CS",
+    	"degree":"Bachelor",
+    	"year":1970
+    	}],
+    "experience":[{
+    	"job_title": "Apple III",
+    	"decription":"Build the most powerful computer ever",
+    	"rating":5,
+    	"comment":"good job"
+    	}]    
 
 	}]

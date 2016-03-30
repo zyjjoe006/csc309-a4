@@ -25,7 +25,9 @@ function defineModels(mongoose, fn) {
     'description': String,
     'tags': [String],
     'keywords': [String],
-    'user_id': ObjectId,
+    'user_id': ObjectId,//?
+    // 'programmer_id':?,
+    // 'business_id':?,
     // 'discussions':{"body":String, "author":String, "createdOn":Date?},
     // "rating":Number,
     // "status":?,
@@ -79,7 +81,7 @@ function defineModels(mongoose, fn) {
         comment: String
       }
       ],
-      userType: Boolean // 0 if programmer
+      userType: Boolean // 0 if business
       });   
 
   User.virtual('id')
