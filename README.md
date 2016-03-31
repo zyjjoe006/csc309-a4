@@ -43,7 +43,7 @@ Coding
 --------
 
 ###user
-* **/findUser/:email[GET]**
+* **/getUser/:email[GET]**
     * Get user with unique email
     * parameters
         * email (String)
@@ -59,14 +59,14 @@ Coding
     * Response
         * user (object) ... user object
 
-* **/updateUser/:id[PUT]** (Keep fields unchanged if they dont need to be modified )
+* **/updateUser/:email[PUT]** (Keep fields unchanged if they dont need to be modified )
     * modify user with id
     * parameters
         * user (object)
     * Response
         * user (object) ... user object
         
-* **/deleteUser/:id[DELETE]** (might be useful in the admin)
+* **/deleteUser/:email[DELETE]** (might be useful in the admin)
     * delete user with email
     * parameters
         * email (String)
@@ -74,13 +74,13 @@ Coding
         * Success/Fail (String)
 
 ###Postings
-* **/findAllPostings[GET]**
+* **/getAllPostings[GET]**
     * Get all postings
     * no parameters
     * Response
         * postings (list of objects) ... posting objects
 
-* **/findPosting/:id[GET]**
+* **/getPosting/:id[GET]**
     * Get user with unique id
     * parameters
         * id (String)
