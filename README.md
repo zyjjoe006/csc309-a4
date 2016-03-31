@@ -1,4 +1,4 @@
-CSC309A4 Project Server API Version 1.0
+CSC309A4 Project Server API Version 1.1
 =========================
 
 Responses are in JSON format.
@@ -8,12 +8,21 @@ Sturcture for the objects:
     * title (String) ... title
     * description (String) ... description
     * tags ([string]) ... can be null
-    * keywords([string]) ... can be null
+    * posting_date (Date) ... posting date
+    * start_date (Date) ... can be null
+    * end_date (Date) ... can be null
+    * owner_email (String) ... email of owner
+    * developer_email ([String]) ... email of developers
+    * Status (String) ... status
+    * rating (Number) ... rating
+    * comments ([ObjectId]) ...
+
 * User
-    * email (string) ... unique, used to login 
-    * hashed_password (string) ... title, such as "L0101"
-    * salt (string) ...
-    * UserName (string) ...
+    * username (string) ... username
+    * password (string) ... password
+    * email (string) ... unique
+    * gender (string) ... m/f
+    * address (string) ... address
     * education: 
         * school (String)
         * program (String)
@@ -42,7 +51,7 @@ Coding
     * Response
         * user (object) ... user object
         
-* **/createUser[PUT]**
+* **/createUser[POST]**
     * Create a user
     * Parameters
         * email (string) ... email
@@ -50,7 +59,7 @@ Coding
     * Response
         * user (object) ... user object
 
-* **/editUser/:id[POST]** (Keep fields unchanged if they dont need to be modified )
+* **/updateUser/:id[PUT]** (Keep fields unchanged if they dont need to be modified )
     * modify user with id
     * parameters
         * user (object)
@@ -78,7 +87,7 @@ Coding
     * Response
         * posting (object) ... posting object
         
-* **/createPosting[PUT]**
+* **/createPosting[POST]**
     * Create a posting
     * Parameters
         * title (string) ... title
@@ -88,7 +97,7 @@ Coding
     * Response
         * posting (object) ... posting
 
-* **/editPosting/:id[POST]** (Keep fields unchanged if they dont need to be modified )
+* **/updatePosting/:id[PUT]** (Keep fields unchanged if they dont need to be modified )
     * modify posting with id
     * parameters
         * posting (object)
