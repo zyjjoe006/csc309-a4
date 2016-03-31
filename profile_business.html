@@ -5,50 +5,63 @@
            <table class="profile-table table">
                 <tr>
                     <th>Username</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.UserName }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.UserName }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.username"></input>
                     </td>
                 </tr>
                 <tr>
                     <th>Name</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.name }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.name }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.name"></input>
                     </td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.email }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.email }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.email"></input>
                     </td>
                 </tr>
-                <tr ng-show="isProgrammer()">
+                <tr ng-show="isProgrammer()" >
                     <th>Education</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.education }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
-                        <input ng-model="profile.education"></input>
+                    <td style="padding-left: 0px"><table  class="table"ng-repeat="edu in profile.education">
+                        <tr>
+                        
+                        <td ng-show="profileCtrl.isSelected(0)" > school: {{ edu.school }}</td>
+                        </tr>
+                        <tr> <td ng-show="profileCtrl.isSelected(0)" >program: {{edu.program}}</td></tr>
+                       <tr><td ng-show="profileCtrl.isSelected(0)" >degree: {{edu.degree}}</td></tr>
+                     
+                      <tr><td ng-show="profileCtrl.isSelected(0)" >year:{{edu.year}}</td></tr>
+                    
+                    
+                    </table>
+                    </td>
+                    <td ng-show="profileCtrl.isSelected(1)"ng-repeat="edu in profile.education">
+                        <input ng-model="edu.school"></input>
                     </td>
                 </tr>
+
                 <tr ng-show="isProgrammer()">
                     <th>Experience</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.experience }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.experience }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.experience"></input>
                     </td>
                 </tr>
                 <tr ng-show="isProgrammer()">
                     <th>Skills</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.skills }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.skills }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.skills"></input>
                     </td>
                 </tr>
                 <tr>
                     <th>Usertype</th>
-                    <td ng-show="userCtrl.isSelected(0)">{{ profile.userType }}</td>
-                    <td ng-show="userCtrl.isSelected(1)">
+                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.userType }}</td>
+                    <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.type"></input>
                     </td>
                 </tr>
@@ -60,8 +73,10 @@
             <nav class=" hidden-print hidden-xs hidden-sm affix">
                 <ul class="nav ">
                     <ul class="nav">
-                        <li class=""><a href="#edit-profile">edit profile</a></li>
-                        <li class=""><a href="#edit-password">change password</a></li>
+                        <li class=""><a href="#edit-profile" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(1)">edit profile</a></li>
+                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" >change password</a></li>
+                        <li class=""><a ng-show="profileCtrl.isSelected(1)" ng-click="profileCtrl.setState(0);change()" href="">confirm</a></li>
+                        <li class=""><a ng-show="profileCtrl.isSelected(1)" ng-click="profileCtrl.setState(0);reset()" href="">cancel</a></li>
                     </ul>
                     </li>
                 </ul>

@@ -29,7 +29,15 @@
     	"school":"UofT",
     	"program":"CS",
     	"degree":"Bachelor",
-    	"year":1970
+    	"startYear":1970,
+    	"endYear":1974
+    	},
+    	{
+    	"school":"Stanford",
+    	"program":"CS",
+    	"degree":"PHD",
+    	"startYear":1980,
+    	"endYear":1984
     	}],
     "experience":[{
     	"job_title": "Apple III",
