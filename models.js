@@ -77,6 +77,8 @@ function defineModels(mongoose, fn) {
       experience: [
         {
         job_title: String,
+        // business_name:String,
+        // business_id:?,
         description: String,
         rating: Number,
         comment: String

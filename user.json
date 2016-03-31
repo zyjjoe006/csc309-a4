@@ -27,23 +27,30 @@
     "skills":["jQuery","angularjs","react.js"],
     "education":[{
     	"school":"UofT",
-    	"program":"CS",
-    	"degree":"Bachelor",
+    	"program":"Computer Science",
+    	"degree":"Bachelor of Science",
     	"startYear":1970,
     	"endYear":1974
     	},
     	{
     	"school":"Stanford",
-    	"program":"CS",
+    	"program":"Computer Science",
     	"degree":"PHD",
     	"startYear":1980,
     	"endYear":1984
     	}],
     "experience":[{
-    	"job_title": "Apple III",
-    	"decription":"Build the most powerful computer ever",
+    	"job_title": "Apple I",
+    	"business_name":"Apple",
+    	"description":"Build the most powerful computer ever",
     	"rating":5,
     	"comment":"good job"
+    	},{
+    	"job_title": "Apple II",
+    	"business_name":"Apple",
+    	"description":"Build the most powerful computer ever",
+    	"rating":5,
+    	"comment":"amazing"
     	}]    
 
 	}]

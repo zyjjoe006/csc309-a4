@@ -2,81 +2,134 @@
     <div class="row">
         <div class="col-md-9 profile-info">
             <h1 class="page-header">Profile</h1>
-           <table class="profile-table table">
+            <table class="profile-table table">
                 <tr>
                     <th>Username</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.UserName }}</td>
+                    <td ng-hide="profileCtrl.isSelected(1)">{{ profile.UserName }}</td>
                     <td ng-show="profileCtrl.isSelected(1)">
-                        <input ng-model="profile.username"></input>
+                        <input ng-model="profile.UserName"></input>
                     </td>
                 </tr>
                 <tr>
                     <th>Name</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.name }}</td>
+                    <td ng-hide="profileCtrl.isSelected(1)">{{ profile.name }}</td>
                     <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.name"></input>
                     </td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.email }}</td>
+                    <td ng-hide="profileCtrl.isSelected(1)">{{ profile.email }}</td>
                     <td ng-show="profileCtrl.isSelected(1)">
                         <input ng-model="profile.email"></input>
                     </td>
                 </tr>
-                <tr ng-show="isProgrammer()" >
-                    <th>Education</th>
-                    <td style="padding-left: 0px"><table  class="table"ng-repeat="edu in profile.education">
-                        <tr>
-                        
-                        <td ng-show="profileCtrl.isSelected(0)" > school: {{ edu.school }}</td>
-                        </tr>
-                        <tr> <td ng-show="profileCtrl.isSelected(0)" >program: {{edu.program}}</td></tr>
-                       <tr><td ng-show="profileCtrl.isSelected(0)" >degree: {{edu.degree}}</td></tr>
-                     
-                      <tr><td ng-show="profileCtrl.isSelected(0)" >year:{{edu.year}}</td></tr>
-                    
-                    
-                    </table>
-                    </td>
-                    <td ng-show="profileCtrl.isSelected(1)"ng-repeat="edu in profile.education">
-                        <input ng-model="edu.school"></input>
-                    </td>
-                </tr>
-
-                <tr ng-show="isProgrammer()">
-                    <th>Experience</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.experience }}</td>
-                    <td ng-show="profileCtrl.isSelected(1)">
-                        <input ng-model="profile.experience"></input>
-                    </td>
-                </tr>
-                <tr ng-show="isProgrammer()">
-                    <th>Skills</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.skills }}</td>
-                    <td ng-show="profileCtrl.isSelected(1)">
-                        <input ng-model="profile.skills"></input>
-                    </td>
-                </tr>
                 <tr>
                     <th>Usertype</th>
-                    <td ng-show="profileCtrl.isSelected(0)">{{ profile.userType }}</td>
+                    <td ng-hide="profileCtrl.isSelected(1)">{{ userTypeStr }}</td>
                     <td ng-show="profileCtrl.isSelected(1)">
-                        <input ng-model="profile.type"></input>
+                        <input ng-model="userTypeStr"></input>
                     </td>
                 </tr>
-                
-               
             </table>
+            <div ng-show="isProgrammer()" class="row">
+                <div class="col-sm-12">
+                    <h3>Education</h3>
+                </div>
+                <div class="col-sm-12">
+                    <ul>
+                        <li ng-repeat="edu in profile.education">
+                            <h4 ng-hide="profileCtrl.isSelected(2)" style="margin-bottom: 0px"> {{ edu.school }}  <small >{{edu.startYear}} - {{edu.endYear}}</small></h4>
+                            <span ng-hide="profileCtrl.isSelected(2)"> {{edu.degree}}, {{edu.program}}</span>
+                            <p ng-show="profileCtrl.isSelected(2)">
+                                <br>
+                                <strong>school</strong>
+                                <br>
+                                <input ng-model="edu.school"></input>
+                                <br>
+                                <strong>Dates attended</strong>
+                                <br>
+                                <input ng-model="edu.startYear"></input>
+                                <input ng-model="edu.endYear"></input>
+                                <br>
+                                <strong>degree</strong>
+                                <br>
+                                <input ng-model="edu.degree">
+                                <br>
+                                <strong>filed of study</strong>
+                                <br>
+                                </input>
+                                <input ng-model="edu.program"></input>
+                                <br>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-show="isProgrammer()" class="row">
+                <div class="col-sm-12">
+                    <h3>Experience</h3>
+                </div>
+                <div class="col-sm-12">
+                    <ul>
+                        <li ng-repeat=" exp in profile.experience">
+                            <h4 ng-hide="profileCtrl.isSelected(3)">{{exp.job_title}}</h4>
+                            <p ng-hide="profileCtrl.isSelected(3)"><span style="color:#777">{{exp.business_name}}</span>
+                                <br>
+                                <span>{{exp.description}}</span>
+                                <br>
+                                <span>rating: {{exp.rating}}</span>
+                                <br>
+                                <span>comment: {{exp.comment}}</span>
+                                <br>
+                            </p>
+                            <p ng-show="profileCtrl.isSelected(3)">
+                                <br>
+                                <strong>job title</strong>
+                                <br>
+                                <input ng-model="exp.job_title"></input>
+                                <br>
+                                <strong>business name</strong>
+                                <br>
+                                <input ng-model="exp.business_name"></input>
+                                <br>
+                                <strong>description</strong>
+                                <br>
+                                <input ng-model="exp.description"></input>
+                                <br>
+                                <strong>rating</strong>
+                                <br>
+                                <input ng-model="exp.rating"></input>
+                                <br>
+                                <strong>comment</strong>
+                                <br>
+                                <input ng-model="exp.comment"></input>
+                                <br>
+                               
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-show="isProgrammer()">
+                <h3>Skills</h3>
+                <ul ng-hide="profileCtrl.isSelected(4)">{{ profile.skills }}</ul>
+                <p ng-show="profileCtrl.isSelected(4)">
+                    <input ng-model="profile.skills"></input>
+                </p>
+            </div>
         </div>
         <div class="col-md-3" role="complementary">
             <nav class=" hidden-print hidden-xs hidden-sm affix">
                 <ul class="nav ">
                     <ul class="nav">
                         <li class=""><a href="#edit-profile" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(1)">edit profile</a></li>
-                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" >change password</a></li>
-                        <li class=""><a ng-show="profileCtrl.isSelected(1)" ng-click="profileCtrl.setState(0);change()" href="">confirm</a></li>
-                        <li class=""><a ng-show="profileCtrl.isSelected(1)" ng-click="profileCtrl.setState(0);reset()" href="">cancel</a></li>
+                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(2)">edit Education</a></li>
+                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(3)">edit Experience</a></li>
+                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(4)">edit Skills</a></li>
+                        <li class=""><a href="#edit-password" ng-show="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(5)">change password</a></li>
+                        <li class=""><a ng-hide="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(0);change()" href="">confirm</a></li>
+                        <li class=""><a ng-hide="profileCtrl.isSelected(0)" ng-click="profileCtrl.setState(0);reset()" href="">cancel</a></li>
                     </ul>
                     </li>
                 </ul>
@@ -84,4 +137,3 @@
         </div>
     </div>
 </div>
-

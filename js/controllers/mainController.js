@@ -82,18 +82,20 @@ app.controller('ProfileController', ['profileDetail', '$scope', '$stateParams', 
     this.isSelected = function(checkState) {
         return this.state == checkState;
     };
-
+    this.notSelected = function(checkState) {
+        return this.state != checkState;
+    };
     profileDetail.getProject(id).success(function(data) {
         $scope.initial = data;       
         $scope.profile = angular.copy($scope.initial);
         if ($scope.profile.userType ==false){
-            $scope.profile.userType = "business";
+            $scope.userTypeStr = "business";
         }
         else{
-            $scope.profile.userType = "programmer";            
+            $scope.userTypeStr = "programmer";            
         }
         $scope.isProgrammer=function(){
-            return $scope.profile.userType=="programmer";
+            return $scope.profile.userType==true;
         };
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.profile);
