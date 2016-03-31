@@ -24,7 +24,7 @@
     "email": "needhelp2@ibm.com",
     "userType": true,
     "password":123456,
-    "skills":["jQuery","angularjs","react.js"],
+    "skills":["jQuery","angularjs","react.js","BootStrap","javaScript","HTML5","CSS3","node.js","mongodb","java"],
     "education":[{
     	"school":"UofT",
     	"program":"Computer Science",

@@ -344,7 +344,12 @@ form .ng-invalid.ng-dirty{
     border-color: #FA787E;
 }
 
-
+/* for profile */
+div.skills ul li span{
+  padding:1px 3px;
+  color:#fff;
+  background-color: #999999;
+}
  
 /* solve template appears problem */
 [ng:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
