@@ -135,6 +135,57 @@ Coding
         * content (String) ... commentMessage
     * Response
         * posting (object) ... posting object
+    * Example Response
+```
+         {
+             "_id": {
+                 "$oid": "56fdd0a677599cac2ba499b8"
+             },
+             "owner_email": "Nick@n.com",
+             "posting_date": {
+                 "$date": "2016-04-01T01:36:38.555Z"
+             },
+             "title": "Nick's project",
+             "description": "Nick needs test input",
+             "comments": [
+                 {
+                     "comment_date": {
+                         "$date": "2016-04-01T01:46:23.327Z"
+                     },
+                     "commenter_email": "Nick@n.com",
+                     "content": "Hi, this is Nick",
+                     "_id": {
+                         "$oid": "56fdd2ef659679481f4e33a0"
+                     }
+                 },
+                 {
+                     "comment_date": {
+                         "$date": "2016-04-01T02:09:29.078Z"
+                     },
+                     "commenter_email": "Ryan@r.com",
+                     "content": "You suck",
+                     "_id": {
+                         "$oid": "56fdd859659679481f4e33a2"
+                     }
+                 },
+                 {
+                     "comment_date": {
+                         "$date": "2016-04-01T02:11:28.051Z"
+                     },
+                     "commenter_email": "Nick@n.com",
+                     "content": "Stop taking my CS",
+                     "_id": {
+                         "$oid": "56fdd8d0659679481f4e33a3"
+                     }
+                 }
+             ],
+             "developer_email": [
+                 "Ryan@r.com"
+             ],
+             "tags": [],
+             "__v": 4
+         }
+```
         
 * **/postingManager/createpost**
     * Method: POST
