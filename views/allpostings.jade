@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-6.col-md-4.col-md-offset-4
+				#user
+					h1.text-center.login-title Welcome #{user.firstName}. Check your Projects below:
+					each val in allpostings
+						div.signup-wall
+							ul.user-details
+								li title ---> #{val.title}
+								li Description    ---> #{val.description}
+								li Posting Date ---> #{val.posting_date.toString()}
+							if (val.owner_email  == user.email) 
+								form(class='posting-op', action='/postingManager/deletepost', method='GET')
+									input(type='hidden', name='id', class='form-control', value = val._id)
+									button(class='btn btn-lg btn-primary btn-block', type='submit') Delete
+							form(class='posting-op', action='/postingManager/view_detail', method='GET')
+									input(type='hidden', name='id', class='form-control', value = val._id)
+									button(class='btn btn-lg btn-primary btn-block', type='submit') view Detail
+								
+				br
+				br
+				br
+				form(class='search-op', action='/postingManager/search', method='GET')
+								input(type='String', name='id', class='form-control', placeholder='Posting Info')
+								button(class='btn btn-lg', type='submit') Search
+				br
+				a(href='/postingManager/viewAllPost', class='btn btn-lg  btn-block')  View All Postings
+				a(href='/postingManager/createpost', class='btn btn-lg  btn-block')  New Posting
+				a(href='/signout', class='btn btn-lg  btn-block') Sign Out
