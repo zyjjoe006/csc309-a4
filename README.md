@@ -37,9 +37,9 @@ Sturcture for the objects:
         * rating (Number)
         * comment (String)
     * type (Boolean)
-    * projects: [{type: ObjectId}, {ref: 'Posting'}] ... current projects the user participated
+    * projects: [{type: ObjectId}, {ref: 'Posting'}] ...  current projects the user owned or participated  
 
-When creating an object you need to provide those fields (except the id which will generate automatically). For the cases that ids of other classes are required, you need to know those ids first.
+When creating an object you only need to provide username, passord, and email. Other fields can be added later through update. Ids are auto-generated keys, they are unqiue accorss the entire database. For the cases that ids of other classes are required, you need to know those ids first.
 
 The api: 
 
@@ -186,6 +186,7 @@ Coding
              "__v": 4
          }
 ```
+title, description are required when creating a posting object. other fields can be added/modifed through update. owner's email is recorded in owner_email at posting creation time. When a user join's the project, the postingobject  will also push its email into developer_email array. 
         
 * **/postingManager/createpost**
     * Method: POST
