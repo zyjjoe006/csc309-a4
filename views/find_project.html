@@ -15,6 +15,7 @@
 
 <body ng-app="coding" ng-controller="UserController as userCtrl">
     <nav-header state="userCtrl.state"></nav-header>
+    <!-- project listing -->
     <div class="InnerSection" ng-controller="ProjectListController as projLstCtrl">
         <h2>Project Postings</h2>
         <div class="table project-list">
@@ -34,7 +35,7 @@
             </div>
             <div class="row" ng-repeat="project in projects">
                 <div class="cell">
-                    <a ui-sref="project_detail({projectId:project.id})" ng-bind="project.title"></a>
+                    <a href='/project_detail' ng-bind="project.title"></a>
                 </div>
                 <div class="cell">
                     <p ng-bind="project.status"></p>
@@ -67,6 +68,7 @@
             </ul>
         </nav>
     </div>
+    <!-- sign up form -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -104,13 +106,13 @@
                                             </div>
                                         </form> -->
                                         <form class='form-signin' action='/signup' method='POST'>
-                                            <input type='text' name='username' class='form-control' placeholder='Username' required autofocus/>
-                                            <input type='password' name='password' class='form-control nomargin' placeholder='Password' required/>
-                                            <input type='email' name='email' class='form-control' placeholder='Email' required/>
-                                            <input type='text' name='firstName' class='form-control' placeholder='First Name' required/>
-                                            <input type='text' name='lastName' class='form-control' placeholder='Last Name' required/>
-                                            <button class='btn btn-lg btn-primary btn-block' type='submit' Register>sign up</button>
-                                                <span class="clearfix"></span>
+            <input type='text' name='username' class='form-control' placeholder='Username' required autofocus/>
+            <input type='password' name='password' class='form-control nomargin' placeholder='Password' required/>
+            <input type='email' name='email' class='form-control' placeholder='Email' required/>
+            <input type='text' name='firstName' class='form-control' placeholder='First Name' required/>
+            <input type='text' name='lastName' class='form-control' placeholder='Last Name' required/>
+            <button class='btn btn-lg btn-primary btn-block' type='submit' Register/>
+            </form>
                                     </div>
                                 </div>
                             </div>
