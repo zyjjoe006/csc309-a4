@@ -16,12 +16,11 @@ var mongoose = require('mongoose');
 var Posting = require('../models/posting.js');
 
 //get all visable postings
-router.get('/viewAllPost', isAuthenticated, function(req, res, next) {
+router.get('/viewAllPost', function(req, res, next) {
   Posting.find( function (err, postings) {
     if (err) return next(err);
     //res.json(postings);
-    res.render('viewAllPostings', {user: req.user,
-    	allpostings: postings});
+    res.json(postings);
   });
 });
 

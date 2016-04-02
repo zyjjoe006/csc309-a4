@@ -12,9 +12,8 @@ app.factory('projectDetail', ['$http', function($http) {
     };
 }]);
 app.factory('projectList', ['$http', function($http) {
-    return $http.get('/')
+    return $http.get('/api/project_list')
         .success(function(data) {
-            console.log("get from api" +data.allpostings);
             return data;
         })
         .error(function(err) {

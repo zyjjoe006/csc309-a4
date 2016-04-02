@@ -12,8 +12,9 @@ app.factory('projectDetail', ['$http', function($http) {
     };
 }]);
 app.factory('projectList', ['$http', function($http) {
-    return $http.get('/api/project_list')
+    return $http.get('/postingManager/viewAllPost')
         .success(function(data) {
+            console.log(data);
             return data;
         })
         .error(function(err) {
