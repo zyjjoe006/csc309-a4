@@ -15,7 +15,7 @@
 
 <body ng-app="coding" ng-controller="UserController as userCtrl">
     <nav-header state="userCtrl.state"></nav-header>
-      <div class="InnerSection" ng-controller="ProjectListController as projLstCtrl">
+    <div class="InnerSection" ng-controller="ProjectListController as projLstCtrl">
         <h2>Project Postings</h2>
         <div class="table project-list">
             <div class="row" style="background-color:lightblue">
@@ -67,7 +67,6 @@
             </ul>
         </nav>
     </div>
-
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -76,7 +75,7 @@
                 
                 <h2>Sign In</h2>
               </div> -->
-                <div class="modal-body" >
+                <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <div class="sap_tabs">
                         <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
@@ -89,11 +88,11 @@
                                 <div class="facts">
                                     <!--login1-->
                                     <div class="register">
-                                        <form name="signUp-form" ng-submit="userCtrl.submitSignUpForm()" novalidate>
-                                            <input placeholder="Userame" type="text"  ng-model="userCtrl.query.userName" required>
-                                            <input placeholder="Email Address" type="text"  ng-model="userCtrl.query.email" required>
-                                            <input placeholder="Password" type="password"  ng-model="userCtrl.query.password" required>
-                                            <input placeholder="Confirm Password" type="password" ng-model="userCtrl.query.confirmPassword" required>
+                                        <!-- <form name="signUp-form" ng-submit="userCtrl.submitSignUpForm()" novalidate>
+                                            <input placeholder="Userame" type="text"  ng-model="userCtrl.param.username" required>
+                                            <input placeholder="Email Address" type="text"  ng-model="userCtrl.param.email" required>
+                                            <input placeholder="Password" type="password"  ng-model="userCtrl.param.password" required>
+                                            <input placeholder="Confirm Password" type="password" ng-model="userCtrl.param.confirmPassword" required>
                                             <div class="sign-up" >
                                                 <input type="submit" value="Create Account" id="signup"   ng-click="userCtrl.setState(1)">
                                                 <a href="find_project.html" class=" btn btn-blockbtn-social btn-facebook">
@@ -103,7 +102,15 @@
                                                     <span class="fa fa-twitter"></span> Sign Up with Twitter
                                                 </a>
                                             </div>
-                                        </form>
+                                        </form> -->
+                                        <form class='form-signin' action='/signup' method='POST'>
+                                            <input type='text' name='username' class='form-control' placeholder='Username' required autofocus/>
+                                            <input type='password' name='password' class='form-control nomargin' placeholder='Password' required/>
+                                            <input type='email' name='email' class='form-control' placeholder='Email' required/>
+                                            <input type='text' name='firstName' class='form-control' placeholder='First Name' required/>
+                                            <input type='text' name='lastName' class='form-control' placeholder='Last Name' required/>
+                                            <button class='btn btn-lg btn-primary btn-block' type='submit' Register>sign up</button>
+                                                <span class="clearfix"></span>
                                     </div>
                                 </div>
                             </div>

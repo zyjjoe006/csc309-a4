@@ -33,9 +33,11 @@ module.exports = function(passport) {
     });
 
     /* Handle Registration POST */
-    router.post('/signup', passport.authenticate('signup', {
-        successRedirect: '/home',
-        failureRedirect: '/signup',
+    router.post('/signup', function(req, res) {
+        console.log("signup success");
+    }, passport.authenticate('signup', {
+        successRedirect: '/find_project',
+        failureRedirect: '/find_project',
         failureFlash: true
     }));
 

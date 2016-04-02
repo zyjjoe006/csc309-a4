@@ -25,7 +25,7 @@ app.factory('projectList', ['$http', function($http) {
 app.factory('createNewUser', ['$http', function($http) {
     return {
         newUser: function(data) {
-            $http.put('/api/createUser',data)
+            $http.post('/signup',data)
                 .success(function(data) {
                     return data;
                 })
