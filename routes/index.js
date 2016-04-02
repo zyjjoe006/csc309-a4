@@ -10,13 +10,18 @@ var isAuthenticated = function (req, res, next) {
 	// if the user is not authenticated then redirect him to the login page
 	res.redirect('/');
 }
-
+var mongoose = require('mongoose');
+var Posting = require('../models/posting.js');
 module.exports = function(passport){
 
 	/* GET login page. */
-	router.get('/', function(req, res) {
-    	// Display the Login page with any flash message, if any
-		res.render('find_project', { message: req.flash('message') });
+	router.get('/', function(req, res, next) {
+	  Posting.find( function (err, postings) {
+	    if (err) return next(err);
+	    //res.json(postings);
+	    // console.log(postings);
+	    res.render('find_project', {allpostings: postings});
+	  });
 	});
 
 	/* Handle Login POST */
