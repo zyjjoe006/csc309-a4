@@ -1,9 +1,10 @@
+//- add new post
 extends layout
 
 block content
 	h1 Create New Project
-	p.lead Welcome #{user.profile.name}, you can create your project here.
 	div.container
+		//- make the whole request a form and send it 
 		form(action='/postingManager/createpost', method='POST')
 			table.table.table-striped
 				tbody

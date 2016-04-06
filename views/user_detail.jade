@@ -1,9 +1,9 @@
+//- shows detailed information about the user
 extends layout
 
 block content
 	h1 User Detail
 	if (!(theuser == undefined))
-		p.lead Welcome #{user.profile.name}, you can check the user: #{theuser.email}'s' details here
 		div.container
 			table.table.table-striped
 				tbody
