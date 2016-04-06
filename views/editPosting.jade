@@ -1,4 +1,3 @@
-//- Page that used for owner to edit the posting
 extends layout
 
 block content
@@ -7,7 +6,6 @@ block content
 
   form.form-horizontal(action='/postingManager/updatePosting', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
-    input(type='hidden', name='id', class='form-control', value = thepost._id)
     .form-group
       label.col-sm-3.control-label(for='title') Title
       .col-sm-7

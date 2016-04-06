@@ -277,8 +277,7 @@ router.get('/search', isAuthenticated, function(req, res, next) {
 });
 
 
-/**
-unused
+
 //show posting by id
 router.get('/find:id',isAuthenticated, function(req, res, next) {
   Posting.findById(req.params.id, function (err, post) {
@@ -303,6 +302,6 @@ router.post('/delete:id', function(req, res, next) {
     res.json(post);
   });
 });
-*/
+
 
 module.exports = router;
