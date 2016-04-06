@@ -1,0 +1,41 @@
+extends layout
+
+block content
+	h1 User Detail
+	if (!(theuser == undefined))
+		p.lead Welcome #{user.profile.name}, you can check the user: #{theuser.email}'s' details here
+		div.container
+			table.table.table-striped
+				tbody
+					tr
+						th Email
+						th #{theuser.email}
+					tr
+						th Name
+						th #{theuser.profile.name}
+					tr
+						th Gender
+						th #{theuser.profile.gender}
+					tr
+						th Location
+						th #{theuser.profile.location}
+					tr
+						th Website
+						th #{theuser.profile.website}
+					tr
+						th Skills
+						th 
+							each val in theuser.skills
+								p #{val}
+					tr
+						th Education
+						th 
+							each val in theuser.education
+								p #{val.school}, #{val.program}, #{val.degree}, #{val.year}
+					tr
+						th Experience
+						th 
+							each val in theuser.experience
+								p #{val.job_title}, #{val.description}, #{val.rating}, #{val.comment}, 
+	else
+		h2 User Not Found

@@ -1,0 +1,56 @@
+extends layout
+
+block content
+	h1 Find Projects
+	p.lead Welcome #{user.profile.name}, you can view all Project postings here. 
+	hr
+	div.container
+		table.table.tablestriped
+			tbody
+				tr
+					th
+						div.col-xs-2
+							h4 TITLE
+						div.col-xs-2
+							h4 STATUS
+						div.col-xs-2
+							h4 POSTING DATE
+						div.col-xs-3
+							h4 OWNER EMAIL
+						div.col-xs-3
+							h4(style="padding-left:20px;") ACTION
+				each val in allpostings
+					tr
+						th
+							div.col-xs-2
+								h5 #{val.title} 
+							div.col-xs-2
+								h5 #{val.status}
+							div.col-xs-2
+								h5 #{val.posting_date.toDateString()}
+							div.col-xs-3
+								a(href='/postingManager/user_detail?email=#{val.owner_email}') #{val.owner_email} 
+									br
+							div.col-xs-3
+								table
+									tbody
+										tr
+											th
+												form.inline-block.col-xs-2(class='posting-op', action='/postingManager/view_detail', method='GET')
+													input(type='hidden', name='id', class='form-control', value = val._id)
+													button.btn.btn-primary(type='submit') 
+														i.fa.fa-folder-open
+														| view Detail
+											th
+												if (user.usertype == 2)
+													form.inline-block.col-xs-2(class='posting-op', action='/postingManager/joinpost', method='GET')
+														input(type='hidden', name='id', class='form-control', value = val._id)
+														if (user.projects.indexOf(val._id) == -1)
+															button.btn.btn-primary(type='submit') 
+																i.fa.fa-plus
+																| Join
+														else
+															button.btn.btn-primary(type='submit' disabled)
+																i.fa.fa-plus-circle
+																| Post Added
+												

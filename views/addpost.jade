@@ -1,0 +1,89 @@
+extends layout
+
+block content
+	h1 Create New Project
+	p.lead Welcome #{user.profile.name}, you can create your project here.
+	div.container
+		form(action='/postingManager/createpost', method='POST')
+			table.table.table-striped
+				tbody
+					tr
+						th Title
+						th 
+							input.form-control.nomargin(type='text', name='title', class='form-control', placeholder='title',required, autofocus)
+					tr
+						th Description
+						th 
+							input.form-control.nomargin(type='text', name='description', placeholder='description', required)
+					tr
+						th required skills
+						th 
+							.checkbox-inline
+								label
+									input(type="checkbox", name='tags', value='HTML5')
+									| HTML5
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='CSS3')
+									| CSS3
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='JavaScript')
+									| JavaScript
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='NodeJS/ExpressJS')
+									| NodeJS/ExpressJS
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='MongoDB/Mongoose')
+									| MongoDB/Mongoose
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='PHP')
+									| PHP
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='Core Java')
+									| Core Java
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='SQL')
+									| SQL
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='XML')
+									| XML		
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='Python')
+									| Python
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='C/C++')
+									| C/C++
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='Visual Basic')
+									| Visual Basic
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='Android')
+									| Android
+							.checkbox-inline
+								label
+									input(type="checkbox", name="tags", value='IOS')
+									| IOS
+					tr
+						th 
+							label(for='start_date') Project Starting Date
+						th
+							input.form-control(type='text',class="textbox-n", onfocus="(this.type='date')", name='start_date', placeholder="Date", id='start_date')
+					tr
+						th
+							label(for='end_date') Project Due Date
+						th
+							input.form-control(type='text',class="textbox-n", onfocus="(this.type='date')", name='end_date', placeholder="Date", id='end_date')
+			button.btn.btn-lg.btn-primary.apply(type='submit') 
+				i.fa.fa-plus
+				| Create Post

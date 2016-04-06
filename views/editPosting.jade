@@ -1,0 +1,120 @@
+extends layout
+
+block content
+  .page-header
+    h3 Project Information
+
+  form.form-horizontal(action='/postingManager/updatePosting', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden', name='id', class='form-control', value = thepost._id)
+    .form-group
+      label.col-sm-3.control-label(for='title') Title
+      .col-sm-7
+        input.form-control(type='title', name='title', id='title', value='#{thepost.title}')
+    .form-group
+      label.col-sm-3.control-label(for='description') Project Description
+      .col-sm-7
+        textarea.form-control(type='text', name='description', rows=7,  id='description', placeholder='#{thepost.description}')
+    .form-group
+      label.col-sm-3.control-label(for='status') Project Status
+      .col-sm-4
+        label.radio.col-sm-4
+          input(type='radio', checked=thepost.status=='posted', name='status', value='posted', data-toggle='radio')
+          span Posted
+        label.radio.col-sm-4
+          input(type='radio', checked=thepost.status=='in progress', name='status', value='in progress', data-toggle='radio')
+          span In Progress
+        label.radio.col-sm-4
+          input(type='radio', checked=thepost.status=='completed', name='status', value='completed', data-toggle='radio')
+          span Completed
+    .form-group
+      label.col-sm-3.control-label(for='start_date') Project Starting Date
+      .col-sm-7
+        input.form-control(type='text',class="textbox-n", onfocus="(this.type='date')", name='start_date', placeholder="Date", id='start_date', value='#{thepost.start_date}')
+    .form-group
+      label.col-sm-3.control-label(for='end_date') Project Due Date
+      .col-sm-7
+        input.form-control(type='text',class="textbox-n", onfocus="(this.type='date')", name='end_date', placeholder="Date", id='end_date', value='#{thepost.end_date}')
+    .form-group
+      label.col-sm-3.control-label(for='owner_email') Project Owner's email
+      .col-sm-7
+        input.form-control(type='String', name='owner_email', id='owner_email', value='#{thepost.owner_email}' disabled)
+    .form-group
+      label.col-sm-3.control-label(for='posting_date') Project Posting date
+      .col-sm-7
+        input.form-control(type='String', name='posting_date', id='posting_date', value='#{thepost.posting_date.toUTCString()}' disabled)
+    .form-group
+      label.col-sm-3.control-label Required Skills
+      .col-sm-7
+        .checkbox-inline
+          label
+            input(type="checkbox", name='tags', value='HTML5' checked=(thepost.tags.indexOf('HTML5') != -1))
+            | HTML5
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='CSS3' checked=(thepost.tags.indexOf('CSS3') != -1))
+            | CSS3
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='JavaScript' checked=(thepost.tags.indexOf('JavaScript') != -1))
+            | JavaScript
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='NodeJS/ExpressJS' checked=(thepost.tags.indexOf('NodeJS/ExpressJS') != -1))
+            | NodeJS/ExpressJS
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='MongoDB/Mongoose' checked=(thepost.tags.indexOf('MongoDB/Mongoose') != -1))
+            | MongoDB/Mongoose
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='PHP' checked=(thepost.tags.indexOf('PHP') != -1))
+            | PHP
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='Core Java' checked=(thepost.tags.indexOf('Core Java') != -1))
+            | Core Java
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='SQL' checked=(thepost.tags.indexOf('SQL') != -1))
+            | SQL
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='XML' checked=(thepost.tags.indexOf('XML') != -1))
+            | XML   
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='Python' checked=(thepost.tags.indexOf('Python') != -1))
+            | Python
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='C/C++' checked=(thepost.tags.indexOf('C/C++') != -1))
+            | C/C++
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='Visual Basic' checked=(thepost.tags.indexOf('Visual Basic') != -1))
+            | Visual Basic
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='Android' checked=(thepost.tags.indexOf('Android') != -1))
+            | Android
+        .checkbox-inline
+          label
+            input(type="checkbox", name="tags", value='IOS' checked=(thepost.tags.indexOf('IOS') != -1))
+            | IOS
+    hr
+    table(style="margin-left:100px")
+      tbody
+        tr
+          th
+            .form-group.col-sm-4
+              button.btn.btn.btn-primary(type='submit')
+                i.fa.fa-pencil
+                | Update Project
+          th
+            .form-group.col-sm-4
+              form(action='/postingManager/deletepost', method='GET')
+                input.form-control(type='hidden', name='id', value = thepost._id)
+                button.btn.btn-danger(style="margin-left:40px" type='submit')
+                  i.fa.fa-close
+                  | Delete Project

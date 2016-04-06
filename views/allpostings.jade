@@ -1,0 +1,56 @@
+extends layout
+
+block content
+	h1 My Projects
+	p.lead Welcome #{user.profile.name}, you can view your postings here.
+	hr
+	#user								
+	div.container
+		table.table.tablestriped
+			tbody
+				tr
+					th
+						div.col-xs-2
+							h4 TITLE
+						div.col-xs-2
+							h4 STATUS
+						div.col-xs-2
+							h4 POSTING DATE
+						div.col-xs-3
+							h4 OWNER EMAIL
+						div.col-xs-3
+							h4(style="padding-left:20px;") ACTION
+				each val in allpostings
+					tr
+						th
+							div.col-xs-2
+								h5 #{val.title} 
+							div.col-xs-2
+								h5 #{val.status}
+							div.col-xs-2
+								h5 #{val.posting_date.toDateString()}
+							div.col-xs-3
+								a(href='/postingManager/user_detail?email=#{val.owner_email}') #{val.owner_email} 
+							div.col-xs-3
+								table
+									tbody
+										tr
+											th
+												form.inline-block.col-xs-2(class='posting-op', action='/postingManager/view_detail', method='GET')
+													input(type='hidden', name='id', class='form-control', value = val._id)
+													button.btn.btn-primary(type='submit') 
+														i.fa.fa-folder-open 
+														| view Detail
+											th
+												if (val.owner_email == user.email)
+													form(class='posting-op', action='/postingManager/edit_posting', method='GET')
+														input.form-control(type='hidden', name='id', value = val._id)
+														button.btn.btn-primary(type='submit') 
+															i.fa.fa-pencil
+															| Edit
+												else if (user.usertype == 2)
+													form(class='posting-op', action='/postingManager/unjoin', method='GET')
+														input.form-control(type='hidden', name='id', value = val._id)
+														button.btn.btn-warning(type='submit') 
+															i.fa.fa-minus-circle
+															| Quit Project

@@ -1,0 +1,176 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Profile Information
+
+  form.form-horizontal(action='/account/profile', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') Email
+      .col-sm-7
+        input.form-control(type='email', name='email', id='email', value='#{user.email}')
+    .form-group
+      label.col-sm-3.control-label(for='name') Name
+      .col-sm-7
+        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+    .form-group
+      label.col-sm-3.control-label(for='gender') Gender
+      .col-sm-4
+        label.radio.col-sm-4
+          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+          span Male
+        label.radio.col-sm-4
+          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+          span Female
+    .form-group
+      label.col-sm-3.control-label(for='usertype') User Type
+      .col-sm-4
+        label.radio.col-sm-7
+          input(type='radio', checked=(user.usertype==1), name='usertype', value=1, data-toggle='radio')
+          span Business/Project Owner
+        label.radio.col-sm-7
+          input(type='radio', checked=checked=(user.usertype==2), name='usertype', value=2, data-toggle='radio')
+          span Developer
+    .form-group
+      label.col-sm-3.control-label(for='skills') User Skills
+      .col-sm-4
+        .checkbox-inline
+          label
+            input(type="checkbox", name='skills', value='HTML5' checked=(user.skills.indexOf('HTML5') != -1))
+            | HTML5
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='CSS3' checked=(user.skills.indexOf('CSS3') != -1))
+            | CSS3
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='JavaScript' checked=(user.skills.indexOf('JavaScript') != -1))
+            | JavaScript
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='NodeJS/ExpressJS' checked=(user.skills.indexOf('NodeJS/ExpressJS') != -1))
+            | NodeJS/ExpressJS
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='MongoDB/Mongoose' checked=(user.skills.indexOf('MongoDB/Mongoose') != -1))
+            | MongoDB/Mongoose
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='PHP' checked=(user.skills.indexOf('PHP') != -1))
+            | PHP
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='Core Java' checked=(user.skills.indexOf('Core Java') != -1))
+            | Core Java
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='SQL' checked=(user.skills.indexOf('SQL') != -1))
+            | SQL
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='XML' checked=(user.skills.indexOf('XML') != -1))
+            | XML   
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='Python' checked=(user.skills.indexOf('Python') != -1))
+            | Python
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='C/C++' checked=(user.skills.indexOf('C/C++') != -1))
+            | C/C++
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='Visual Basic' checked=(user.skills.indexOf('Visual Basic') != -1))
+            | Visual Basic
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='Android' checked=(user.skills.indexOf('Android') != -1))
+            | Android
+        .checkbox-inline
+          label
+            input(type="checkbox", name="skills", value='IOS' checked=(user.skills.indexOf('IOS') != -1))
+            | IOS
+    .form-group
+      label.col-sm-3.control-label(for='location') Location
+      .col-sm-7
+        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+    .form-group
+      label.col-sm-3.control-label(for='website') Website
+      .col-sm-7
+        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+    .form-group
+      label.col-sm-3.control-label(for='gravatar') Gravatar
+      .col-sm-4
+        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Update Profile
+
+  .page-header
+    h3 Change Password
+
+  form.form-horizontal(action='/account/password', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='password') New Password
+      .col-sm-7
+        input.form-control(type='password', name='password', id='password')
+    .form-group
+      label.col-sm-3.control-label(for='confirmPassword') Confirm Password
+      .col-sm-7
+        input.form-control(type='password', name='confirmPassword', id='confirmPassword')
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-lock
+          | Change Password
+
+  .page-header
+    h3 Delete Account
+
+  form.form-horizontal(action='/account/delete', method='POST')
+    .form-group
+      p.col-sm-offset-3.col-sm-4 You can delete your account, but keep in mind this action is irreversible.
+      input(type='hidden', name='_csrf', value=_csrf)
+      .col-sm-offset-3.col-sm-4
+        button.btn.btn-danger(type='submit')
+          i.fa.fa-trash
+          | Delete my account
+
+  .page-header
+    h3 Linked Accounts
+  .form-horizontal
+    .form-group
+      .col-sm-offset-3.col-sm-4
+        if user.instagram
+          p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
+        else
+          p: a(href='/auth/instagram') Link your Instagram account
+      .col-sm-offset-3.col-sm-4
+        if user.google
+          p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+        else
+          p: a(href='/auth/google') Link your Google account
+      .col-sm-offset-3.col-sm-4
+        if user.facebook
+          p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
+        else
+          p: a(href='/auth/facebook') Link your Facebook account
+      .col-sm-offset-3.col-sm-4
+        if user.twitter
+          p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
+        else
+          p: a(href='/auth/twitter') Link your Twitter account
+      .col-sm-offset-3.col-sm-4
+        if user.github
+          p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
+        else
+          p: a(href='/auth/github') Link your GitHub account
+      .col-sm-offset-3.col-sm-4
+        if user.linkedin
+          p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
+        else
+          p: a(href='/auth/linkedin') Link your LinkedIn account
