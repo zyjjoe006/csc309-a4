@@ -14,6 +14,7 @@ var isAuthenticated = function (req, res, next) {
 
 var isDeveloper = function (req, res, next) {
 	//if a user is not a developer or an admin, he is restricted to access some routes
+	console.log(req.user.usertype);
 	if (!(req.user.usertype == 1))
 		return next();
 	// if the user is not authorized then redirect him to home page
@@ -225,7 +226,7 @@ router.post('/vote', isAuthenticated, isDeveloper, function(req, res, next) {
 	    	}
 	    	post.save();
 		}
-	    
+	    console.log(req.user);
 	    	  
 	    res.render('posting_detail', { user: req.user,
 	    	thepost: post, message: req.flash('success', { msg: 'You have voted this project posting' })});
