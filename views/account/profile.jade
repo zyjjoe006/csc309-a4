@@ -24,6 +24,15 @@ block content
           input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
           span Female
     .form-group
+      label.col-sm-3.control-label(for='usertype') User Type
+      .col-sm-4
+        label.radio.col-sm-7
+          input(type='radio', checked=(user.usertype==1), name='usertype', value=1, data-toggle='radio')
+          span Business/Project Owner
+        label.radio.col-sm-7
+          input(type='radio', checked=checked=(user.usertype==2), name='usertype', value=2, data-toggle='radio')
+          span Developer
+    .form-group
       label.col-sm-3.control-label(for='skills') User Skills
       .col-sm-4
         .checkbox-inline
