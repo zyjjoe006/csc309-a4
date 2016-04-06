@@ -160,8 +160,14 @@ exports.postUpdateProfile = function(req, res, next) {
           return next(err);
         }
       }
+      if(user._id != req.user._id){
+        req.flash('success', { msg: 'Profile information updated.' });
+        res.redirect('/admin');
+      }
+      else{
       req.flash('success', { msg: 'Profile information updated.' });
       res.redirect('/account');
+    }
     });
   });
 };
