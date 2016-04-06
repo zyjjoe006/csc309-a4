@@ -13,7 +13,7 @@ block content
 								li Posting Date ---> #{thepost.posting_date.toString()}
 								li Posting Owner Email--> #{thepost.owner_email}
 								each val in thepost.developer_email
-									li Developer Email --> {val}
+									li Developer Email --> #{val}
 								li Status --> #{thepost.status}
 								li Rating --> #{thepost.rating}
 							each val1 in thepost.comments
@@ -26,4 +26,6 @@ block content
 									input(type='text', name='commentMessage', class='form-control', placeholder='Please leave your messaeg',required)
 									button(class='btn btn-lg btn-primary btn-block', type='submit') Comment
 						a(href='/postingManager' class='text-center new-account') View Posting 
-						a(href='/signout', class='text-center new-account') Sign Out
+						
+						
+						

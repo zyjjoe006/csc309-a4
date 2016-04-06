@@ -16,11 +16,12 @@ var mongoose = require('mongoose');
 var Posting = require('../models/posting.js');
 
 //get all visable postings
-router.get('/viewAllPost', function(req, res, next) {
+router.get('/viewAllPost', isAuthenticated, function(req, res, next) {
   Posting.find( function (err, postings) {
     if (err) return next(err);
     //res.json(postings);
-    res.json(postings);
+    res.render('viewAllPostings', {user: req.user,
+    	allpostings: postings});
   });
 });
 
@@ -99,8 +100,9 @@ router.post('/comment', isAuthenticated, function(req, res, next) {
 	    post.comments.push(newComment);
 	    
 	    post.save();
+	    	  
 	    res.render('posting_detail', { user: req.user,
-	    	thepost: post});
+	    	thepost: post, message: req.flash("info", req.body.commentMessage)});
 	  });
 	});
 

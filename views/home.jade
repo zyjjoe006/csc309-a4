@@ -1,16 +1,27 @@
 extends layout
 
 block content
-	div.container
-		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
-				#user
-					h1.text-center.login-title Welcome #{user.firstName}. Check your details below:
-						div.signup-wall
-							ul.user-details
-								li Username ---> #{user.username}
-								li Email    ---> #{user.email}
-								li First Name ---> #{user.firstName} 
-								li Last Name ---> #{user.lastName}
-						a(href='/postingManager' class='text-center new-account') View Posting 
-						a(href='/signout', class='text-center new-account') Sign Out
+  h1 Hackathon Starter
+  p.lead A boilerplate for Node.js web applications.
+  hr
+  .row
+    .col-sm-6
+      h2 View Postings
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-default(href='/postingManager', role='button') View Postings »
+    .col-sm-6
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-default(href='#', role='button') View details »
+    .col-sm-6
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-default(href='#', role='button') View details »
+    .col-sm-6
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-default(href='#', role='button') View details »
