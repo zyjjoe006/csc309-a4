@@ -32,16 +32,14 @@ block content
 				tr
 					th Rating
 					th #{thepost.rating}
-						if (user.usertype == 2 && !(thepost.developer_email.slice().indexOf(user.email) == -1)) 
+						if (user.usertype != 1 && !(thepost.developer_email.slice().indexOf(user.email) == -1)) 
 							if (thepost.has_voted.indexOf(user.email) == -1)
 								form.inline-block(style="margin-top:10px;" class='posting-op', action='/postingManager/vote', method='POST')
 									input(type='hidden', name='id', class='form-control', value = thepost._id)
 									button.btn.btn-primary(type='submit', name='vote', value=1) 
+										i.fa.fa-thumbs-up
+									button.btn.btn-danger(style="margin-left:5px;" type='submit', name='vote', value=2) 
 										i.fa.fa-thumbs-down
-										| Up Vote
-									button.btn.btn-primary(style="margin-left:5px;" type='submit', name='vote', value=2) 
-										i.fa.fa-thumbs-down
-										| Down Vote
 							else
 								h4 You have voted this Project Posting
 		hr
