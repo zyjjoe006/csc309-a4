@@ -9,7 +9,7 @@ var isAuthenticated = function (req, res, next) {
 		return next();
 	// if the user is not authenticated then redirect him to the login page
 	req.flash('message', 'Please login');
-	res.redirect('/login');
+	return res.redirect('/login');
 }
 
 var isDeveloper = function (req, res, next) {
@@ -18,7 +18,7 @@ var isDeveloper = function (req, res, next) {
 		return next();
 	// if the user is not authorized then redirect him to home page
 	req.flash('message', 'attempted access restricted developer area ');
-	res.redirect('/');
+	return res.redirect('/');
 }
 
 var isProjectOwnder = function (req, res, next) {
@@ -27,7 +27,16 @@ var isProjectOwnder = function (req, res, next) {
 		return next();
 	// if the user is not authorized then redirect him to home page
 	req.flash('message', 'attempted accessing restricted project owner area ');
-	res.redirect('/');
+	return res.redirect('/');
+}
+
+var isAdmin = function (req, res, next) {
+	//if a user is not a project owner or an admin, he is restricted to access some routes
+	if ((req.user.usertype == 3))
+		return next();
+	// if the user is not authorized then redirect him to home page
+	req.flash('message', 'attempted accessing restricted project owner area ');
+	return res.redirect('/');
 }
 
 
@@ -123,25 +132,6 @@ router.get('/recommend', isAuthenticated, isProjectOwnder,  function(req, res, n
   });
 });
 
-//DONOT CALL IT
-router.get('/testPosting', isAuthenticated, function(req, res, next) {
-	Posting.create({
-		title: 'RAD dev',
-	    description: 'dev a project',
-	    tags: ['java','C++'],
-	    posting_date: new Date(),
-	    start_date: null,
-	    end_date: null,
-		owner_email: req.user.email,
-		developer_email: [null],
-		status: 'posted',
-		rating: null,
-		comments: [null]
-	}, function (err, post) {
-	    if (err) return next(err);
-	    res.json(post);
-	  });
-	});
 
 //go to the post creation page
 router.get('/createpost', isAuthenticated,  isProjectOwnder, function(req, res){

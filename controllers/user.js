@@ -141,7 +141,7 @@ exports.postUpdateProfile = function(req, res, next) {
     return res.redirect('/account');
   }
 
-  User.findById(req.user.id, function(err, user) {
+  User.findById(req.body.id, function(err, user) {
     if (err) {
       return next(err);
     }

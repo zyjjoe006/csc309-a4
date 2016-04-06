@@ -8,6 +8,15 @@ block content
 		table.table.tablestriped
 			tbody
 				each val in allusers
-				tr
-					th.col-xs-6 #{val.profile.name}
-					th.col-xs-6 #{val.email}
+					tr
+						th.col-xs-2 #{val.profile.name}
+						th.col-xs-4 
+							a(href='/postingManager/user_detail?email=#{val.email}') #{val.email}
+						th.col-xs-2
+							form.inline-block(class='posting-op', action='/admin/deleteUser', method='GET')
+								input(type='hidden', name='id', class='form-control', value = val._id)
+								button.btn.btn-primary.apply(type='submit') Delete User
+						th.col-xs-2
+							form.inline-block(class='posting-op', action='/admin/editUser', method='GET')
+								input(type='hidden', name='id', class='form-control', value = val._id)
+								button.btn.btn-primary.apply(type='submit') edit User

@@ -31,6 +31,7 @@ dotenv.load({ path: '.env.example' });
  */
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
+var adminController = require('./controllers/admin');
 var apiController = require('./controllers/api');
 var contactController = require('./controllers/contact');
 
@@ -127,7 +128,12 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
-
+/**
+admin API
+*/
+app.get('/admin', passportConfig.isAuthenticated, adminController.isAdmin, adminController.getAllUsers);
+app.get('/admin/deleteUser', passportConfig.isAuthenticated, adminController.isAdmin, adminController.deleteUser);
+app.get('/admin/editUser', passportConfig.isAuthenticated, adminController.isAdmin, adminController.editAccount);
 /**
  * API examples routes.
  */
