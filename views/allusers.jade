@@ -7,6 +7,15 @@ block content
 	div.container
 		table.table.tablestriped
 			tbody
+				tr
+					th.col-xs-2 
+						h5 NAME
+					th.col-xs-4
+						h5 EMAIL
+					th.col-xs-2
+						h5 ACTION(DELETE)
+					th.col-xs-2
+						h5 ACTION(EDIT)
 				each val in allusers
 					tr
 						th.col-xs-2 #{val.profile.name}
@@ -15,8 +24,12 @@ block content
 						th.col-xs-2
 							form.inline-block(class='posting-op', action='/admin/deleteUser', method='GET')
 								input(type='hidden', name='id', class='form-control', value = val._id)
-								button.btn.btn-primary.apply(type='submit') Delete User
+								button.btn.btn-danger(type='submit') 
+									i.fa.fa-close
+									| Delete User
 						th.col-xs-2
 							form.inline-block(class='posting-op', action='/admin/editUser', method='GET')
 								input(type='hidden', name='id', class='form-control', value = val._id)
-								button.btn.btn-primary.apply(type='submit') edit User
+								button.btn.btn-warning(type='submit') 
+									i.fa.fa-pencil
+									| edit User

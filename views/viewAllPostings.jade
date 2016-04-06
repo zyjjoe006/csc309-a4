@@ -42,7 +42,7 @@ block content
 														i.fa.fa-folder-open
 														| view Detail
 											th
-												if (user.usertype == 2)
+												if (user.usertype != 1)
 													form.inline-block.col-xs-2(class='posting-op', action='/postingManager/joinpost', method='GET')
 														input(type='hidden', name='id', class='form-control', value = val._id)
 														if (user.projects.indexOf(val._id) == -1)

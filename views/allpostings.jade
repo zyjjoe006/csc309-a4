@@ -42,7 +42,7 @@ block content
 														i.fa.fa-folder-open 
 														| view Detail
 											th
-												if (val.owner_email == user.email)
+												if (val.owner_email == user.email || user.usertype==3)
 													form(class='posting-op', action='/postingManager/edit_posting', method='GET')
 														input.form-control(type='hidden', name='id', value = val._id)
 														button.btn.btn-primary(type='submit') 

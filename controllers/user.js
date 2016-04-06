@@ -140,7 +140,6 @@ exports.postUpdateProfile = function(req, res, next) {
     req.flash('errors', errors);
     return res.redirect('/account');
   }
-
   User.findById(req.body.id, function(err, user) {
     if (err) {
       return next(err);

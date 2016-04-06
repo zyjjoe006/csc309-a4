@@ -34,10 +34,14 @@ block content
 					th #{thepost.rating}
 						if (user.usertype == 2 && !(thepost.developer_email.slice().indexOf(user.email) == -1)) 
 							if (thepost.has_voted.indexOf(user.email) == -1)
-								form.inline-block(class='posting-op', action='/postingManager/vote', method='POST')
+								form.inline-block(style="margin-top:10px;" class='posting-op', action='/postingManager/vote', method='POST')
 									input(type='hidden', name='id', class='form-control', value = thepost._id)
-									button.btn.btn-primary.apply(type='submit', name='vote', value=1) UpVote
-									button.btn.btn-primary.apply(type='submit', name='vote', value=2) DownVote
+									button.btn.btn-primary(type='submit', name='vote', value=1) 
+										i.fa.fa-thumbs-down
+										| Up Vote
+									button.btn.btn-primary(style="margin-left:5px;" type='submit', name='vote', value=2) 
+										i.fa.fa-thumbs-down
+										| Down Vote
 							else
 								h4 You have voted this Project Posting
 		hr
@@ -61,7 +65,7 @@ block content
 		table
 			tbody
 				tr
-					if (user.usertype == 2 && (!(thepost.developer_email.indexOf(user.email) == -1)))
+					if (user.usertype -= 1 && (!(thepost.developer_email.indexOf(user.email) == -1)))
 						th
 							form.inline-block(class='posting-op', action='/postingManager/joinpost', method='GET')
 								input(type='hidden', name='id', class='form-control', value = thepost._id)
@@ -73,21 +77,21 @@ block content
 									button.btn.btn-primary(style="margin-left:40px" type='submit' disabled) 
 										i.fa.fa-plus-circle
 										| Post Added
-					if (user.usertype == 2 && (!(thepost.developer_email.indexOf(user.email) == -1)))
+					if (user.usertype != 1 && (!(thepost.developer_email.indexOf(user.email) == -1)))
 						th
 							form.inline-block(class='posting-op', action='/postingManager/unjoin', method='GET')
 								input(type='hidden', name='id', class='form-control', value = thepost._id)
 								button.btn.btn-warning( style="margin-left:40px" type='submit') 
 									i.fa.fa-minus-circle
 									| Quit Project
-					if (user.usertype == 1 && (thepost.owner_email == user.email))
+					if ((user.usertype == 1 && (thepost.owner_email == user.email)) || (user.usertype == 3))
 						th
 							form.inline-block(class='posting-op', action='/postingManager/deletepost', method='GET')
 								input(type='hidden', name='id', class='form-control', value = thepost._id)
 								button.btn.btn-danger(style="margin-left:40px" type='submit') 
 									i.fa.fa-close
 									| Delete Project
-					if (user.usertype == 1 && (thepost.owner_email == user.email))
+					if ((user.usertype == 1 && (thepost.owner_email == user.email)) || user.usertype == 3)
 						th
 							form.inline-block(class='posting-op', action='/postingManager/recommend', method='GET')
 								input(type='hidden', name='id', class='form-control', value = thepost._id)
