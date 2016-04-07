@@ -63,7 +63,7 @@ block content
 		table
 			tbody
 				tr
-					if (user.usertype != 1 && (!(thepost.developer_email.indexOf(user.email) == -1)))
+					if (user.usertype != 1 && ((thepost.developer_email.indexOf(user.email) == -1)))
 						th
 							form.inline-block(class='posting-op', action='/postingManager/joinpost', method='GET')
 								input(type='hidden', name='id', class='form-control', value = thepost._id)
