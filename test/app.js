@@ -41,6 +41,30 @@ describe('GET /contact', function() {
   });
 });
 
+describe('GET /', function() {
+  it('should return 302 Found with page postingManager', function(done) {
+    request(app)
+      .get('/')
+      .expect(302, done);
+  });
+});
+
+describe('GET /postingManager', function() {
+  it('should return 302 Found with the same page above', function(done) {
+    request(app)
+      .get('/')
+      .expect(302, done);
+  });
+});
+
+describe('GET /postingManager/viewAllPost', function() {
+  it('should return 302 Found with page postingManager/viewAllPost', function(done) {
+    request(app)
+      .get('/')
+      .expect(302, done);
+  });
+});
+
 describe('GET /random-url', function() {
   it('should return 404', function(done) {
     request(app)
