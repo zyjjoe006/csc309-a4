@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-6.col-md-4.col-md-offset-4
+				h1.text-center.login-title Registration Details
+					div.signup-wall
+						form(class='form-signin', action='/userManager/deleteUser', method='GET')
+							input(type='text', name='email', class='form-control', placeholder='title',required, autofocus)
+							button(class='btn btn-lg btn-primary btn-block', type='submit') Find User
+							span.clearfix
+
+					#message
+						if message
+							h1.text-center.error-message #{message}
