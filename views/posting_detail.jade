@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	div.container
+		div.row
+			div.col-sm-6.col-md-4.col-md-offset-4
+				#user
+					h1.text-center.login-title Welcome #{user.firstName}. Check the posting details below:
+						div.signup-wall
+							ul.user-details
+								li Title ---> #{thepost.title}
+								li Description    ---> #{thepost.description}
+								li Posting Date ---> #{thepost.posting_date.toString()}
+								li Posting Owner Email--> #{thepost.owner_email}
+								each val in thepost.developer_email
+									li Developer Email --> #{val}
+								li Status --> #{thepost.status}
+								li Rating --> #{thepost.rating}
+							each val1 in thepost.comments
+								ui
+									li #{val1.commenter_email} comment at #{val1.comment_date}
+									li Content: #{val1.content}
+								br
+							form(class='posting-op', action='/postingManager/comment', method='POST')
+									input(type='hidden', name='id', class='form-control', value = thepost._id)
+									input(type='text', name='commentMessage', class='form-control', placeholder='Please leave your messaeg',required)
+									button(class='btn btn-lg btn-primary btn-block', type='submit') Comment
+						a(href='/postingManager' class='text-center new-account') View Posting 
+						
+						
+						
