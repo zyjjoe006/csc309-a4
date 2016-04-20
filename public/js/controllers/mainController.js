@@ -1,5 +1,5 @@
 // controllers
-app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','$location', function(projectDetail, $scope, $stateParams,$location) {
+app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','$http','$location', function(projectDetail, $scope, $stateParams,$http,$location) {
     // id needs to be passed by routeparam 
     // id = $stateParams;
     id=$location.url().substring(31);
@@ -25,23 +25,26 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','
         $scope.change = function() {
             angular.copy($scope.project, $scope.initial)
         }
+
     });
+    $http.get('/api/currentuser').success(function(data){
+            console.log(data);
+            $scope.user=data.user;
+        });
+    this.comment = {};
+    this.addDiscussion = function(project) {
+        console.log("going to add comment");
 
-
+        this.comment.commenter_email = $scope.user.email;
+        console.log(this.comment.commenter_email);
+        // this.comment.createdOn = Date.now();
+        this.comment.comment_date = new Date();
+        project.comments.push(this.comment);
+        this.comment = {};
+    }
 
 }]);
 
-app.controller('DiscussionController', function() {
-    this.discussion = {};
-    this.addDiscussion = function(project) {
-        // need to change
-        this.discussion.author = "Me";
-        // this.discussion.createdOn = Date.now();
-        this.discussion.createdOn = new Date();
-        project.discussions.push(this.discussion);
-        this.discussion = {};
-    }
-});
 
 app.controller('ProjectListController', ['projectList', '$scope', function(projectList, $scope) {
     projectList.success(function(data) {

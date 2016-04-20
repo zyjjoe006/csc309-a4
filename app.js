@@ -128,6 +128,12 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+app.get('/api/currentuser', passportConfig.isAuthenticated, function(req,res){
+  console.log(req.body);
+  console.log(req.user);
+  res.json({user: req.user});
+});
+
 /**
 admin API
 */
