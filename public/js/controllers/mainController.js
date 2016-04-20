@@ -1,5 +1,5 @@
 // controllers
-app.controller('ProjectController', ['projectDetail', '$scope', '$location', function(projectDetail, $scope,$location) {
+app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','$location', function(projectDetail, $scope, $stateParams,$location) {
     // id needs to be passed by routeparam 
     // id = $stateParams;
     id=$location.url().substring(31);
@@ -14,8 +14,9 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$location', fun
     };
     projectDetail.getProject(id).success(function(data) {
         $scope.initial = data;
-        // $scope.initial.publishDate = new Date($scope.initial.publishDate);
-        // $scope.initial.dueDate = new Date($scope.initial.dueDate);
+        $scope.initial.posting_date = new Date($scope.initial.posting_date);
+        $scope.initial.start_date = new Date($scope.initial.start_date);
+        $scope.initial.end_date = new Date($scope.initial.end_date);
         $scope.project = angular.copy($scope.initial);
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.project);

@@ -20,9 +20,12 @@
 //     }]);
 var app = angular.module('coding', ['ui.router']);
 // to remove #
-// app.config(["$locationProvider", function($locationProvider) {
-//   $locationProvider.html5Mode(true);
-// }]);
+app.config(["$locationProvider", function($locationProvider) {
+  $locationProvider.html5Mode({
+  	enabled: true,
+  	requireBase: false
+  });
+}]);
 // app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
     
 
