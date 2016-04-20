@@ -181,6 +181,18 @@ router.get('/view_detail', isAuthenticated, function(req, res, next) {
 	    	thepost: postings});
 	  });
 	});
+router.get('/api/view_detail', isAuthenticated, function(req, res, next) {
+	console.log("open view_detail api successfully")
+	Posting.findById(req.query.id,  function (err, postings) {
+	    if (err) return next(err);
+	    //res.json(postings);
+	    console.log("get posting successfully");
+	    console.log("req.query.id:");
+	    console.log(req.query.id);
+	    console.log(postings);
+	    res.json(postings);
+	  });
+	});
 
 router.get('/edit_posting', isAuthenticated, isProjectOwnder, function(req, res, next) {
 	Posting.findById(req.query.id,  function (err, postings) {
