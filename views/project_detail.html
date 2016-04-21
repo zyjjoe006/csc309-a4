@@ -1,79 +1,90 @@
 <!-- header -->
-
 <!-- /header -->
 <!-- body -->
 <div class="container" ng-controller="ProjectController as projectCtrl">
     <div class="row">
         <!-- all {{project.xxx}} need to change -->
-        <div class="col-md-9 profile-info" >
+        <div class="col-md-9 profile-info">
             <h1 class="page-header">Project Detail</h1>
-             <table class="profile-table table">
-                    <tr>
-                        <th>Project Name</th>
-                        <td ng-show="projectCtrl.isSelected(0)">{{project.title}}</td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input ng-model="project.title"></input>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td ng-show="projectCtrl.isSelected(0)">{{project.description}}</td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input ng-model="project.description"></input>
-                        </td>
-                    </tr>
-                    <tr ng-show="projectCtrl.isSelected(0)">
-                        <th>Date of Publishing</th>
-                        <td >{{project.posting_date|date:'yyyy-MM-dd'}}</td>
-                    </tr>
-                    <tr>
-                        <th>Required Skills</th>
-                        <td ng-show="projectCtrl.isSelected(0)"><span ng-repeat="tag in project.tags">{{tag}}{{$last ? '' : ', '}} </span></td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input ng-model="project.name"></input>
-                        </td>
-                    </tr>
-                    <tr ng-show="projectCtrl.isSelected(0)">
-                        <th>Email</th>
-                        <td>{{project.owner_email}}</td>
+            <table class="profile-table table">
+                <tr>
+                    <th>Project Name</th>
+                    <td ng-show="projectCtrl.isSelected(0)">{{project.title}}</td>
+                    <td ng-show="projectCtrl.isSelected(1)">
+                        <input style="width:60%;" ng-model="project.title"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td ng-show="projectCtrl.isSelected(0)">{{project.description}}</td>
+                    <td ng-show="projectCtrl.isSelected(1)">
+                        <textarea ng-model="project.description" rows="2"></textarea>
+                    </td>
+                </tr>
+                <tr ng-show="projectCtrl.isSelected(0)">
+                    <th>Date of Publishing</th>
+                    <td>{{project.posting_date|date:'yyyy-MM-dd'}}</td>
+                </tr>
+                <tr>
+                    <th>Required Skills</th>
+                    <td ng-show="projectCtrl.isSelected(0)"><span ng-repeat="tag in project.tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                    <td ng-show="projectCtrl.isSelected(1)">
                         
-                    </tr>
-                    <tr>
-                        <th>start Date</th>
-                        <td ng-show="projectCtrl.isSelected(0)">{{project.start_date|date:'yyyy-MM-dd'}}</td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input type="date" ng-model="project.start_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
-                           
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Due Date</th>
-                        <td ng-show="projectCtrl.isSelected(0)">{{project.end_date|date:'yyyy-MM-dd'}}</td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input type="date" ng-model="project.end_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
-                           
-                        </td>
-                    </tr>
-                    <tr ng-show="projectCtrl.isSelected(0)">
-                        <th>rating</th>
-                        <td >{{project.rating}}</td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td ng-show="projectCtrl.isSelected(0)">{{project.status}}</td>
-                        <td ng-show="projectCtrl.isSelected(1)">
-                            <input ng-model="project.status"></input>
-                        </td>
-                    </tr>
-                    
-                </table>
+                        <div class="col-sm-12">
+                            <div ng-repeat="skill in projectCtrl.allskills" class="checkbox-inline requiredskills">
+                                <label>
+                                    <input type="checkbox" name="tags"  ng-model="skills[skill]">{{skill}}</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-show="projectCtrl.isSelected(0)">
+                    <th>Owner's Email</th>
+                    <td>{{project.owner_email}}</td>
+                </tr>
+                <tr ng-show="projectCtrl.isSelected(0)">
+                    <th>Developer's Email</th>
+                    <td><span ng-repeat="email in project.developer_email">{{email}}{{$last ? '' : ', '}} </span></td>
+                </tr>
+                <tr>
+                    <th>start Date</th>
+                    <td ng-show="projectCtrl.isSelected(0)">{{project.start_date|date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="projectCtrl.isSelected(1)">
+                        <input type="date" ng-model="project.start_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Due Date</th>
+                    <td ng-show="projectCtrl.isSelected(0)">{{project.end_date|date:'yyyy-MM-dd'}}</td>
+                    <td ng-show="projectCtrl.isSelected(1)">
+                        <input type="date" ng-model="project.end_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
+                    </td>
+                </tr>
+                <tr ng-show="projectCtrl.isSelected(0)">
+                    <th>rating</th>
+                    <td>{{project.rating}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td ng-show="projectCtrl.isSelected(0)">{{project.status}}</td>
+                    <td ng-show="projectCtrl.isSelected(1)">
+                        <form>
+                            <label class="col-xs-3">
+                                <input type="radio" ng-model="project.status" value="Posted" style="padding-right: 5px;"><span> Posted</span></label>
+                            <label class="col-xs-3">
+                                <input type="radio" ng-model="project.status" value="In Progress" style="padding-right: 5px;"><span> In Progress</span></label>
+                            <label class="col-xs-3">
+                                <input type="radio" ng-model="project.status" value="Completed" style="padding-right: 5px;"><span> Completed</span></label>
+                        </form>
+                    </td>
+                </tr>
+            </table>
             <hr>
             <h3>Discussion Board</h3>
-            
             <div class="discussion row col-sm-12" ng-repeat="discussion in project.comments">
-                <p ng-cloak>{{discussion. commenter_email}}:   {{discussion.content}}<br><span style="text-align:right">{{discussion.comment_date|date:'MM/dd/yyyy @ h:mm:ss a'}}</span></p>
+                <p ng-cloak>{{discussion. commenter_email}}({{discussion.comment_date|date:'MM/dd/yyyy @ h:mm:ss a'}}):
+                    <br><span style="text-align:right">- {{discussion.content}}</span></p>
             </div>
-            
             <div class="row">
                 <form name="disscussionForm" class="row col-sm-12" ng-keypress="disscussionForm.$valid && $event.which===13 && projectCtrl.addDiscussion(project)" novalidate>
                     <div class="form-group">
@@ -81,23 +92,36 @@
                     </div>
                 </form>
                 <br>
-                <a  class="btn btn-default " ng-click="projectCtrl.addDiscussion(project)">Submit</a>
+                <button type="submit" class="btn btn-primary apply" ng-click="projectCtrl.addDiscussion(project);change()"> <i class="fa fa-pencil"></i>Comment</button>
+                
                 <br>
                 <br>
-                <a href="find_project.html" class="btn btn-default ">Back</a>
-                <a href="find_project.html" class="btn btn-primary apply">Apply</a>
+                <a ng-click="doTheBack()" class="btn btn-default">Back</a>
+                <!-- <a href="find_project.html" class="btn btn-primary apply">Apply</a> -->
             </div>
         </div>
         <!-- side bar -->
-        <div class="col-md-3" role="complementary">
+        <div class="col-md-3" role="complementary" >
             <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
                 <ul class="nav ">
-                    <ul class="nav">
+                    <ul class="nav" ng-show="user.email==project.owner_email && user.usertype!=2 || user.usertype==3">
                         <li class=""><a ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.setState(1)" href="">edit project</a></li>
                         <li class=""><a ng-show="projectCtrl.isSelected(0)" href="">cancel project</a></li>
                         <li class=""><a ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);change()" href="">confirm</a></li>
                         <li class=""><a ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);reset()" href="">cancel</a></li>
                     </ul>
+                    <ul class="nav"ng-show="user.usertype!=1">
+                        <li class=""><a ng-show="project.developer_email.indexOf(user.email) == -1" ng-click="join()">join project</a></li>
+                        <li class=""><a ng-show="project.developer_email.indexOf(user.email) != -1" ng-click="quit()">Quit project</a></li>
+                        
+                    </ul>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-3" role="complementary" >
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+                <ul class="nav ">
+                    
                     </li>
                 </ul>
             </nav>

@@ -1,7 +1,67 @@
 extends layout
 block content
 	include project_detail.html
-	
+	div.container
+	h3 Post Operations
+	br
+	table
+		tbody
+			tr
+				//- if (user.usertype != 1 && ((thepost.developer_email.indexOf(user.email) == -1)))
+				//- 	th
+				//- 		form.inline-block(class='posting-op', action='/postingManager/joinpost', method='GET')
+				//- 			input(type='hidden', name='id', class='form-control', value = thepost._id)
+				//- 			if (user.projects.indexOf(thepost._id) == -1)
+				//- 				button.btn.btn-primary(style="margin-left:40px" type='submit') 
+				//- 					i.fa.fa-plus
+				//- 					| Join
+				//- 			else
+				//- 				button.btn.btn-primary(style="margin-left:40px" type='submit' disabled) 
+				//- 					i.fa.fa-plus-circle
+				//- 					| Post Added
+				//- if (user.usertype != 1 && (!(thepost.developer_email.indexOf(user.email) == -1)))
+				//- 	th
+				//- 		form.inline-block(class='posting-op', action='/postingManager/unjoin', method='GET')
+				//- 			input(type='hidden', name='id', class='form-control', value = thepost._id)
+				//- 			button.btn.btn-warning( style="margin-left:40px" type='submit') 
+				//- 				i.fa.fa-minus-circle
+				//- 				| Quit Project
+				//- if ((user.usertype == 1 && (thepost.owner_email == user.email)) || (user.usertype == 3))
+				//- 	th
+				//- 		form.inline-block(class='posting-op', action='/postingManager/deletepost', method='GET')
+				//- 			input(type='hidden', name='id', class='form-control', value = thepost._id)
+				//- 			button.btn.btn-danger(style="margin-left:40px" type='submit') 
+				//- 				i.fa.fa-close
+				//- 				| Delete Project
+				if ((user.usertype == 1 && (thepost.owner_email == user.email)) || user.usertype == 3)
+					th
+						form.inline-block(class='posting-op', action='/postingManager/recommend', method='GET')
+							input(type='hidden', name='id', class='form-control', value = thepost._id)
+							button.btn.btn-primary(style="margin-left:40px" type='submit')
+								i.fa.fa-search-plus
+								| Recommend Developer
+	br
+	if (recommend != undefined)
+		h3 Suggested Developer
+		table.table.table-striped
+			tbody
+			if (recommend.bestUser != undefined)
+				tr
+					th Developer email
+					th 
+						a(href='/postingManager/user_detail?email=#{recommend.bestUser.email}') #{recommend.bestUser.email}
+				tr
+					th Developer name
+					th #{recommend.bestUser.profile.name || "Unamed"}
+				tr
+					th Developer Matching Score
+					th #{recommend.bestScore}
+			else
+				tr
+					th Sorry
+					th No Developer found
+				
+
 //- block content
 //- 	h1 Project Detail
 //- 	p.lead Welcome #{user.profile.name}, you can check the project Detail here
@@ -60,62 +120,3 @@ block content
 //- 			button.btn.btn-primary.apply(type='submit') 
 //- 				i.fa.fa-pencil
 //- 				| Comment
-//- 		h3 Post Operations
-//- 		br
-//- 		table
-//- 			tbody
-//- 				tr
-//- 					if (user.usertype != 1 && ((thepost.developer_email.indexOf(user.email) == -1)))
-//- 						th
-//- 							form.inline-block(class='posting-op', action='/postingManager/joinpost', method='GET')
-//- 								input(type='hidden', name='id', class='form-control', value = thepost._id)
-//- 								if (user.projects.indexOf(thepost._id) == -1)
-//- 									button.btn.btn-primary(style="margin-left:40px" type='submit') 
-//- 										i.fa.fa-plus
-//- 										| Join
-//- 								else
-//- 									button.btn.btn-primary(style="margin-left:40px" type='submit' disabled) 
-//- 										i.fa.fa-plus-circle
-//- 										| Post Added
-//- 					if (user.usertype != 1 && (!(thepost.developer_email.indexOf(user.email) == -1)))
-//- 						th
-//- 							form.inline-block(class='posting-op', action='/postingManager/unjoin', method='GET')
-//- 								input(type='hidden', name='id', class='form-control', value = thepost._id)
-//- 								button.btn.btn-warning( style="margin-left:40px" type='submit') 
-//- 									i.fa.fa-minus-circle
-//- 									| Quit Project
-//- 					if ((user.usertype == 1 && (thepost.owner_email == user.email)) || (user.usertype == 3))
-//- 						th
-//- 							form.inline-block(class='posting-op', action='/postingManager/deletepost', method='GET')
-//- 								input(type='hidden', name='id', class='form-control', value = thepost._id)
-//- 								button.btn.btn-danger(style="margin-left:40px" type='submit') 
-//- 									i.fa.fa-close
-//- 									| Delete Project
-//- 					if ((user.usertype == 1 && (thepost.owner_email == user.email)) || user.usertype == 3)
-//- 						th
-//- 							form.inline-block(class='posting-op', action='/postingManager/recommend', method='GET')
-//- 								input(type='hidden', name='id', class='form-control', value = thepost._id)
-//- 								button.btn.btn-primary(style="margin-left:40px" type='submit')
-//- 									i.fa.fa-search-plus
-//- 									| Recommend Developer
-//- 		br
-//- 		if (recommend != undefined)
-//- 			h3 Suggested Developer
-//- 			table.table.table-striped
-//- 				tbody
-//- 				if (recommend.bestUser != undefined)
-//- 					tr
-//- 						th Developer email
-//- 						th 
-//- 							a(href='/postingManager/user_detail?email=#{recommend.bestUser.email}') #{recommend.bestUser.email}
-//- 					tr
-//- 						th Developer name
-//- 						th #{recommend.bestUser.profile.name || "Unamed"}
-//- 					tr
-//- 						th Developer Matching Score
-//- 						th #{recommend.bestScore}
-//- 				else
-//- 					tr
-//- 						th Sorry
-//- 						th No Developer found
-//- 				

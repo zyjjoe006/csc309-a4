@@ -17,15 +17,61 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','
         $scope.initial.posting_date = new Date($scope.initial.posting_date);
         $scope.initial.start_date = new Date($scope.initial.start_date);
         $scope.initial.end_date = new Date($scope.initial.end_date);
+
+        $scope.skills={};
+        angular.forEach($scope.initial.tags, function(value){
+            $scope.skills[value]=true;
+        });
+
+
+
         $scope.project = angular.copy($scope.initial);
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.project);
 
         };
         $scope.change = function() {
-            angular.copy($scope.project, $scope.initial)
+            $scope.project.tags=[];
+            angular.forEach($scope.skills, function(value, key){
+                console.log("Now is");
+                console.log(key);
+                console.log("its value is");
+                console.log(value);   
+                if (value){
+                    console.log(key);
+                    console.log("is ture, thus added");
+                    $scope.project.tags.push(key);
+                };
+            });
+            angular.copy($scope.project, $scope.initial);
+            $scope.project.id=$scope.project._id;
+            $http.post('/postingManager/updatePosting', $scope.project).then(function successCallback(){
+                alert("update succeed");
+            }, function errorCallback(err){
+                alert(err);
+            });
+            
+            
         }
-
+        $scope.isOwner=function(){
+                return $scope.project.owner_email==$scope.user.email;
+        };
+        $scope.join=function(){
+            $http.get('/postingManager/joinpost',{params: {id:id}}).then(function successCallback(){
+                alert("join succeed");
+                $scope.project.developer_email.push($scope.user.email.toLowerCase());
+            }, function errorCallback(err){
+                alert(err);
+            });
+        };
+        $scope.quit=function(){
+            $http.get('/postingManager/unjoin',{params: {id:id}}).then(function successCallback(){
+                alert("quit succeed");
+                $scope.project.developer_email.splice($scope.project.developer_email.indexOf($scope.user.email),1)
+            }, function errorCallback(err){
+                alert(err);
+            });
+        };
     });
     $http.get('/api/currentuser').success(function(data){
             console.log(data);
@@ -42,7 +88,11 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','
         project.comments.push(this.comment);
         this.comment = {};
     }
-
+    this.allskills=["HTML5","CSS3","JavaScript","NodeJS/ExpressJS","MongoDB/Mongoose","PHP","Core Java","SQL","XML"," Python","C/C++","Visual Basic","Android","IOS"];
+    
+    $scope.doTheBack = function() {
+      window.history.back();
+    };
 }]);
 
 
