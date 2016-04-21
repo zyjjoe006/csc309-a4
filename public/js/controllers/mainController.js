@@ -2,7 +2,7 @@
 app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams','$http','$location', function(projectDetail, $scope, $stateParams,$http,$location) {
     // id needs to be passed by routeparam 
     // id = $stateParams;
-    id=$location.url().substring(31);
+    id=$location.url().substring($location.url().indexOf("id=")+3);
     console.log('location url:');
     console.log(id);
     this.state = 0;
