@@ -38,6 +38,13 @@ app.factory('createNewUser', ['$http', function($http) {
     };
 }]);
 
+
+
+
+
+
+
+
 // check if logged in
 app.factory('UserService', [function() {
     var sdo = {

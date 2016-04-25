@@ -62,7 +62,20 @@
                 </tr>
                 <tr ng-show="projectCtrl.isSelected(0)">
                     <th>rating</th>
-                    <td>{{project.rating}}</td>
+                    <td>{{project.rating}}
+                        <div ng-show="user.usertype != 1 && !(project.developer_email.slice().indexOf(user.email) == -1)">
+                        <span ng-show="project.has_voted.indexOf(user.email) == -1 && rated==false">
+                            <button ng-click="rateUp()" name="vote"class="btn btn-primary"> <i class="fa fa-thumbs-up"></i></button>
+                        <button style="margin-left:5px;" ng-click="rateDown()" name="vote" class="btn btn-danger"> <i class="fa fa-thumbs-down"></i></button>
+                        </span>
+                        <span ng-show="project.has_voted.indexOf(user.email) != -1 || rated==true">
+                            <h4>You have voted this Project Posting</h4> 
+                        </span>
+                            
+                        </div>
+                        
+
+                    </td>
                 </tr>
                 <tr>
                     <th>Status</th>
@@ -101,18 +114,18 @@
             </div>
         </div>
         <!-- side bar -->
-        <div class="col-md-3" role="complementary" >
+        <div class="col-md-3" role="complementary" style="padding-top: 80px;">
             <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-                <ul class="nav ">
-                    <ul class="nav" ng-show="user.email==project.owner_email && user.usertype!=2 || user.usertype==3">
-                        <li class=""><a ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.setState(1)" href="">edit project</a></li>
-                        <li class=""><a ng-show="projectCtrl.isSelected(0)" href="">cancel project</a></li>
-                        <li class=""><a ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);change()" href="">confirm</a></li>
-                        <li class=""><a ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);reset()" href="">cancel</a></li>
+                <ul >
+                    <ul class="list-unstyled" ng-show="user.email==project.owner_email && user.usertype!=2 || user.usertype==3">
+                        <li style="padding:5px"><button class="btn btn-primary" ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.setState(1)">edit project</button></li>
+                        <li style="padding:5px"><button class="btn btn-danger" ng-show="projectCtrl.isSelected(0)" >cancel project</button></li>
+                        <li style="padding:5px"><button class="btn btn-primary"ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);change()" >confirm</button></li>
+                        <li style="padding:5px"><button class="btn btn-warning"ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);reset()" >cancel</button></li>
                     </ul>
-                    <ul class="nav"ng-show="user.usertype!=1">
-                        <li class=""><a ng-show="project.developer_email.indexOf(user.email) == -1" ng-click="join()">join project</a></li>
-                        <li class=""><a ng-show="project.developer_email.indexOf(user.email) != -1" ng-click="quit()">Quit project</a></li>
+                    <ul class="list-unstyled"ng-show="user.usertype!=1">
+                        <li style="padding:5px"><button class="btn btn-primary" ng-show="project.developer_email.indexOf(user.email) == -1" ng-click="join()">join project</button></li>
+                        <li style="padding:5px"><button class="btn btn-warning" ng-show="project.developer_email.indexOf(user.email) != -1" ng-click="quit()">Quit project</button></li>
                         
                     </ul>
                 </ul>
