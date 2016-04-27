@@ -15,24 +15,12 @@
                 <div class="col-lg-7 col-md-7 col-sm-6 navbar-left">
                     <ul class="nav navbar-nav navbar-left">
                         <li><a href="/postingManager/viewAllPost">Find Project</a></li>
-                    <li><a href='/postingManager/createpost'>Create Project</a></li>
+                    <li><a href='/postingManager/createpost' ng-if="user.usertype==1">Create Project</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left " role="search">
-                        <div class="input-group dropdown">
-                            <input type="text" class="form-control dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" placeholder="Search User or Project with ID" name="srch-term" id="srch-term">
-                            <!-- <ul class="search-dropdown dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li>
-                                    <a href="profile_programmer.html">
-                                        <span class="fa fa-twitter"></span> 
-                                        Steve Woz <small>ios developer</small></a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="profile_business.html"><span class="fa fa-bitbucket"></span> IBM  <small>Blue Giant</small></a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="profile_business.html"><span class="fa fa-bitbucket"></span> Apple  <small>Think Different</small></a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="profile_programmer.html"><span class="fa fa-twitter"></span> John Simth <small>JQuery, Underscore, node.js</small></a></li>
-                            </ul> -->
+                    <form class="navbar-form navbar-left " role="search" style="width:60%">
+                        <div class="input-group " style="width:100%">
+                            <input type="text" class="form-control" type="button" i aria-haspopup="true" aria-expanded="true" placeholder="Search User or Project with ID" name="srch-term" id="srch-term">
+                           
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                       <i class="fa fa-search"></i>
@@ -42,9 +30,9 @@
                     </form>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">login</a></li>
-                    <li><a href="/signup">create account</a></li>
-                    <li class="dropdown" ng-show="isLoeggedIn()">
+                    <li><a href="/login"ng-if="!(isLoeggedIn())">login</a></li>
+                    <li><a href="/signup"ng-if="!(isLoeggedIn())">create account</a></li>
+                    <li class="dropdown" ng-if="isLoeggedIn()">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >
                         <img ng-src="{{showPic()}}" alt=""> 
                         {{user.profile.name}}

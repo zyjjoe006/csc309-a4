@@ -1,12 +1,15 @@
 // controllers
 app.controller('UserController', ['$http', '$scope', function($http, $scope) {
-    $scope.loggedIn = false;
+    
     // $http.get()
     $http.get('/api/currentuser').success(function(data) {
         console.log(data.user);
         $scope.user = data.user;
         if ($scope.user != null) {
             $scope.loggedIn = true;
+        }
+        else{
+            $scope.loggedIn = false;
         }
 
         $scope.showPic = function() {
