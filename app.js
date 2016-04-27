@@ -130,7 +130,7 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/api/currentuser', passportConfig.isAuthenticated, function(req,res){
   
-  console.log(req.body);
+  console.log("req.user:");
   console.log(req.user);
   if (err) return next(err);
   res.json({user: req.user});

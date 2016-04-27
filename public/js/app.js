@@ -18,12 +18,12 @@
 //                 redirectTo: '/'
 //             });
 //     }]);
-var app = angular.module('coding', ['ui.router']);
+var app = angular.module('coding', []);
 // to remove #
 app.config(["$locationProvider", function($locationProvider) {
   $locationProvider.html5Mode({
   	enabled: true,
-  	requireBase: false
+  	// requireBase: false
   });
 }]);
 // app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {

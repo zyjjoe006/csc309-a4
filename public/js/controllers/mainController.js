@@ -2,21 +2,26 @@
 app.controller('UserController', ['$http', '$scope', function($http, $scope) {
     $scope.loggedIn = false;
     // $http.get()
-    // $http.get('/api/currentuser').success(function(data) {
-    //     console.log(data.user);
-    //     $scope.user = data.user;
-    //     $scope.loggedIn =true;
-    //     $scope.showPic = function() {
-    //         // if ($scope.user.profile.picture) {
-    //         //     return $scope.user.profile.picture
-    //         // } else {
-    //             return 'https://gravatar.com/avatar/?s=60&d=retro'
-    //         // }
-    //     };
-    //     $scope.isLoeggedIn = function() {
-    //         return $scope.loggedIn;
-    //     }
-    // });
+    $http.get('/api/currentuser').success(function(data) {
+        console.log(data.user);
+        $scope.user = data.user;
+        if ($scope.user != null) {
+            $scope.loggedIn = true;
+        }
+
+        $scope.showPic = function() {
+            if ($scope.loggedIn && $scope.user.profile.picture) {
+                return $scope.user.profile.picture
+            } else {
+                return 'https://gravatar.com/avatar/?s=60&d=retro'
+            }
+
+
+        };
+        $scope.isLoeggedIn = function() {
+            return $scope.loggedIn;
+        }
+    });
     // state = 1 when logged in
 
 
@@ -43,10 +48,10 @@ app.controller('UserController', ['$http', '$scope', function($http, $scope) {
     //     });
     // }
 }]);
-app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', '$http', '$location', function(projectDetail, $scope, $stateParams, $http, $location) {
+app.controller('ProjectController', ['projectDetail', '$scope', '$http', function(projectDetail, $scope, $http) {
     // id needs to be passed by routeparam 
-    // id = $stateParams;
-    id = $location.url().substring($location.url().indexOf("id=") + 3);
+    url=window.location.href;
+    id=url.substring(url.indexOf("id=") + 3);
     // console.log('location url:');
     // console.log(id);
     this.state = 0;
@@ -139,6 +144,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', 
     $scope.doTheBack = function() {
         window.history.back();
     };
+
     $scope.rated = false;
     $scope.rateUp = function() {
         $scope.project.rating += 1;
