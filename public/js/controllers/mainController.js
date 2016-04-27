@@ -1,16 +1,54 @@
 // controllers
-app.controller('MainController', ['$http', '$scope', function($http, $scope) {
-    $http.get('/api/currentuser').success(function(data) {
-        console.log(data);
-        $scope.user = data.user;
-    });
+app.controller('UserController', ['$http', '$scope', function($http, $scope) {
+    $scope.loggedIn = false;
+    // $http.get()
+    // $http.get('/api/currentuser').success(function(data) {
+    //     console.log(data.user);
+    //     $scope.user = data.user;
+    //     $scope.loggedIn =true;
+    //     $scope.showPic = function() {
+    //         // if ($scope.user.profile.picture) {
+    //         //     return $scope.user.profile.picture
+    //         // } else {
+    //             return 'https://gravatar.com/avatar/?s=60&d=retro'
+    //         // }
+    //     };
+    //     $scope.isLoeggedIn = function() {
+    //         return $scope.loggedIn;
+    //     }
+    // });
+    // state = 1 when logged in
+
+
+    // this.setState = function(setState) {
+    //     this.state = setState;
+    // };
+    // this.isSelected = function(checkState) {
+    //     return this.state == checkState;
+    // };
+    // this.query = {};
+    // // formState = 1 in the login form
+    // this.formState = 0;
+    // this.setFormState = function(setState) {
+    //     this.formState = setState;
+    // };
+    // this.isFormSelected = function(checkState) {
+    //     return this.formState == checkState;
+    // };
+    // this.submitSignUpForm = function() {
+    //     var data = [];
+    //     data.query = this.query;
+    //     createNewUser.newUser(data).success(function() {
+    //         this.state = 1;
+    //     });
+    // }
 }]);
 app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', '$http', '$location', function(projectDetail, $scope, $stateParams, $http, $location) {
     // id needs to be passed by routeparam 
     // id = $stateParams;
     id = $location.url().substring($location.url().indexOf("id=") + 3);
-    console.log('location url:');
-    console.log(id);
+    // console.log('location url:');
+    // console.log(id);
     this.state = 0;
     this.setState = function(setState) {
         this.state = setState;
@@ -24,7 +62,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', 
         $scope.initial.posting_date = new Date($scope.initial.posting_date);
         $scope.initial.start_date = new Date($scope.initial.start_date);
         $scope.initial.end_date = new Date($scope.initial.end_date);
-        
+
         $scope.skills = {};
         angular.forEach($scope.initial.tags, function(value) {
             $scope.skills[value] = true;
@@ -52,7 +90,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', 
                 };
             });
             angular.copy($scope.project, $scope.initial);
-            
+
             $http.post('/postingManager/updatePosting', $scope.project).then(function successCallback() {
                 alert("update succeed");
             }, function errorCallback(err) {
@@ -101,34 +139,34 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$stateParams', 
     $scope.doTheBack = function() {
         window.history.back();
     };
-    $scope.rated=false;
+    $scope.rated = false;
     $scope.rateUp = function() {
         $scope.project.rating += 1;
-        var voteValue=1;
-        var data={
-            id:$scope.project.id,
-            vote:voteValue
+        var voteValue = 1;
+        var data = {
+            id: $scope.project.id,
+            vote: voteValue
         };
         $http.post('vote', data).then(function successCallback() {
-                alert("update rating succeed");
-                $scope.rated=true;
-            }, function errorCallback(err) {
-                alert(err);
-            });
+            alert("update rating succeed");
+            $scope.rated = true;
+        }, function errorCallback(err) {
+            alert(err);
+        });
     };
     $scope.rateDown = function() {
         $scope.project.rating -= 1;
-        var voteValue=2;
-        var data={
-            id:$scope.project.id,
-            vote:voteValue
+        var voteValue = 2;
+        var data = {
+            id: $scope.project.id,
+            vote: voteValue
         };
         $http.post('vote', data).then(function successCallback() {
-                alert("update rating succeed");
-                $scope.rated=true;
-            }, function errorCallback(err) {
-                alert(err);
-            });
+            alert("update rating succeed");
+            $scope.rated = true;
+        }, function errorCallback(err) {
+            alert(err);
+        });
     };
 }]);
 
@@ -139,29 +177,29 @@ app.controller('ProjectListController', ['projectList', '$scope', function(proje
     });
 }]);
 
-app.controller('UserController', ['createNewUser', function(createNewUser) {
-    // state = 1 when logged in
-    this.state = 0;
-    this.setState = function(setState) {
-        this.state = setState;
-    };
-    this.isSelected = function(checkState) {
-        return this.state == checkState;
-    };
-    this.query = {};
-    // formState = 1 in the login form
-    this.formState = 0;
-    this.setFormState = function(setState) {
-        this.formState = setState;
-    };
-    this.isFormSelected = function(checkState) {
-        return this.formState == checkState;
-    };
-    this.submitSignUpForm = function() {
-        var data = [];
-        data.query = this.query;
-        createNewUser.newUser(data).success(function() {
-            this.state = 1;
-        });
-    }
-}]);
+// app.controller('UserController', ['createNewUser', function(createNewUser) {
+//     // state = 1 when logged in
+//     this.state = 0;
+//     this.setState = function(setState) {
+//         this.state = setState;
+//     };
+//     this.isSelected = function(checkState) {
+//         return this.state == checkState;
+//     };
+//     this.query = {};
+//     // formState = 1 in the login form
+//     this.formState = 0;
+//     this.setFormState = function(setState) {
+//         this.formState = setState;
+//     };
+//     this.isFormSelected = function(checkState) {
+//         return this.formState == checkState;
+//     };
+//     this.submitSignUpForm = function() {
+//         var data = [];
+//         data.query = this.query;
+//         createNewUser.newUser(data).success(function() {
+//             this.state = 1;
+//         });
+//     }
+// }]);

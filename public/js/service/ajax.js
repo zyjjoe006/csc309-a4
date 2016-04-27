@@ -1,8 +1,8 @@
 app.factory('projectDetail', ['$http', function($http) {
     return {
         getProject: function(projectId) {
-            console.log("id in ajax:");
-            console.log(projectId);
+            // console.log("id in ajax:");
+            // console.log(projectId);
             return $http({method: "get", url: "/postingManager/api/view_detail", params: {id:projectId,_id:projectId}})
                 .success(function(data) {
                     return data;
