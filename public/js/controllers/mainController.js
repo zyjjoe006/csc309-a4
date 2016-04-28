@@ -79,7 +79,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$http', functio
 
 
         $scope.project = angular.copy($scope.initial);
-        $scope.project.id = $scope.project._id;
+        // $scope.project.id = $scope.project._id;
         $scope.reset = function() {
             angular.copy($scope.initial, $scope.project);
 
@@ -153,7 +153,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$http', functio
         $scope.project.rating += 1;
         var voteValue = 1;
         var data = {
-            id: $scope.project.id,
+            id: $scope.project._id,
             vote: voteValue
         };
         $http.post('vote', data).then(function successCallback() {
@@ -167,7 +167,7 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$http', functio
         $scope.project.rating -= 1;
         var voteValue = 2;
         var data = {
-            id: $scope.project.id,
+            id: $scope.project._id,
             vote: voteValue
         };
         $http.post('vote', data).then(function successCallback() {
@@ -177,6 +177,34 @@ app.controller('ProjectController', ['projectDetail', '$scope', '$http', functio
             alert(err);
         });
     };
+    $scope.notFound=false;
+    $scope.recommended=false;
+    this.getRecommend=function(){
+        $http.get('api/recommend',{params:{id:$scope.project._id}}).then(function successCallback(data) {
+            
+            $scope.bestUser=data.data.bestUser;
+            $scope.bestScore=data.data.bestScore;
+            if ($scope.bestUser!=null){
+                $scope.recommended=true;
+            }
+            else{
+                $scope.notFound=true;
+            }
+            
+
+            console.log($scope.bestUser);
+            console.log($scope.bestScore);
+        }, function errorCallback(err) {
+            alert("error: "+err);
+        });
+    };
+    $scope.delProject=function(){
+        $http.get('deletepost',{params:{id:$scope.project._id}}).then(function successCallback(data) {
+            window.location = "/PostingManager";
+        }, function errorCallback(err) {
+            alert("error: "+err);
+        });
+    }
 }]);
 
 

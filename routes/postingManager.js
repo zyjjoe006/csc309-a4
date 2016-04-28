@@ -103,6 +103,8 @@ var findScore = function(posting, user) {
     if (user.skills == undefined) {
         return 0;
     }
+    console.log("in findstore")
+    console.log(posting);
     console.log(user.skills);
     return intersect_safe(posting.tags.sort(), user.skills.sort()).length;
 }
@@ -129,6 +131,8 @@ router.get('/recommend', isAuthenticated, isProjectOwnder, function(req, res, ne
     }, function(err, users) {
         if (err) return next(err);
         Posting.findById(req.query.id, function(err, posting) {
+            console.log('req.query.id in recommend:');
+            console.log(req.query.id);
             var bestMatch = findBestMatche(posting, users);
             res.render('posting_detail', {
                 user: req.user,
@@ -138,7 +142,19 @@ router.get('/recommend', isAuthenticated, isProjectOwnder, function(req, res, ne
         });
     });
 });
-
+router.get('/api/recommend', isAuthenticated, isProjectOwnder, function(req, res, next) {
+    Users.find({
+        'usertype': 2
+    }, function(err, users) {
+        if (err) return next(err);
+        Posting.findById(req.query.id, function(err, posting) {
+            var bestMatch = findBestMatche(posting, users);
+            console.log('best match developer:')
+            console.log(bestMatch)
+            res.json(bestMatch);
+        });
+    });
+});
 
 //go to the post creation page
 router.get('/createpost', isAuthenticated, isProjectOwnder, function(req, res) {
@@ -196,7 +212,6 @@ router.get('/api/view_detail', isAuthenticated, function(req, res, next) {
     console.log("open view_detail api successfully")
     Posting.findById(req.query.id, function(err, postings) {
         if (err) return next(err);
-        //res.json(postings);
         res.json(postings);
     });
 });
@@ -215,14 +230,14 @@ router.get('/edit_posting', isAuthenticated, isProjectOwnder, function(req, res,
 
 //comment on a posting
 router.post('/comment', isAuthenticated, function(req, res, next) {
-    Posting.findById(req.body.id, function(err, post) {
+    Posting.findById(req.body._id, function(err, post) {
         if (err) return next(err);
         var newComment = {
             'comment_date': new Date(),
             'commenter_email': req.user.email,
             'content': req.body.commentMessage
         };
-        console.log(req.body.id);
+        console.log(req.body._id);
         console.log(post.title);
         post.comments.push(newComment);
 
@@ -239,7 +254,7 @@ router.post('/comment', isAuthenticated, function(req, res, next) {
 
 //rate a posting
 router.post('/vote', isAuthenticated, isDeveloper, function(req, res, next) {
-    Posting.findById(req.body.id, function(err, post) {
+    Posting.findById(req.body._id, function(err, post) {
         if (err) return next(err);
         console.log(req.body.vote);
         if ((post.has_voted.indexOf(req.user.email) == -1)) {
@@ -287,7 +302,7 @@ router.post('/createpost', isAuthenticated, isProjectOwnder, function(req, res, 
 
 //Delete a post
 router.get('/deletepost', isAuthenticated, isProjectOwnder, function(req, res, next) {
-    console.log(req.query.id);
+    
     Posting.findByIdAndRemove(req.query.id, req.body, function(err, post) {
         if (err) return next(err);
         res.redirect('/postingManager');
@@ -326,11 +341,11 @@ router.get('/find:id', isAuthenticated, function(req, res, next) {
 
 //update posting
 router.post('/updatePosting', isAuthenticated, function(req, res, next) {
-    console.log("req.body.id:");
-    console.log(req.body.id);
+    console.log("req.body._id:");
+    console.log(req.body._id);
     console.log("req.body:");
     console.log(req.body);
-    Posting.findByIdAndUpdate(req.body.id, req.body, function(err, post) {
+    Posting.findByIdAndUpdate(req.body._id, req.body, function(err, post) {
         if (err) return next(err);
         console.log(post);
         res.redirect('/postingManager');
@@ -339,7 +354,8 @@ router.post('/updatePosting', isAuthenticated, function(req, res, next) {
 
 //delete posting by ID
 router.post('/delete:id', function(req, res, next) {
-    Posting.findByIdAndRemove(req.body.id, req.body, function(err, post) {
+
+    Posting.findByIdAndRemove(req.body._id, req.body, function(err, post) {
         if (err) return next(err);
         res.json(post);
     });

@@ -5,139 +5,205 @@
     <div class="row">
         <!-- all {{project.xxx}} need to change -->
         <div class="col-md-9 profile-info">
-            <h1 class="page-header">Project Detail</h1>
-            <table class="profile-table table">
-                <tr>
-                    <th>Project Name</th>
-                    <td ng-show="projectCtrl.isSelected(0)">{{project.title}}</td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        <input style="width:60%;" ng-model="project.title"></input>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td ng-show="projectCtrl.isSelected(0)">{{project.description}}</td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        <textarea ng-model="project.description" rows="2"></textarea>
-                    </td>
-                </tr>
-                <tr ng-show="projectCtrl.isSelected(0)">
-                    <th>Date of Publishing</th>
-                    <td>{{project.posting_date|date:'yyyy-MM-dd'}}</td>
-                </tr>
-                <tr>
-                    <th>Required Skills</th>
-                    <td ng-show="projectCtrl.isSelected(0)"><span ng-repeat="tag in project.tags">{{tag}}{{$last ? '' : ', '}} </span></td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        
-                        <div class="col-sm-12">
-                            <div ng-repeat="skill in projectCtrl.allskills" class="checkbox-inline requiredskills">
-                                <label>
-                                    <input type="checkbox" name="tags"  ng-model="skills[skill]">{{skill}}</label>
+            <div class="row">
+                <h1 class="page-header">Project Detail</h1>
+                <table class="profile-table table table-striped">
+                    <tr>
+                        <th>Project Name</th>
+                        <td ng-show="projectCtrl.isSelected(0)">{{project.title}}</td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <input style="width:60%;" ng-model="project.title"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td ng-show="projectCtrl.isSelected(0)">{{project.description}}</td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <textarea ng-model="project.description" rows="2"></textarea>
+                        </td>
+                    </tr>
+                    <tr ng-show="projectCtrl.isSelected(0)">
+                        <th>Date of Publishing</th>
+                        <td>{{project.posting_date|date:'yyyy-MM-dd'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Required Skills</th>
+                        <td ng-show="projectCtrl.isSelected(0)"><span ng-repeat="tag in project.tags">{{tag}}{{$last ? '' : ', '}} </span></td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <div class="col-sm-12">
+                                <div ng-repeat="skill in projectCtrl.allskills" class="checkbox-inline requiredskills">
+                                    <label>
+                                        <input type="checkbox" name="tags" ng-model="skills[skill]">{{skill}}</label>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr ng-show="projectCtrl.isSelected(0)">
-                    <th>Owner's Email</th>
-                    <td>{{project.owner_email}}</td>
-                </tr>
-                <tr ng-show="projectCtrl.isSelected(0)">
-                    <th>Developer's Email</th>
-                    <td><span ng-repeat="email in project.developer_email">{{email}}{{$last ? '' : ', '}} </span></td>
-                </tr>
-                <tr>
-                    <th>start Date</th>
-                    <td ng-show="projectCtrl.isSelected(0)">{{project.start_date|date:'yyyy-MM-dd'}}</td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        <input type="date" ng-model="project.start_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Due Date</th>
-                    <td ng-show="projectCtrl.isSelected(0)">{{project.end_date|date:'yyyy-MM-dd'}}</td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        <input type="date" ng-model="project.end_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
-                    </td>
-                </tr>
-                <tr ng-show="projectCtrl.isSelected(0)">
-                    <th>rating</th>
-                    <td>{{project.rating}}
-                        <div ng-show="user.usertype != 1 && !(project.developer_email.slice().indexOf(user.email) == -1)">
-                        <span ng-show="project.has_voted.indexOf(user.email) == -1 && rated==false">
+                        </td>
+                    </tr>
+                    <tr ng-show="projectCtrl.isSelected(0)">
+                        <th>Owner's Email</th>
+                        <td><a href="/postingManager/user_detail?email={{project.owner_email}}">{{project.owner_email}}</a></td>
+                    </tr>
+                    <tr ng-show="projectCtrl.isSelected(0)">
+                        <th>Developer's Email</th>
+                        <td><span ng-repeat="email in project.developer_email"><a href="/postingManager/user_detail?email={{email}}">{{email}}</a>{{$last ? '' : ', '}} </span></td>
+                    </tr>
+                    <tr>
+                        <th>start Date</th>
+                        <td ng-show="projectCtrl.isSelected(0)">{{project.start_date|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <input type="date" ng-model="project.start_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Due Date</th>
+                        <td ng-show="projectCtrl.isSelected(0)">{{project.end_date|date:'yyyy-MM-dd'}}</td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <input type="date" ng-model="project.end_date" placeholder="yyyy-MM-dd" min="new Date()"></input>
+                        </td>
+                    </tr>
+                    <tr ng-show="projectCtrl.isSelected(0)">
+                        <th>rating</th>
+                        <td>{{project.rating}}
+                            <div ng-show="user.usertype != 1 && !(project.developer_email.slice().indexOf(user.email) == -1)">
+                                <span ng-show="project.has_voted.indexOf(user.email) == -1 && rated==false">
                             <button ng-click="rateUp()" name="vote"class="btn btn-primary"> <i class="fa fa-thumbs-up"></i></button>
                         <button style="margin-left:5px;" ng-click="rateDown()" name="vote" class="btn btn-danger"> <i class="fa fa-thumbs-down"></i></button>
                         </span>
-                        <span ng-show="project.has_voted.indexOf(user.email) != -1 || rated==true">
+                                <span ng-show="project.has_voted.indexOf(user.email) != -1 || rated==true">
                             <h4>You have voted this Project Posting</h4> 
                         </span>
-                            
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td ng-show="projectCtrl.isSelected(0)">{{project.status}}</td>
+                        <td ng-show="projectCtrl.isSelected(1)">
+                            <form>
+                                <label class="col-xs-3">
+                                    <input type="radio" ng-model="project.status" value="Posted" style="padding-right: 5px;"><span> Posted</span></label>
+                                <label class="col-xs-3">
+                                    <input type="radio" ng-model="project.status" value="In Progress" style="padding-right: 5px;"><span> In Progress</span></label>
+                                <label class="col-xs-3">
+                                    <input type="radio" ng-model="project.status" value="Completed" style="padding-right: 5px;"><span> Completed</span></label>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h3>Discussion Board</h3>
+                <div class="discussion row col-sm-12" ng-repeat="discussion in project.comments">
+                    <p ng-cloak>{{discussion. commenter_email}}({{discussion.comment_date|date:'MM/dd/yyyy @ h:mm:ss a'}}):
+                        <br><span style="text-align:right">- {{discussion.content}}</span></p>
+                </div>
+                <div class="row">
+                    <form name="disscussionForm" class="row col-sm-12" ng-keypress="disscussionForm.$valid && $event.which===13 && projectCtrl.addDiscussion(project)" novalidate>
+                        <div class="form-group">
+                            <textarea placeholder="Enter to send message" ng-model="projectCtrl.comment.content" name="body" class="form-control" rows="3" required></textarea>
                         </div>
-                        
-
-                    </td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td ng-show="projectCtrl.isSelected(0)">{{project.status}}</td>
-                    <td ng-show="projectCtrl.isSelected(1)">
-                        <form>
-                            <label class="col-xs-3">
-                                <input type="radio" ng-model="project.status" value="Posted" style="padding-right: 5px;"><span> Posted</span></label>
-                            <label class="col-xs-3">
-                                <input type="radio" ng-model="project.status" value="In Progress" style="padding-right: 5px;"><span> In Progress</span></label>
-                            <label class="col-xs-3">
-                                <input type="radio" ng-model="project.status" value="Completed" style="padding-right: 5px;"><span> Completed</span></label>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-            <hr>
-            <h3>Discussion Board</h3>
-            <div class="discussion row col-sm-12" ng-repeat="discussion in project.comments">
-                <p ng-cloak>{{discussion. commenter_email}}({{discussion.comment_date|date:'MM/dd/yyyy @ h:mm:ss a'}}):
-                    <br><span style="text-align:right">- {{discussion.content}}</span></p>
-            </div>
-            <div class="row">
-                <form name="disscussionForm" class="row col-sm-12" ng-keypress="disscussionForm.$valid && $event.which===13 && projectCtrl.addDiscussion(project)" novalidate>
-                    <div class="form-group">
-                        <textarea placeholder="Enter to send message" ng-model="projectCtrl.comment.content" name="body" class="form-control" rows="3" required></textarea>
-                    </div>
-                </form>
-                <br>
-                <button type="submit" class="btn btn-primary apply" ng-click="projectCtrl.addDiscussion(project);change()"> <i class="fa fa-pencil"></i>Comment</button>
-                
-                <br>
-                <br>
-                <a ng-click="doTheBack()" class="btn btn-default">Back</a>
-                <!-- <a href="find_project.html" class="btn btn-primary apply">Apply</a> -->
+                    </form>
+                    <br>
+                    <button type="submit" class="btn btn-primary apply" ng-click="projectCtrl.addDiscussion(project);change()"> <i class="fa fa-pencil"></i>Comment</button>
+                    <br>
+                    <br>
+                    <a ng-click="doTheBack()" class="btn btn-default">Back</a>
+                    <!-- <a href="find_project.html" class="btn btn-primary apply">Apply</a> -->
+                </div>
             </div>
         </div>
         <!-- side bar -->
         <div class="col-md-3" role="complementary" style="padding-top: 35px;">
             <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-                <ul >
+                <ul>
                     <ul class="list-unstyled" ng-show="user.email==project.owner_email && user.usertype!=2 || user.usertype==3">
-                        <li style="padding:5px"><button class="btn btn-primary" ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.setState(1)">edit project</button></li>
-                        <li style="padding:5px"><button class="btn btn-danger" ng-show="projectCtrl.isSelected(0)" >cancel project</button></li>
-                        <li style="padding:5px"><button class="btn btn-primary"ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);change()" >confirm</button></li>
-                        <li style="padding:5px"><button class="btn btn-warning"ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);reset()" >cancel</button></li>
+                        <li style="padding:5px">
+                            <button class="btn btn-primary" ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.setState(1)">Edit Project</button>
+                        </li>
+                        <li style="padding:5px">
+                            <button class="btn btn-danger" ng-show="projectCtrl.isSelected(0)" data-toggle="modal" data-target="#cancelProject">Cancel Project</button>
+                        </li>
+                        <li style="padding:5px">
+                            <button class="btn btn-info" ng-show="projectCtrl.isSelected(0)" ng-click="projectCtrl.getRecommend()" data-toggle="modal" data-target="#recommandDeveloper">Recommand Developer</button>
+                        </li>
+                        <li style="padding:5px">
+                            <button class="btn btn-primary" ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);change()">Confirm</button>
+                        </li>
+                        <li style="padding:5px">
+                            <button class="btn btn-warning" ng-show="projectCtrl.isSelected(1)" ng-click="projectCtrl.setState(0);reset()">Cancel</button>
+                        </li>
                     </ul>
-                    <ul class="list-unstyled"ng-show="user.usertype!=1">
-                        <li style="padding:5px"><button class="btn btn-primary" ng-show="project.developer_email.indexOf(user.email) == -1" ng-click="join()">join project</button></li>
-                        <li style="padding:5px"><button class="btn btn-warning" ng-show="project.developer_email.indexOf(user.email) != -1" ng-click="quit()">Quit project</button></li>
-                        
+                    <ul class="list-unstyled" ng-show="user.usertype!=1">
+                        <li style="padding:5px">
+                            <button class="btn btn-primary" ng-show="project.developer_email.indexOf(user.email) == -1" ng-click="join()">join project</button>
+                        </li>
+                        <li style="padding:5px">
+                            <button class="btn btn-warning" ng-show="project.developer_email.indexOf(user.email) != -1" ng-click="quit()">Quit project</button>
+                        </li>
                     </ul>
                 </ul>
             </nav>
         </div>
-        <div class="col-md-3" role="complementary" >
-            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-                <ul class="nav ">
+    </div>
+    <div class="modal fade" id="recommandDeveloper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel1">Suggested Developer</h4>
+                </div>
+                <div class="modal-body">
                     
-                    </li>
-                </ul>
-            </nav>
+                        <div ng-if="notFound">
+                            <h3>no suitable developer found</h3>
+                        </div>
+                        <div ng-if="!(notFound) && !(recommended)">
+                            <span>searching</span>
+                        </div>
+                        <div class="row" ng-if="recommended">
+                            
+                            <table class="table table-striped">
+                                
+                                <tbody>
+                                    <tr>
+                                        <th>Developer email</th>
+                                        <th>
+                                            <a href="/postingManager/user_detail?email={{bestUser.email}}" ng-bind="bestUser.email"></a>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Developer name</th>
+                                        <th ng-bind="bestUser.profile.name"></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Developer Matching Score</th>
+                                        <th ng-bind="bestScore"></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a type="button" class="btn btn-primary" href="/postingManager/user_detail?email={{bestUser.email}}">See profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cancelProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">Cancel Project</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to cancel the project?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" ng-click="delProject()">Yes</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
